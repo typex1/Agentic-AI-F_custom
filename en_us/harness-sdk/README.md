@@ -29,6 +29,9 @@ The **Strands Agents harness-sdk** (`strands-agents`) is the core Python SDK for
 | `07_mcp_tools.py` | Consuming tools from an MCP server (AWS Knowledge MCP) |
 | `08_RAG_1.py` | Adaptive structured RAG (NL2SQL) agent with self-correction |
 | `09_red_teaming.py` | Red teaming an agent's sandbox with the Strands Evals SDK |
+| `10_swarm.py` | Multi-agent swarm — self-organizing team with handoffs |
+| `11_graph.py` | Multi-agent graph — deterministic star + fan-in topology |
+| `12_conversation_management.py` | Sliding-window, null, and summarizing history managers |
 
 ## Prerequisites
 

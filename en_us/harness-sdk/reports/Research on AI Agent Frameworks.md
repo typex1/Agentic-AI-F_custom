@@ -1,11 +1,1 @@
-AI agent frameworks are software platforms designed to facilitate the creation, deployment, and management of artificial intelligence agents. Some of the most notable frameworks include: 
-
-1. **TensorFlow**: An open-source machine learning framework developed by Google. It is widely used for building and training deep learning models. [source] 
-
-2. **PyTorch**: An open-source machine learning library developed by Facebook. It is known for its dynamic computation graph and ease of use. [source] 
-
-3. **Keras**: A high-level neural networks API, written in Python and capable of running on top of TensorFlow, CNTK, or Theano. It is user-friendly and accessible for beginners. [source] 
-
-4. **Microsoft Bot Framework**: A comprehensive framework for building conversational user experiences across multiple channels and platforms. [source] 
-
-5. **Rasa**: An open-source machine learning framework to automate text-and voice-based conversations. [source]
+AI agent frameworks are platforms or environments that facilitate the development of AI agents. These frameworks provide a set of tools, libraries, and methodologies to help developers create, test, and deploy AI agents.[source] AI agent frameworks can be categorized into several types, including reactive, deliberative, and hybrid frameworks.[source] Reactive frameworks respond to stimuli from their environment without internal deliberation. Deliberative frameworks involve complex reasoning and decision-making processes. Hybrid frameworks combine elements of both reactive and deliberative approaches to leverage their strengths.[source] Key features of AI agent frameworks include modularity, scalability, and adaptability.[source] Modularity allows for the easy integration and replacement of components, enabling developers to build complex systems from simpler parts. Scalability refers to the ability of the framework to handle increasing amounts of work, which is crucial for deploying AI agents in large-scale environments. Adaptability is the framework's ability to adjust to changing conditions and requirements, which is essential for real-world applications.[source] Examples of popular AI agent frameworks include ROS (Robot Operating System), JAX, and TensorFlow Agents.[source] ROS is widely used in robotics and provides a set of tools for building robot applications. JAX is a framework for machine learning that is particularly well-suited for high-performance computing. TensorFlow Agents is a framework for developing reinforcement learning agents using TensorFlow.
