@@ -1,0 +1,4 @@
+[[bind]]
+mode = "direct"
+source = "./artifacts"
+destination = "/artifacts"
