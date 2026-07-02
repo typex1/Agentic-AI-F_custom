@@ -32,6 +32,7 @@ The **Strands Agents SDK** (`strands-agents`) is the core Python SDK for buildin
 | `10_swarm.py` | Multi-agent swarm — self-organizing team with handoffs |
 | `11_graph.py` | Multi-agent graph — deterministic star + fan-in topology |
 | `12_conversation_management.py` | Sliding-window, null, and summarizing history managers |
+| `13_agent-skill.py` | Integrating an Agent Skill (Anthropic frontend-design) via the AgentSkills plugin |
 
 ## Prerequisites
 
@@ -44,6 +45,8 @@ These demos use **Amazon Bedrock** with the **Amazon Nova Lite** model (`amazon.
 `07_mcp_tools.py` additionally connects to the public **AWS Knowledge MCP server** (`https://knowledge-mcp.global.api.aws`) over Streamable HTTP — it requires internet access but no authentication. The `mcp` client library ships with `strands-agents`.
 
 `09_red_teaming.py` additionally needs `strands-agents-evals` (`pip install strands-agents-evals`) and `uvx` on PATH (it runs the `strands-shell` sandbox as the boundary under test). It generates `sandbox.toml` and an `artifacts/` directory on first run.
+
+`13_agent-skill.py` downloads Anthropic's open-source **frontend-design** skill on first run (needs internet once) and caches it under `skills/frontend-design/SKILL.md`.
 
 ## Running
 
