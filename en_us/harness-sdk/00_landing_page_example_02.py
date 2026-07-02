@@ -2,11 +2,14 @@ from strands import Agent, tool
 from strands.hooks import BeforeToolCallEvent
 from pathlib import Path
 
+REPORTS_DIR = Path(__file__).resolve().parent / "reports"
+
 @tool
 def save_report(title: str, content: str) -> str:
     """Save a research report to disk."""
-    path = f"reports/{title}.md"
-    Path(path).write_text(content)
+    REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    path = REPORTS_DIR / f"{title}.md"
+    path.write_text(content)
     return f"Saved {path}"
 
 def require_sources(event: BeforeToolCallEvent):

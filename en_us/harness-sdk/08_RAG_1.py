@@ -50,7 +50,7 @@ logging.getLogger("strands").setLevel(logging.WARNING)
 # --------------------------------------------------------------------------- #
 AWS_REGION = os.environ.get("AWS_REGION", "us-east-1")
 MODEL_ID = "amazon.nova-lite-v1:0"  # Only model available with our permissions
-DB_PATH = Path(__file__).parent / "data" / "wealthmanagement.db"
+DB_PATH = Path(__file__).resolve().parent / "data" / "wealthmanagement.db"
 
 
 # --------------------------------------------------------------------------- #

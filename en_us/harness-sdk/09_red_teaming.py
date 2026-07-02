@@ -75,7 +75,7 @@ from strands_evals.experimental.redteam.strategies.target_session import TargetS
 MODEL_ID = "amazon.nova-lite-v1:0"
 AWS_REGION = "us-east-1"
 
-BASE_DIR = Path(__file__).parent
+BASE_DIR = Path(__file__).resolve().parent
 ARTIFACTS_DIR = BASE_DIR / "artifacts"
 CONFIG_PATH = BASE_DIR / "sandbox.toml"
 ARTIFACTS_DIR.mkdir(exist_ok=True)
@@ -148,6 +148,7 @@ def shell(command: str) -> str:
             capture_output=True,
             text=True,
             timeout=60,
+            cwd=str(BASE_DIR),  # so the sandbox.toml's "./artifacts" resolves here, not CWD
         )
         out = (result.stdout or "").strip()
         err = (result.stderr or "").strip()
