@@ -16,7 +16,7 @@ a **Pydantic AI** comparison — running on **Amazon Bedrock** with the
 |------|-------------|
 | `Task.py` | Python extracted from `Task.ipynb` (first-agent tutorial), task-labeled |
 | `Model_permissions.py` / `.md` | Probes + summary of which Bedrock actions are permitted |
-| `harness-sdk/` | Strands Agents SDK demos (see its own `README.md`) |
+| `strands-agents/` | Strands Agents SDK demos (see its own `README.md`) |
 | `pydantic-ai/` | Pydantic AI equivalents for comparison |
 | `StrandsAgents_vs_PydanticAI.md` | Framework comparison writeup |
 | `0-install.sh` | Installs `uv`/`uvx` (needed for MCP + strands-shell demos) |
@@ -28,7 +28,7 @@ a **Pydantic AI** comparison — running on **Amazon Bedrock** with the
 # 1. Python dependencies
 pip install -r requirements.txt
 
-# 2. Non-pip tools (needed for harness-sdk demos 07 and 09)
+# 2. Non-pip tools (needed for strands-agents demos 07 and 09)
 ./0-install.sh          # installs uv / uvx
 # strands-shell is fetched on demand via `uvx strands-shell`
 ```
@@ -42,7 +42,7 @@ this environment:
 
 | Package | Version | Used by |
 |---------|---------|---------|
-| `strands-agents` | 1.45.0 | all `harness-sdk` demos, `Task.py` |
+| `strands-agents` | 1.45.0 | all `strands-agents` demos, `Task.py` |
 | `strands-agents-tools` | 0.8.2 | calculator / shell tools (demos 02, 04) |
 | `strands-agents-evals` | 1.0.1 | red teaming (demo 09) |
 | `ddgs` | 9.14.4 | web search (demo 02, `Task.py`) |

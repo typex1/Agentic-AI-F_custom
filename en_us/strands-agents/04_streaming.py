@@ -6,7 +6,7 @@ Demonstrates:
   - Tracking tool usage events as they happen
   - Understanding the agent lifecycle events
 
-The harness-sdk streams tokens as they're generated, letting you build
+The Strands SDK streams tokens as they're generated, letting you build
 responsive UIs, logging pipelines, or real-time displays.
 """
 

@@ -1,8 +1,8 @@
-# Strands Agents Harness SDK — Demo Content
+# Strands Agents SDK — Demo Content
 
-The **Strands Agents harness-sdk** (`strands-agents`) is the core Python SDK for building AI agents. It provides a model-driven approach where agents autonomously decide which tools to use, how to chain them, and when to respond — all in just a few lines of code.
+The **Strands Agents SDK** (`strands-agents`) is the core Python SDK for building AI agents. It provides a model-driven approach where agents autonomously decide which tools to use, how to chain them, and when to respond — all in just a few lines of code.
 
-## Why the Harness SDK?
+## Why the Strands Agents SDK?
 
 | Feature | What it gives you |
 |---------|-------------------|
@@ -48,7 +48,7 @@ These demos use **Amazon Bedrock** with the **Amazon Nova Lite** model (`amazon.
 ## Running
 
 ```bash
-python harness-sdk/01_basic_agent.py
+python strands-agents/01_basic_agent.py
 ```
 
 Each file is self-contained and runnable independently.

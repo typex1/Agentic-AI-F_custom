@@ -3,17 +3,17 @@
 #
 # Install with:  pip install -r requirements.txt
 
-# --- Core Strands Agents SDK (harness-sdk/*, Task.py) ---
+# --- Core Strands Agents SDK (strands-agents/*, Task.py) ---
 strands-agents==1.45.0
 strands-agents-tools==0.8.2        # calculator, shell tools (demos 02, 04)
 
-# --- Red teaming / evaluation (harness-sdk/09_red_teaming.py) ---
+# --- Red teaming / evaluation (strands-agents/09_red_teaming.py) ---
 strands-agents-evals==1.0.1
 
-# --- Web search tool (harness-sdk/02_custom_tools.py, Task.py) ---
+# --- Web search tool (strands-agents/02_custom_tools.py, Task.py) ---
 ddgs==9.14.4
 
-# --- Structured output demo uses Pydantic directly (harness-sdk/03) ---
+# --- Structured output demo uses Pydantic directly (strands-agents/03) ---
 pydantic==2.13.4
 
 # --- AWS SDK, used directly by Model_permissions.py ---

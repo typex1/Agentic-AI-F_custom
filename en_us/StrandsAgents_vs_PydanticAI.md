@@ -44,7 +44,7 @@ result = agent.run_sync("What are the three laws of robotics?")
 print(result.output)
 ```
 
-See runnable versions in `harness-sdk/01_basic_agent.py` and
+See runnable versions in `strands-agents/01_basic_agent.py` and
 `pydantic-ai/01_basic_agent.py` — both use Nova Lite via Bedrock and print token
 usage.
 

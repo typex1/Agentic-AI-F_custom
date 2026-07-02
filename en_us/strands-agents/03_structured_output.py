@@ -6,7 +6,7 @@ Demonstrates:
   - Using Pydantic models as output schemas
   - Accessing structured fields programmatically
 
-Instead of parsing free-text responses, the harness-sdk lets you define
+Instead of parsing free-text responses, the Strands SDK lets you define
 a Pydantic model and the agent returns data matching that schema.
 """
 

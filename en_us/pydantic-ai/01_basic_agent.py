@@ -1,7 +1,7 @@
 """
 01_basic_agent.py — Simplest possible Pydantic AI Agent
 
-The Pydantic AI equivalent of harness-sdk/01_basic_agent.py.
+The Pydantic AI equivalent of strands-agents/01_basic_agent.py.
 
 Demonstrates:
   - Creating an agent in a few lines

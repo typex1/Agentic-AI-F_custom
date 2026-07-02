@@ -6,7 +6,7 @@ Demonstrates:
   - Resuming conversations from a previous session
   - The agent remembering prior context after reload
 
-The harness-sdk provides session managers (file-based, S3, or custom)
+The Strands SDK provides session managers (file-based, S3, or custom)
 so your agents can maintain state across invocations.
 """
 

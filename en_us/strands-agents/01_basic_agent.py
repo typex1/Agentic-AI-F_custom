@@ -6,7 +6,7 @@ Demonstrates:
   - Using a system prompt to shape behavior
   - Calling the agent and getting a response
 
-The harness-sdk handles the entire agent loop:
+The Strands SDK handles the entire agent loop:
   Input → Reasoning (LLM) → Tool Selection → Tool Execution → Response
 """
 
