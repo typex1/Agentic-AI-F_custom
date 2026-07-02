@@ -1,0 +1,29 @@
+# Python dependencies for this workspace.
+# Pinned to the versions installed and verified in this environment.
+#
+# Install with:  pip install -r requirements.txt
+
+# --- Core Strands Agents SDK (harness-sdk/*, Task.py) ---
+strands-agents==1.45.0
+strands-agents-tools==0.8.2        # calculator, shell tools (demos 02, 04)
+
+# --- Red teaming / evaluation (harness-sdk/09_red_teaming.py) ---
+strands-agents-evals==1.0.1
+
+# --- Web search tool (harness-sdk/02_custom_tools.py, Task.py) ---
+ddgs==9.14.4
+
+# --- Structured output demo uses Pydantic directly (harness-sdk/03) ---
+pydantic==2.13.4
+
+# --- AWS SDK, used directly by Model_permissions.py ---
+boto3==1.43.39
+
+# --- Pydantic AI comparison example (pydantic-ai/01_basic_agent.py) ---
+# The [bedrock] extra adds Amazon Bedrock (Converse) support.
+pydantic-ai-slim[bedrock]==2.3.0
+
+# --- NOT pip-installable (required by demos 07 and 09) ---
+# These are installed separately, not via pip:
+#   * uv / uvx  -> see 0-install.sh  (curl -LsSf https://astral.sh/uv/install.sh | sh)
+#   * strands-shell -> run on demand via `uvx strands-shell` (needs uvx on PATH)
