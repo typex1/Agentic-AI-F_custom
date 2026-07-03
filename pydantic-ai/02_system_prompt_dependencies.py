@@ -5,6 +5,8 @@ from pydantic_ai import Agent, RunContext
 from pydantic_ai.models.bedrock import BedrockConverseModel
 from pydantic_ai.providers.bedrock import BedrockProvider
 
+# official docs: https://pydantic.dev/docs/ai/core-concepts/dependencies/
+
 # --- Configure the model: Amazon Bedrock + Nova Lite in us-east-1 ---
 model = BedrockConverseModel(
     "amazon.nova-lite-v1:0",
