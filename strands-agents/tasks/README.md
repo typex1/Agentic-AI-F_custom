@@ -17,6 +17,7 @@ under [`../solutions/`](../solutions/) — attempt the task first, then compare.
 | 3 | [RAG over a KB via your own MCP server](3-rag-and-mcp.md) | 3 · RAG & MCP | `07`, `08` | [`solutions/3-rag-and-mcp/`](../solutions/3-rag-and-mcp/) |
 | 4 | [Harness, guardrails & prompt injection](4-guardrails-and-injection.md) | 4–5 · Guardrails + Lethal Trifecta | `09` | [`solutions/4-guardrails-and-injection/`](../solutions/4-guardrails-and-injection/) |
 | 5 | [Use `skill-creator` to author a skill](5-skill-creator.md) | Capstone · Agent Skills | `13` | *(worked try-out in [`../experiments/skill-creator/`](../experiments/skill-creator/))* |
+| 6 | [RAG over a Google OKF knowledge base](6-rag-okf.md) | 3 · RAG & MCP | `08` (`08_RAG_OKF.py`) | [`../08_RAG_OKF.py`](../08_RAG_OKF.py) |
 
 ## Suggested progression
 
