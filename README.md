@@ -32,16 +32,13 @@ a **Pydantic AI** comparison — running on **Amazon Bedrock** with the
 | `strands-agents/` | Strands Agents SDK demos (see its own `README.md`) |
 | `pydantic-ai/` | Pydantic AI equivalents for comparison |
 | `StrandsAgents_vs_PydanticAI.md` | Framework comparison writeup |
-| `0-install.sh` | Installs `uv`/`uvx` (needed for MCP + strands-shell demos) |
+| `0-install.sh` | Installs `Python dependencies and non-pip tools |
 | `requirements.txt` | Pinned Python dependencies |
 
 ## Setup
 
 ```bash
-# 1. Python dependencies
-pip install -r requirements.txt
-
-# 2. Non-pip tools (needed for strands-agents demos 07 and 09)
+# Python dependencies and non-pip tools (needed for strands-agents demos 07 and 09)
 ./0-install.sh          # installs uv / uvx
 # strands-shell is fetched on demand via `uvx strands-shell`
 ```
