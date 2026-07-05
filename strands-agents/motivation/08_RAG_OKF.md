@@ -7,6 +7,39 @@ Build a retrieval-augmented agent that answers questions from a corpus of
 markdown documents — a Google **OKF (Open Knowledge Format)** knowledge bundle —
 by retrieving the most relevant passages and grounding its answers in them.
 
+OKF Bundle file structure:
+```
+my-knowledge-bundle/           ◄── The "Bundle" (a standard folder)
+├── index.md                    ◄── Reserved: Root index (lists what's available)
+├── log.md                      ◄── Reserved: Chronological history of changes
+│
+├── playbooks/                  ◄── Folder organizing a specific category
+│   ├── deployment-guide.md     ◄── Concept File (Markdown + YAML frontmatter)
+│   └── troubleshooting.md      ◄── Concept File 
+│
+└── data-assets/                
+    ├── customer_metrics.md     ◄── Concept File
+    └── index.md                ◄── Sub-directory Index (for progressive disclosure)
+```
+
+Anatomy of an OKF Concept .md file:
+```
+---
+type: TableData                 ◄── [CRITICAL] The only strictly required field
+title: Customer Core Metrics
+description: Main table containing aggregated ARR and churn metrics.
+resource: bigquery://project.dataset.customer_metrics
+tags: [finance, sales]
+timestamp: 2026-07-05T12:00:00Z
+---
+
+# Customer Core Metrics
+
+This section contains the free-form human-readable description. Because it's 
+standard markdown, I can link to another concept file in the bundle like this:
+See our [Troubleshooting Playbook](../playbooks/troubleshooting.md) for data mismatches.
+```
+
 ## Why it matters
 Where `08_RAG_1.py` does *structured* RAG (schema retrieval → SQL), this is the
 *unstructured* counterpart that most people mean by "RAG": search a document

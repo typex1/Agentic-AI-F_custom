@@ -17,6 +17,15 @@ calls others): here the agents self-organize as a team.
 We build a small software-delivery swarm:
   researcher → architect → coder → reviewer   (order emerges at runtime)
 
+The swarm supports arbitrary handoff chains — including loops and back-and-forth patterns like your example. The framework has no structural restriction on which agent hands off to
+  which.
+  
+  To get reviewer → coder → architect, you'd just adjust the prompts. For example:
+  
+  - Tell the reviewer: "If you find significant design flaws, hand off to 'architect'. If you find only implementation bugs, hand off to 'coder'. If everything is acceptable, STOP."
+  - Tell the coder: "After fixing, hand off back to 'reviewer'."
+  - Tell the architect: "After redesigning, hand off to 'coder'."
+
 ADAPTATION FOR THIS LIMITED-PERMISSION ENVIRONMENT
 --------------------------------------------------
 Per .kiro/steering/Permissions.md we only have `bedrock-runtime:Converse` on
