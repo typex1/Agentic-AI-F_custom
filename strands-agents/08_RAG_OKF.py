@@ -1,4 +1,4 @@
-"""
+I w"""
 08_RAG_OKF.py — Unstructured RAG Agent over a Google OKF knowledge base
 
 A companion to `08_RAG_1.py`. Where that sample does *structured* RAG (it
