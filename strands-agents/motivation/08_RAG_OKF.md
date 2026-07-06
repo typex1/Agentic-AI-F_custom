@@ -71,3 +71,49 @@ retrieved. It also shows how to consume an open, vendor-neutral knowledge format
 Unstructured RAG, Open Knowledge Format (OKF), YAML frontmatter + markdown,
 chunking, TF-IDF cosine retrieval, retrieval tools, answer grounding &
 citations, progressive disclosure via `index.md`.
+
+## How the context window is protected
+
+Even with many `.md` files — and some of them very large (full video
+transcripts) — the model's context window is never exhausted. Several layers
+work together:
+
+1. **Chunking keeps passages small.**
+   Every document body is split into overlapping windows of ~180 words
+   (`CHUNK_WORDS = 180`, `CHUNK_OVERLAP_WORDS = 40`). A 10,000-word transcript
+   becomes ~60 chunks, but the model never sees the whole file unless
+   explicitly asked.
+
+2. **TF-IDF retrieval returns only `top_k` chunks (default 4, max 8).**
+   Regardless of how many documents or chunks exist in the index, only the 4–8
+   best-matching passages (~720–1440 words total) are injected into the prompt
+   per `search_transcripts` call. The index itself lives in Python memory, not
+   in the LLM context.
+
+3. **`list_knowledge_base` returns metadata, not content.**
+   It shows title, concept_id, video_id, tags, and a one-sentence description
+   per document — never the body text. This is the OKF "progressive disclosure"
+   pattern (SPEC §6): show the catalogue first, drill down only when needed.
+
+4. **The system prompt enforces a staged workflow.**
+   The agent is instructed to search first (getting small chunks), and only call
+   `get_transcript` (which *does* return a full body) when it really needs
+   deeper context for a specific document — one document at a time, so it stays
+   bounded.
+
+In short: the entire corpus is never loaded into the prompt. Only small,
+relevant slices are sent to the model, selected by a retrieval step that runs
+entirely in Python.
+
+## No OKF library — and that's the point
+
+There is no `import okf` in the script. The entire OKF parsing is hand-rolled
+(~60 lines): `yaml.safe_load` for frontmatter, `pathlib` for file discovery, a
+regex for the `---` delimiters, and the `Concept` dataclass to hold the result.
+
+This is intentional. OKF is a *spec/convention*, not a software library. The
+format is deliberately minimal — UTF-8 markdown files with YAML frontmatter in a
+directory — so that any tool or agent can produce and consume it without a
+dedicated SDK. The script's `_split_frontmatter()`, `load_bundle()`, and
+`Concept` *are* the "OKF library" here, purpose-built inline to show how little
+code the format requires.
