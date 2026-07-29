@@ -1,6 +1,6 @@
 # 10 — Multi-Agent Swarm
 
-**Python file:** [`../10_swarm.py`](../10_swarm.py)
+**Python file:** [`../13_swarm.py`](../13_swarm.py)
 
 ## Learning objective
 Coordinate a team of specialized agents that **self-organize** — handing off to

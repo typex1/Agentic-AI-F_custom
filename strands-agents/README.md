@@ -22,17 +22,18 @@ The **Strands Agents SDK** (`strands-agents`) is the core Python SDK for buildin
 |------|---------|
 | `01_basic_agent.py` | Simplest possible agent — 3 lines of code |
 | `02_custom_tools.py` | Creating custom tools with the `@tool` decorator |
-| `03_structured_output.py` | Getting typed Pydantic responses from agents |
-| `04_streaming.py` | Callback handlers and streaming events |
-| `05_multi_agent.py` | Agents-as-tools pattern for delegation |
-| `06_session_management.py` | Persisting conversations to disk |
-| `07_mcp_tools.py` | Consuming tools from an MCP server (AWS Knowledge MCP) |
-| `08_RAG_1.py` | Adaptive structured RAG (NL2SQL) agent with self-correction |
-| `09_red_teaming.py` | Red teaming an agent's sandbox with the Strands Evals SDK |
-| `10_swarm.py` | Multi-agent swarm — self-organizing team with handoffs |
-| `11_graph.py` | Multi-agent graph — deterministic star + fan-in topology |
-| `12_conversation_management.py` | Sliding-window, null, and summarizing history managers |
-| `13_agent-skill.py` | Integrating an Agent Skill (Anthropic frontend-design) via the AgentSkills plugin |
+| `03_logging.py` | Observing tool use through logging — tool catalog + prompt/context in the log |
+| `04_mcp_tools.py` | Consuming tools from an MCP server (AWS Knowledge MCP) |
+| `05_agent-skill.py` | Integrating an Agent Skill (Anthropic frontend-design) via the AgentSkills plugin |
+| `06_RAG_1.py` | Adaptive structured RAG (NL2SQL) agent with self-correction |
+| `07_multi_agent.py` | Agents-as-tools pattern for delegation |
+| `08_red_teaming.py` | Red teaming an agent's sandbox with the Strands Evals SDK |
+| `09_graph.py` | Multi-agent graph — deterministic star + fan-in topology |
+| `10_structured_output.py` | Getting typed Pydantic responses from agents |
+| `11_streaming.py` | Callback handlers and streaming events |
+| `12_session_management.py` | Persisting conversations to disk |
+| `13_swarm.py` | Multi-agent swarm — self-organizing team with handoffs |
+| `14_conversation_management.py` | Sliding-window, null, and summarizing history managers |
 
 ## Prerequisites
 
@@ -42,11 +43,11 @@ pip install strands-agents strands-agents-tools
 
 These demos use **Amazon Bedrock** with the **Amazon Nova Lite** model (`amazon.nova-lite-v1:0`) in `us-east-1`. Ensure your environment has `bedrock-runtime:Converse` permissions.
 
-`07_mcp_tools.py` additionally connects to the public **AWS Knowledge MCP server** (`https://knowledge-mcp.global.api.aws`) over Streamable HTTP — it requires internet access but no authentication. The `mcp` client library ships with `strands-agents`.
+`04_mcp_tools.py` additionally connects to the public **AWS Knowledge MCP server** (`https://knowledge-mcp.global.api.aws`) over Streamable HTTP — it requires internet access but no authentication. The `mcp` client library ships with `strands-agents`.
 
-`09_red_teaming.py` additionally needs `strands-agents-evals` (`pip install strands-agents-evals`) and `uvx` on PATH (it runs the `strands-shell` sandbox as the boundary under test). It generates `sandbox.toml` and an `artifacts/` directory on first run.
+`08_red_teaming.py` additionally needs `strands-agents-evals` (`pip install strands-agents-evals`) and `uvx` on PATH (it runs the `strands-shell` sandbox as the boundary under test). It generates `sandbox.toml` and an `artifacts/` directory on first run.
 
-`13_agent-skill.py` downloads Anthropic's open-source **frontend-design** skill on first run (needs internet once) and caches it under `skills/frontend-design/SKILL.md`.
+`05_agent-skill.py` downloads Anthropic's open-source **frontend-design** skill on first run (needs internet once) and caches it under `skills/frontend-design/SKILL.md`.
 
 ## Running
 

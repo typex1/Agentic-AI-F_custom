@@ -1,6 +1,6 @@
 # 11 — Multi-Agent Graph
 
-**Python file:** [`../11_graph.py`](../11_graph.py)
+**Python file:** [`../09_graph.py`](../09_graph.py)
 
 ## Learning objective
 Orchestrate multiple agents in an explicit, **deterministic** topology where you

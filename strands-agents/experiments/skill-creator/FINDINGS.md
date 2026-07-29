@@ -10,7 +10,7 @@ no subagents/browser/`claude` CLI). These notes back the student task in
 | Path | What it is |
 |------|------------|
 | `skill-creator/` | The skill, vendored from GitHub (all 18 files: `SKILL.md`, `scripts/`, `agents/`, `references/`, `eval-viewer/`, `assets/`). |
-| `try_skill_creator.py` | Strands runner: loads the skill via `AgentSkills` on Nova Lite (mirrors demo `13_agent-skill.py`) and drives it to author a new skill, then validates the result. |
+| `try_skill_creator.py` | Strands runner: loads the skill via `AgentSkills` on Nova Lite (mirrors demo `05_agent-skill.py`) and drives it to author a new skill, then validates the result. |
 | `generated/commit-message-writer/SKILL.md` | The skill Nova Lite produced (final, validated version). |
 
 Run it: `python try_skill_creator.py`
@@ -58,7 +58,7 @@ construction. Consequences:
 - You must call `plugin.get_available_skills(agent)` *after* the agent has been
   initialised. In the runner we force this with
   `asyncio.run(skills_plugin.init_agent(agent))` before printing discovery.
-- Demo `13_agent-skill.py` has the same latent gotcha — its discovery print
+- Demo `05_agent-skill.py` has the same latent gotcha — its discovery print
   would come up empty for the same reason.
 
 Source: `strands/vended_plugins/skills/agent_skills.py` (`get_available_skills`

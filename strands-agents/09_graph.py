@@ -1,5 +1,5 @@
 """
-11_graph.py — Multi-Agent Graph (deterministic orchestration)
+09_graph.py — Multi-Agent Graph (deterministic orchestration)
 
 Adapted from the Strands Agents sample:
   strands-agents/samples → python/01-learn/12-graph

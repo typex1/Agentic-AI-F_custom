@@ -1,5 +1,5 @@
 """
-04_streaming.py — Streaming and Callback Handlers
+11_streaming.py — Streaming and Callback Handlers
 
 Demonstrates:
   - Custom callback handlers for real-time token streaming

@@ -1,6 +1,6 @@
 # 05 — Multi-Agent: Agents as Tools
 
-**Python file:** [`../05_multi_agent.py`](../05_multi_agent.py)
+**Python file:** [`../07_multi_agent.py`](../07_multi_agent.py)
 
 ## Learning objective
 Compose multiple specialized agents by wrapping them as tools that a

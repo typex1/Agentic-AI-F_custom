@@ -1,5 +1,5 @@
 """
-06_session_management.py — Conversation Persistence
+12_session_management.py — Conversation Persistence
 
 Demonstrates:
   - Saving agent conversations to disk

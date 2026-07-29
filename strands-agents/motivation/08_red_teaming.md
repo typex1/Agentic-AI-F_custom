@@ -1,6 +1,6 @@
 # 09 — Red Teaming
 
-**Python file:** [`../09_red_teaming.py`](../09_red_teaming.py)
+**Python file:** [`../08_red_teaming.py`](../08_red_teaming.py)
 
 ## Learning objective
 Probe an agent's security boundaries with adversarial inputs and automatically

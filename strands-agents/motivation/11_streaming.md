@@ -1,6 +1,6 @@
 # 04 — Streaming & Callback Handlers
 
-**Python file:** [`../04_streaming.py`](../04_streaming.py)
+**Python file:** [`../11_streaming.py`](../11_streaming.py)
 
 ## Learning objective
 React to an agent's output and actions in real time, as they happen, rather than

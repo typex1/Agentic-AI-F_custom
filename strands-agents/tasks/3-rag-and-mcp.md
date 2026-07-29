@@ -13,13 +13,13 @@ Putting them together gives the Module 3 picture: *consume a knowledge base via
 an MCP server, and build your own thin MCP server.* Your retrieval logic lives
 behind a clean MCP boundary; the agent just sees a `search_knowledge_base` tool.
 
-Builds on demos `07_mcp_tools.py` (consuming an MCP server) and `08_RAG_1.py`
+Builds on demos `04_mcp_tools.py` (consuming an MCP server) and `06_RAG_1.py`
 (retrieval-augmented answering).
 
 ## Background
 
 **RAG** = *retrieve* relevant context, then *generate* an answer grounded in it.
-The retrieval step is the interesting part. Demo `08_RAG_1.py` does "structured
+The retrieval step is the interesting part. Demo `06_RAG_1.py` does "structured
 RAG" — it retrieves a **database schema** and generates **SQL**. You'll do
 document RAG: retrieve the most relevant passages from a small corpus and let the
 model answer from them, with citations.
@@ -32,7 +32,7 @@ model answer from them, with citations.
 > write-up; it's a good discussion point.
 
 **MCP** (Model Context Protocol) lets an agent use tools hosted by a separate
-process. In demo 07 you *consumed* a remote MCP server. Here you'll *build* one:
+process. In demo 04 you *consumed* a remote MCP server. Here you'll *build* one:
 a small local server (stdio transport) that exposes your retriever as a tool,
 then connect to it with `MCPClient`.
 
@@ -73,7 +73,7 @@ solutions/3-rag-and-mcp/         # reference lives here; put your work alongside
 ## Hints
 
 - MCP server: `from mcp.server.fastmcp import FastMCP`, decorate a function with
-  `@mcp.tool()`, and run `mcp.run()` (stdio). Client side (see demo 07 for the
+  `@mcp.tool()`, and run `mcp.run()` (stdio). Client side (see demo 04 for the
   `with`-context pattern):
   ```python
   from mcp import stdio_client, StdioServerParameters
@@ -112,7 +112,7 @@ solutions/3-rag-and-mcp/         # reference lives here; put your work alongside
   full document after finding it via search.
 - Return a relevance score with each passage and have the agent prefer
   higher-scoring sources.
-- Compare this document-RAG approach with demo 08's NL2SQL "structured RAG":
+- Compare this document-RAG approach with demo 06's NL2SQL "structured RAG":
   when is each the right tool?
 
 ## Reflection questions

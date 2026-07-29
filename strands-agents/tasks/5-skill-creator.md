@@ -12,7 +12,7 @@ new small skill of your own. Then you'll put that skill through a lightweight
 **validate → fix → re-validate** loop — a miniature version of the real
 skill-creator workflow.
 
-This builds directly on demo `13_agent-skill.py` (the `AgentSkills` plugin).
+This builds directly on demo `05_agent-skill.py` (the `AgentSkills` plugin).
 Read that demo first if you haven't.
 
 ## Background: what is a skill, and what is skill-creator?
@@ -72,7 +72,7 @@ language explainer. Keep it tiny.
 
 | Source | What to borrow |
 |--------|----------------|
-| `strands-agents/13_agent-skill.py` | The `AgentSkills` plugin: `AgentSkills(skills=<dir>)`, `plugins=[...]`, `get_available_skills(...)`, `get_activated_skills(agent)`. Vendoring a skill's `SKILL.md` from GitHub. |
+| `strands-agents/05_agent-skill.py` | The `AgentSkills` plugin: `AgentSkills(skills=<dir>)`, `plugins=[...]`, `get_available_skills(...)`, `get_activated_skills(agent)`. Vendoring a skill's `SKILL.md` from GitHub. |
 | `skill-creator/SKILL.md` | The authoring guidance the agent will follow — read "Creating a skill → Write the SKILL.md" and the "Skill Writing Guide". |
 | `skill-creator/scripts/quick_validate.py` | Your objective validation gate. Run it as `python quick_validate.py <skill_dir>`; import `validate_skill(path)` to call it in code. |
 
@@ -82,7 +82,7 @@ language explainer. Keep it tiny.
   `init_agent` time. `plugin.get_available_skills()` with no argument returns an
   empty list — you must pass the agent: `get_available_skills(agent)`, and only
   after init. You can force loading with
-  `asyncio.run(plugin.init_agent(agent))` before printing. (Demo 13 has this same
+  `asyncio.run(plugin.init_agent(agent))` before printing. (Demo 05 has this same
   latent quirk.)
 - **The skill directory name must equal the skill's `name` frontmatter** — the
   plugin checks this. `skill-creator/` must contain a `SKILL.md` whose

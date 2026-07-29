@@ -1,5 +1,5 @@
 """
-07_mcp_tools.py — Consuming Tools from an MCP Server
+04_mcp_tools.py — Consuming Tools from an MCP Server
 
 Demonstrates:
   - Connecting a Strands agent to a remote MCP server

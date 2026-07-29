@@ -1,5 +1,5 @@
 """
-09_red_teaming.py — Red Teaming a Strands Agent
+08_red_teaming.py — Red Teaming a Strands Agent
 
 Adapted from the Strands Agents sample:
   strands-agents/samples → python/05-technical-use-cases/pokemon-team-advisor

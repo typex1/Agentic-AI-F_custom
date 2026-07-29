@@ -60,7 +60,7 @@ Everything you need has an example in `strands-agents/`. Study these first:
 |---------|------------------------|
 | `01_basic_agent.py`  | Creating an `Agent` bound to `amazon.nova-lite-v1:0` and a system prompt. |
 | `02_custom_tools.py` | The `shell` tool from `strands_tools`, and a `web_search` tool built on `ddgs` (DuckDuckGo). Copy the `web_search` pattern. |
-| `04_streaming.py`    | A `callback_handler` so tokens and tool calls stream to the terminal in real time — this makes it *feel* like Kiro CLI. |
+| `11_streaming.py`    | A `callback_handler` so tokens and tool calls stream to the terminal in real time — this makes it *feel* like Kiro CLI. |
 
 The `@tool` decorator turns any Python function into something the agent can
 call. The SDK runs the whole loop (reason → pick tool → execute → continue) for
@@ -78,7 +78,7 @@ you.
   command is a legitimate (and safer) design choice.
 - For web search, reuse the `web_search` tool from `02_custom_tools.py`
   (`from ddgs import DDGS`).
-- Streaming with a `callback_handler` (see `04_streaming.py`) gives a much
+- Streaming with a `callback_handler` (see `11_streaming.py`) gives a much
   nicer UX than waiting for the full response. Show tool calls as they happen.
 - Make `kiro-replica-cli.sh` executable: `chmod +x kiro-replica-cli.sh`.
 

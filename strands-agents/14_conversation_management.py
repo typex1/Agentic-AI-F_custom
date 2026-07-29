@@ -1,5 +1,5 @@
 """
-12_conversation_management.py — Controlling Message History
+14_conversation_management.py — Controlling Message History
 
 Adapted from the Strands Agents sample:
   strands-agents/samples → python/01-learn/17-conversation-management

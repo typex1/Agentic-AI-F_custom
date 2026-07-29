@@ -12,12 +12,12 @@ under [`../solutions/`](../solutions/) — attempt the task first, then compare.
 
 | # | Task | Day-2 module(s) | Builds on (demos) | Reference solution |
 |---|------|-----------------|-------------------|--------------------|
-| 1 | [Minimal Kiro-CLI replica](1-kiro-replica.md) | 1–2 · Setup & first agent | `01`, `02`, `04` | [`solutions/1-kiro-replica/`](../solutions/1-kiro-replica/) |
-| 2 | [Typed, read-only API tools](2-typed-api-tools.md) | 2 · Agent + API-Tools | `02`, `03` | [`solutions/2-typed-api-tools/`](../solutions/2-typed-api-tools/) |
-| 3 | [RAG over a KB via your own MCP server](3-rag-and-mcp.md) | 3 · RAG & MCP | `07`, `08` | [`solutions/3-rag-and-mcp/`](../solutions/3-rag-and-mcp/) |
-| 4 | [Harness, guardrails & prompt injection](4-guardrails-and-injection.md) | 4–5 · Guardrails + Lethal Trifecta | `09` | [`solutions/4-guardrails-and-injection/`](../solutions/4-guardrails-and-injection/) |
-| 5 | [Use `skill-creator` to author a skill](5-skill-creator.md) | Capstone · Agent Skills | `13` | *(worked try-out in [`../experiments/skill-creator/`](../experiments/skill-creator/))* |
-| 6 | [RAG over a Google OKF knowledge base](6-rag-okf.md) | 3 · RAG & MCP | `08` (`08_RAG_OKF.py`) | [`../08_RAG_OKF.py`](../08_RAG_OKF.py) |
+| 1 | [Minimal Kiro-CLI replica](1-kiro-replica.md) | 1–2 · Setup & first agent | `01`, `02`, `11` | [`solutions/1-kiro-replica/`](../solutions/1-kiro-replica/) |
+| 2 | [Typed, read-only API tools](2-typed-api-tools.md) | 2 · Agent + API-Tools | `02`, `10` | [`solutions/2-typed-api-tools/`](../solutions/2-typed-api-tools/) |
+| 3 | [RAG over a KB via your own MCP server](3-rag-and-mcp.md) | 3 · RAG & MCP | `04`, `06` | [`solutions/3-rag-and-mcp/`](../solutions/3-rag-and-mcp/) |
+| 4 | [Harness, guardrails & prompt injection](4-guardrails-and-injection.md) | 4–5 · Guardrails + Lethal Trifecta | `08` | [`solutions/4-guardrails-and-injection/`](../solutions/4-guardrails-and-injection/) |
+| 5 | [Use `skill-creator` to author a skill](5-skill-creator.md) | Capstone · Agent Skills | `05` | *(worked try-out in [`../experiments/skill-creator/`](../experiments/skill-creator/))* |
+| 6 | [RAG over a Google OKF knowledge base](6-rag-okf.md) | 3 · RAG & MCP | `06` (`06_RAG_OKF.py`) | [`../06_RAG_OKF.py`](../06_RAG_OKF.py) |
 
 ## Suggested progression
 

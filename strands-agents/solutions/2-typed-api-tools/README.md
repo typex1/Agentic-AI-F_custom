@@ -30,7 +30,7 @@ python station_api_server.py         # serves at http://127.0.0.1:8077
 - **Graceful failure.** Unknown ids return `{"error": ...}` (see Q2), so the
   agent says "not found" instead of crashing.
 - **Typed final answer.** Q3 uses `structured_output_model=StationRecommendation`
-  (demo 03 pattern) to return a validated object, not free text.
+  (demo 10 pattern) to return a validated object, not free text.
 - **Read-only by design.** No endpoint or tool mutates data. Writing — with
   human-in-the-loop approval — is Task 4.
 

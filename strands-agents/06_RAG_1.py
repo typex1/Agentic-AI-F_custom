@@ -1,5 +1,5 @@
 """
-08_RAG_1.py — Adaptive Structured RAG Agent (NL2SQL)
+06_RAG_1.py — Adaptive Structured RAG Agent (NL2SQL)
 
 A faithful, self-contained port of the Strands Agents sample:
   strands-agents/samples → python/05-technical-use-cases/rag/

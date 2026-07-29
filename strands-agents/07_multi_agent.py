@@ -1,5 +1,5 @@
 """
-05_multi_agent.py — Agents as Tools (Multi-Agent Pattern)
+07_multi_agent.py — Agents as Tools (Multi-Agent Pattern)
 
 Demonstrates:
   - Creating specialized agents for different tasks

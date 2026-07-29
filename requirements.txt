@@ -7,7 +7,7 @@
 strands-agents==1.45.0
 strands-agents-tools==0.8.2        # calculator, shell tools (demos 02, 04)
 
-# --- Red teaming / evaluation (strands-agents/09_red_teaming.py) ---
+# --- Red teaming / evaluation (strands-agents/08_red_teaming.py) ---
 strands-agents-evals==1.0.1
 
 # --- Web search tool (strands-agents/02_custom_tools.py, Task.py) ---
