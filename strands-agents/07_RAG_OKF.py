@@ -1,7 +1,7 @@
 """
-06_RAG_OKF.py — Unstructured RAG Agent over a Google OKF knowledge base
+07_RAG_OKF.py — Unstructured RAG Agent over a Google OKF knowledge base
 
-A companion to `06_RAG_1.py`. Where that sample does *structured* RAG (it
+A companion to `07_RAG_1.py`. Where that sample does *structured* RAG (it
 retrieves a database schema and turns natural language into SQL), this file
 does *unstructured* RAG: it retrieves relevant passages from a corpus of
 markdown documents and grounds the model's answers in them.
@@ -42,7 +42,7 @@ the local bundle; it never contacts YouTube.
 
 ADAPTATIONS FOR THIS LIMITED-PERMISSION ENVIRONMENT
 ---------------------------------------------------
-As in `06_RAG_1.py`, we only have `bedrock-runtime:Converse` on
+As in `07_RAG_1.py`, we only have `bedrock-runtime:Converse` on
 `amazon.nova-lite-v1:0` (see .kiro/steering/Permissions.md). That constrains
 two design choices:
 

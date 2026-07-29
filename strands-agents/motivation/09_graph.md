@@ -1,4 +1,4 @@
-# 11 — Multi-Agent Graph
+# Multi-Agent Graph
 
 **Python file:** [`../09_graph.py`](../09_graph.py)
 

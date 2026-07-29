@@ -7,11 +7,11 @@ Knowledge Format)** bundle — a directory of plain markdown files with YAML
 frontmatter. The agent must retrieve the most relevant passages from the bundle
 and answer **grounded** in them, **citing** the source concept.
 
-This mirrors demo `06_RAG_OKF.py`: same shape (retrieve → ground → cite), but
+This mirrors demo `07_RAG_OKF.py`: same shape (retrieve → ground → cite), but
 you assemble the corpus and wire the OKF reader yourself.
 
-Builds on demo `06_RAG_1.py` (structured RAG / self-correcting retrieval) and
-`06_RAG_OKF.py` (unstructured RAG over an OKF bundle).
+Builds on demo `07_RAG_1.py` (structured RAG / self-correcting retrieval) and
+`07_RAG_OKF.py` (unstructured RAG over an OKF bundle).
 
 ## Background
 
@@ -38,7 +38,7 @@ That makes it a clean, portable substrate for a RAG knowledge base.
 ### ⚠️ Providing the raw files: upload, don't download
 
 Your knowledge base needs source content. A natural demo corpus is a set of
-**YouTube video transcripts** (as in `06_RAG_OKF.py`, which uses transcripts of
+**YouTube video transcripts** (as in `07_RAG_OKF.py`, which uses transcripts of
 Matt Pocock videos). **However, you must supply the raw files by uploading them
 yourself** — do **not** try to fetch them from the running instance:
 
@@ -49,7 +49,7 @@ yourself** — do **not** try to fetch them from the running instance:
 - So do the fetching **on your own machine** (or obtain transcripts you already
   have the rights to), then **upload the files into your bundle directory**
   (e.g. drag them into `solutions/6-rag-okf/OKF_data/` in the IDE, or `scp`
-  them up). The `06_RAG_OKF.py` corpus in [`../OKF_data/`](../OKF_data/) was
+  them up). The `07_RAG_OKF.py` corpus in [`../OKF_data/`](../OKF_data/) was
   prepared exactly this way — prepared elsewhere, uploaded here.
 - The corpus does **not** have to be video transcripts. Any small set of text
   documents you can legitimately upload works: your own notes, public docs you
@@ -117,7 +117,7 @@ solutions/6-rag-okf/             # reference lives here; put your work alongside
   tool to fetch a full concept after a search hit.
 - Make the system prompt insist on grounding: "Answer only from retrieved
   passages; cite the source concept; if the answer isn't there, say so."
-- See `06_RAG_OKF.py` for a complete, working reference of all of the above.
+- See `07_RAG_OKF.py` for a complete, working reference of all of the above.
 
 ## Acceptance criteria
 
@@ -136,10 +136,10 @@ solutions/6-rag-okf/             # reference lives here; put your work alongside
 - Upgrade the retriever from keyword-overlap to **BM25** and compare answer
   quality on the same questions.
 - Add a CLI (single question / interactive REPL / demo set), like
-  `06_RAG_OKF.py`.
+  `07_RAG_OKF.py`.
 - Serve the OKF retriever from your own **MCP server** (combine with Task 3):
   expose `search_bundle` as an MCP tool and consume it via `MCPClient`.
-- Compare this OKF document-RAG with demo 06's NL2SQL "structured RAG": when is
+- Compare this OKF document-RAG with demo 07's NL2SQL "structured RAG": when is
   each the right tool?
 
 ## Reflection questions

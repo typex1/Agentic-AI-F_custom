@@ -1,5 +1,5 @@
 """
-13_swarm.py — Multi-Agent Swarm
+11_swarm.py — Multi-Agent Swarm
 
 Adapted from the Strands Agents sample:
   strands-agents/samples → python/01-learn/11-swarm
@@ -11,7 +11,7 @@ share working memory and hand off to each other autonomously — no central
 orchestrator decides the order. Each agent decides when to pass control to a
 teammate better suited to the next step.
 
-This complements 07_multi_agent.py (agents-as-tools, where one agent explicitly
+This complements 08_multi_agent.py (agents-as-tools, where one agent explicitly
 calls others): here the agents self-organize as a team.
 
 We build a small software-delivery swarm:

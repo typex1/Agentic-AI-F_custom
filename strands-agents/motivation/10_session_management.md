@@ -1,6 +1,6 @@
-# 06 — Session Management
+# Session Management
 
-**Python file:** [`../12_session_management.py`](../12_session_management.py)
+**Python file:** [`../10_session_management.py`](../10_session_management.py)
 
 ## Learning objective
 Persist an agent's conversation so it can be resumed later, retaining memory of

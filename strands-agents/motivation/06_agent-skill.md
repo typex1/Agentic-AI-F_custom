@@ -1,6 +1,6 @@
-# 13 — Agent Skill Integration
+# Agent Skill Integration
 
-**Python file:** [`../05_agent-skill.py`](../05_agent-skill.py)
+**Python file:** [`../06_agent-skill.py`](../06_agent-skill.py)
 
 ## Learning objective
 Give an agent on-demand access to a self-contained package of specialized

@@ -6,7 +6,7 @@ subprocess), discovers its `search_knowledge_base` tool, and answers questions
 grounded in the retrieved passages — citing the source of each fact, and
 admitting when the answer is not in the knowledge base.
 
-This mirrors demo 07 (consuming an MCP server) but against a server we built
+This mirrors demo 05 (consuming an MCP server) but against a server we built
 ourselves, and adds the RAG discipline of grounding + citation.
 """
 

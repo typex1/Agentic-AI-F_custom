@@ -5,15 +5,12 @@
 
 # --- Core Strands Agents SDK (strands-agents/*, Task.py) ---
 strands-agents==1.45.0
-strands-agents-tools==0.8.2        # calculator, shell tools (demos 02, 04)
-
-# --- Red teaming / evaluation (strands-agents/08_red_teaming.py) ---
-strands-agents-evals==1.0.1
+strands-agents-tools==0.8.2        # current_time, calculator, shell, file_read tools (demos 02, 03, 06)
 
 # --- Web search tool (strands-agents/02_custom_tools.py, Task.py) ---
 ddgs==9.14.4
 
-# --- Structured output demo uses Pydantic directly (strands-agents/03) ---
+# --- Structured output demo uses Pydantic directly (strands-agents/04) ---
 pydantic==2.13.4
 
 # --- AWS SDK, used directly by Model_permissions.py ---
@@ -23,7 +20,8 @@ boto3==1.43.39
 # The [bedrock] extra adds Amazon Bedrock (Converse) support.
 pydantic-ai-slim[bedrock]==2.3.0
 
-# --- NOT pip-installable (required by demos 07 and 09) ---
-# These are installed separately, not via pip:
+# --- NOT pip-installable ---
+# Installed separately, not via pip:
 #   * uv / uvx  -> see 0-install.sh  (curl -LsSf https://astral.sh/uv/install.sh | sh)
-#   * strands-shell -> run on demand via `uvx strands-shell` (needs uvx on PATH)
+#     (used to run the Strands Agents MCP server: `uvx strands-agents-mcp-server`,
+#      see .kiro/settings/mcp.json)

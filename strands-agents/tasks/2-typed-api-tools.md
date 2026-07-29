@@ -15,7 +15,7 @@ Read-only is deliberate. Writing (submitting a rating) is powerful and risky —
 we add that *with guardrails* in Task 4. Here we focus on clean, typed reads.
 
 Builds on demos `02_custom_tools.py` (the `@tool` decorator) and
-`10_structured_output.py` (Pydantic models).
+`04_structured_output.py` (Pydantic models).
 
 ## Background: why typed tools?
 
@@ -73,7 +73,7 @@ solutions/2-typed-api-tools/     # reference lives here; put your work alongside
   tool. The model reads either fine; a dict keeps the structure explicit.
 - Give each tool a crisp docstring — it's part of the prompt the model sees.
 - For a clean final answer, try `agent(question, structured_output_model=...)`
-  (see demo 10) to get a typed result object back.
+  (see demo 04) to get a typed result object back.
 
 ## Acceptance criteria
 

@@ -107,7 +107,8 @@ solutions/4-guardrails-and-injection/    # reference lives here
 - Add an **allow-list scope**: the write tool may only rate stations the user
   mentioned this session; an injected id outside that scope is rejected.
 - Log every guarded action (who/what/approved?) to an audit trail.
-- Use the **Strands Evals** red-teaming harness (see demo `08_red_teaming.py`) to
+- Use the **Strands Evals** red-teaming harness (`strands-agents-evals`, see the
+  Strands Evals red-teaming docs) to
   fire a battery of injection variants at your agent and report how many were
   blocked.
 - Add a rate limit or a "dry-run" mode that previews the write without committing.

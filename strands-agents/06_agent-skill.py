@@ -1,5 +1,5 @@
 """
-05_agent-skill.py — Integrating an Agent Skill
+06_agent-skill.py — Integrating an Agent Skill
 
 Demonstrates the Strands `AgentSkills` plugin by integrating Anthropic's
 open-source **frontend-design** skill:

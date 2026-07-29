@@ -38,9 +38,8 @@ a **Pydantic AI** comparison — running on **Amazon Bedrock** with the
 ## Setup
 
 ```bash
-# Python dependencies and non-pip tools (needed for strands-agents demos 04 and 08)
+# Python dependencies and non-pip tools (uv/uvx, used by the MCP server config)
 ./0-install.sh          # installs uv / uvx
-# strands-shell is fetched on demand via `uvx strands-shell`
 ```
 
 All example scripts are runnable from any working directory.
@@ -53,10 +52,9 @@ this environment:
 | Package | Version | Used by |
 |---------|---------|---------|
 | `strands-agents` | 1.45.0 | all `strands-agents` demos, `Task.py` |
-| `strands-agents-tools` | 0.8.2 | calculator / shell tools (demos 02, 11) |
-| `strands-agents-evals` | 1.0.1 | red teaming (demo 08) |
+| `strands-agents-tools` | 0.8.2 | current_time / calculator / shell / file_read tools (demos 02, 03, 06) |
 | `ddgs` | 9.14.4 | web search (demo 02, `Task.py`) |
-| `pydantic` | 2.13.4 | structured output (demo 10) |
+| `pydantic` | 2.13.4 | structured output (demo 04) |
 | `boto3` | 1.43.39 | `Model_permissions.py` |
 | `pydantic-ai-slim[bedrock]` | 2.3.0 | `pydantic-ai/01_basic_agent.py` |
 
@@ -64,8 +62,7 @@ this environment:
 
 | Tool | How | Used by |
 |------|-----|---------|
-| `uv` / `uvx` | `0-install.sh` (`curl -LsSf https://astral.sh/uv/install.sh \| sh`) | demos 04, 08 |
-| `strands-shell` | run on demand via `uvx strands-shell` | demo 08 |
+| `uv` / `uvx` | `0-install.sh` (`curl -LsSf https://astral.sh/uv/install.sh \| sh`) | MCP server (`uvx strands-agents-mcp-server`) |
 
 ## MCP servers configured
 

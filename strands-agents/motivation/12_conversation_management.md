@@ -1,6 +1,6 @@
-# 12 — Conversation Management
+# Conversation Management
 
-**Python file:** [`../14_conversation_management.py`](../14_conversation_management.py)
+**Python file:** [`../12_conversation_management.py`](../12_conversation_management.py)
 
 ## Learning objective
 Control how an agent's message history grows so it stays within the model's

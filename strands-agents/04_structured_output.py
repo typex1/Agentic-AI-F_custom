@@ -1,5 +1,5 @@
 """
-10_structured_output.py — Structured Output with Pydantic
+04_structured_output.py — Structured Output with Pydantic
 
 Demonstrates:
   - Getting typed, validated responses from agents

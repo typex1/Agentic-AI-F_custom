@@ -1,4 +1,4 @@
-# 02 — Custom Tools
+# Custom Tools
 
 **Python file:** [`../02_custom_tools.py`](../02_custom_tools.py)
 

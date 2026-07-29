@@ -1,8 +1,11 @@
 """
 03_logging.py — Observing Tool Use Through Logging
 
-Same tools as 02_custom_tools.py, but with logging turned on so you can *watch*
-the agent's tool-use decisions instead of just seeing the final answer.
+A deliberately small setup — just two tools — with logging turned on so you
+can *watch* the agent's tool-use decisions instead of just seeing the final
+answer:
+  - `current_time` (built-in, from strands-agents-tools)
+  - `unit_converter` (custom, defined below with the @tool decorator)
 
 Goal of this demo:
   - Enable the framework's own logging (the `strands` logger)
@@ -23,29 +26,20 @@ The logging setup below mirrors the approach introduced in Lab-2/Task.py
 (Task 2.4 "Configure logging"), but writes to a file
 (strands-agents/logs/03_logging.log) instead of the console. The file is
 truncated on every run so it only ever holds the most recent execution. By
-default it captures a *focused* view — just the per-tool invocation line from
-the tool executor — while keeping the rest of the framework quiet.
-`callback_handler=None` keeps the streamed model tokens out of the way so the
-log stays clean.
+default it captures a *focused* view — one line per tool call and one per tool
+result, emitted by our own hook (see ToolUseLogger below) — while keeping the
+framework itself quiet. `callback_handler=None` keeps the streamed model
+tokens out of the way so the log stays clean.
 
 Inspect the tool use with, e.g.:
     tail -f strands-agents/logs/03_logging.log
 
 Tip: set `FULL_TRACE = True` below to capture the entire agent-loop firehose
 (model requests/responses, retries, tool registry) — verbose but complete.
-
-NOTE: The `shell` tool executes real system commands. It normally prompts
-for confirmation; this demo sets BYPASS_TOOL_CONSENT=true to run unattended.
 """
 
 import warnings
 warnings.filterwarnings(action="ignore", message=r"datetime.datetime.utcnow")
-
-import os
-# The strands_tools `shell` tool asks for confirmation before running commands.
-# For this non-interactive demo we bypass that prompt. Remove this line in
-# production or when you want a human to approve each command.
-os.environ["BYPASS_TOOL_CONSENT"] = "true"
 
 # --- Logging: this is what makes tool use observable --------------------------
 # Modeled on Lab-2/Task.py (Task 2.4). basicConfig installs a console handler
@@ -56,10 +50,17 @@ os.environ["BYPASS_TOOL_CONSENT"] = "true"
 # request payload (every tool's JSON schema) re-printed on every turn, which
 # buries the interesting lines. So instead we take a *focused* approach:
 #
-#   - keep the framework generally quiet (WARNING), then
-#   - turn DEBUG on for ONLY the tool executor, whose log line reads:
-#       strands.tools.executors._executor | tool_use=<{'name': ..., 'input': ...}>
-#     i.e. exactly the tool the model picked and the arguments it passed.
+#   - keep the framework generally quiet (WARNING), and
+#   - log each tool call ourselves via the public hooks API
+#     (BeforeToolCallEvent / AfterToolCallEvent — see ToolUseLogger below).
+#
+# Why hooks instead of enabling DEBUG on the SDK's tool-executor logger
+# (strands.tools.executors)? That logger name is an implementation detail —
+# the docs only guarantee the "strands" hierarchy, not specific module names —
+# so an SDK upgrade could rename it and silently empty our log. Hooks are a
+# documented public API: the log format stays under our control, and if an
+# event were ever removed we'd get an ImportError at startup instead of
+# silence.
 #
 # Flip FULL_TRACE to True to see the entire agent-loop firehose (model
 # requests/responses, retries, tool registry, etc.) — verbose but complete.
@@ -90,12 +91,12 @@ if FULL_TRACE:
     # Everything the framework logs — great for deep debugging, noisy for demos.
     logging.getLogger("strands").setLevel(logging.DEBUG)
 else:
-    # Focused view: quiet framework, but show each tool invocation.
+    # Focused view: quiet framework. Tool calls are logged by ToolUseLogger
+    # (hooks-based) below, so no SDK-internal DEBUG logger is needed.
     logging.getLogger("strands").setLevel(logging.WARNING)
-    logging.getLogger("strands.tools.executors").setLevel(logging.DEBUG)
 
 # Keep noisy third-party loggers quiet so the agent's tool use stands out.
-for noisy in ("botocore", "boto3", "urllib3", "httpx", "httpcore", "primp"):
+for noisy in ("botocore", "boto3", "urllib3"):
     logging.getLogger(noisy).setLevel(logging.WARNING)
 
 # A logger of our own, so our narration lines look like the framework's.
@@ -109,19 +110,22 @@ prompt_logger = logging.getLogger("prompt_context")
 prompt_logger.setLevel(logging.DEBUG)
 
 from strands import Agent, tool
-# The `calculator` and `shell` tools ship with `strands-agents-tools`. To see
-# exactly how a production-grade tool is written (the @tool decorator, the
+# The `current_time` tool ships with `strands-agents-tools`. To see exactly how
+# a production-grade tool is written (the @tool decorator, the
 # docstring/type-hint schema, argument handling and error reporting), read the
 # original source on GitHub:
-#   calculator: https://github.com/strands-agents/tools/blob/main/src/strands_tools/calculator.py
-#   (browse the folder for shell.py and the other built-in tools)
+#   current_time: https://github.com/strands-agents/tools/blob/main/src/strands_tools/current_time.py
+#   (browse the folder for the other built-in tools)
 #     https://github.com/strands-agents/tools/tree/main/src/strands_tools
-from strands_tools import calculator, shell
-from ddgs import DDGS
+from strands_tools import current_time
 
 import json
 from strands.hooks import HookProvider, HookRegistry
-from strands.hooks.events import BeforeModelCallEvent
+from strands.hooks.events import (
+    AfterToolCallEvent,
+    BeforeModelCallEvent,
+    BeforeToolCallEvent,
+)
 
 
 # --- Hook: log the prompt/context sent to the model ---------------------------
@@ -172,6 +176,38 @@ class PromptContextLogger(HookProvider):
         )
 
 
+# --- Hook: log each tool invocation --------------------------------------------
+# This replaces relying on the SDK's internal tool-executor logger
+# (strands.tools.executors._executor). BeforeToolCallEvent fires just before a
+# tool runs (giving us the tool the model picked and the arguments it passed);
+# AfterToolCallEvent fires when it completes (giving us the result status).
+# Because hooks are a documented public API, this keeps working — with an
+# unchanged log format — across SDK upgrades.
+class ToolUseLogger(HookProvider):
+    """Logs each tool the model picks, its arguments, and its result status."""
+
+    def __init__(self, log: logging.Logger):
+        self._log = log
+
+    def register_hooks(self, registry: HookRegistry) -> None:
+        registry.add_callback(BeforeToolCallEvent, self._on_before_tool_call)
+        registry.add_callback(AfterToolCallEvent, self._on_after_tool_call)
+
+    def _on_before_tool_call(self, event: BeforeToolCallEvent) -> None:
+        self._log.info(
+            "TOOL CALL | tool=%s | input=%s",
+            event.tool_use["name"],
+            json.dumps(event.tool_use.get("input", {}), default=str),
+        )
+
+    def _on_after_tool_call(self, event: AfterToolCallEvent) -> None:
+        self._log.info(
+            "TOOL RESULT | tool=%s | status=%s",
+            event.tool_use["name"],
+            event.result.get("status"),
+        )
+
+
 # --- Custom tool: just a decorated Python function ---
 @tool
 def unit_converter(value: float, from_unit: str, to_unit: str) -> str:
@@ -202,81 +238,31 @@ def unit_converter(value: float, from_unit: str, to_unit: str) -> str:
     return f"{value} {from_unit} = {result:.2f} {to_unit}"
 
 
-# --- Another custom tool ---
-@tool
-def word_stats(text: str) -> str:
-    """Analyze text and return word statistics.
-
-    Args:
-        text: The text to analyze.
-
-    Returns:
-        Statistics about the text including word count, character count, etc.
-    """
-    words = text.split()
-    return (
-        f"Words: {len(words)}, "
-        f"Characters: {len(text)}, "
-        f"Sentences: {text.count('.') + text.count('!') + text.count('?')}, "
-        f"Average word length: {sum(len(w) for w in words) / len(words):.1f}"
-    )
-
-
-# --- Web search tool using DuckDuckGo (ddgs) ---
-@tool
-def web_search(query: str, max_results: int = 3) -> str:
-    """Search the web using DuckDuckGo and return results.
-
-    Args:
-        query: The search query string.
-        max_results: Maximum number of results to return (default: 3).
-
-    Returns:
-        Search results with titles, URLs, and snippets.
-    """
-    try:
-        results = DDGS().text(query, max_results=max_results)
-        if not results:
-            return "No results found."
-        output = []
-        for r in results:
-            output.append(f"• {r['title']}\n  {r['href']}\n  {r['body']}")
-        return "\n\n".join(output)
-    except Exception as e:
-        return f"Search error: {e}"
-
-
-# --- Create agent with multiple tools ---
+# --- Create agent with two tools ---
 agent = Agent(
     model="amazon.nova-lite-v1:0",
-    tools=[calculator, unit_converter, word_stats, web_search, shell],
+    tools=[current_time, unit_converter],
     system_prompt=(
-        "You are a helpful assistant with access to a calculator, unit converter, "
-        "word statistics tool, web search, and a shell tool for running system commands."
+        "You are a helpful assistant."
     ),
     callback_handler=None,
-    # This hook logs the full prompt/context (tool catalog + messages) sent to
-    # the model on every turn — see PromptContextLogger above.
-    hooks=[PromptContextLogger(prompt_logger)],
+    # PromptContextLogger logs the full prompt/context (tool catalog + messages)
+    # sent to the model on every turn; ToolUseLogger logs each tool call and
+    # its result via the public hooks API.
+    hooks=[PromptContextLogger(prompt_logger), ToolUseLogger(logger)],
 )
 
 # The agent decides which tool(s) to use based on the question
 print("=== Agent Chooses Tools Autonomously ===\n")
 print(f"(tool-use logs are being written to: {LOG_FILE})\n")
-logger.info("Each 'strands.tools.executors._executor' line below shows the tool "
-            "the model selected and the arguments it passed.")
+logger.info("Each 'TOOL CALL' line below shows the tool the model selected "
+            "and the arguments it passed; 'TOOL RESULT' shows how it went.")
 
-response = agent("Convert 100 kilometers to miles, then calculate 100 * 0.621371 to verify.")
-print(f"Q: Convert 100 km to miles and verify\nA: {response}\n")
+response = agent("Convert 100 kilometers to miles.")
+print(f"Q: Convert 100 km to miles\nA: {response}\n")
 
-response = agent("How many words are in: 'The quick brown fox jumps over the lazy dog'?")
-print(f"Q: Word stats\nA: {response}\n")
-
-response = agent("Search the web for 'Strands Agents SDK' and summarize what it is.")
-print(f"Q: Web search for Strands Agents SDK\nA: {response}\n")
-
-response = agent("Use the shell tool to show the current date and the current working directory.")
-print(f"Q: Shell - date and working directory\nA: {response}\n")
+response = agent("What is the current time in UTC?")
+print(f"Q: Current time in UTC\nA: {response}\n")
 
 # --- Direct tool invocation (bypasses agent reasoning) ---
 print("=== Direct Tool Invocation ===\n")

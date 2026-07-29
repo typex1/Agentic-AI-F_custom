@@ -1,7 +1,7 @@
 """
 try_skill_creator.py — Trying out Anthropic's `skill-creator` skill on Nova Lite
 
-This mirrors demo `05_agent-skill.py`, but points the Strands `AgentSkills`
+This mirrors demo `06_agent-skill.py`, but points the Strands `AgentSkills`
 plugin at Anthropic's **skill-creator** skill — a *meta-skill* whose job is to
 help you author, evaluate, and optimize other skills.
 

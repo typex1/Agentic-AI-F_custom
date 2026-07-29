@@ -1,6 +1,6 @@
-# 03 — Structured Output
+# Structured Output
 
-**Python file:** [`../10_structured_output.py`](../10_structured_output.py)
+**Python file:** [`../04_structured_output.py`](../04_structured_output.py)
 
 ## Learning objective
 Get typed, validated data out of an agent instead of free-form text you have to

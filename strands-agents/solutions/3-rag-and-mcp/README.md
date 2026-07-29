@@ -27,7 +27,7 @@ python -c "import kb_mcp_server as k; print(len(k._PASSAGES), 'passages')"
   requires a citation for every fact.
 - **Build-your-own MCP** — the retriever lives behind an MCP boundary in a
   separate process, launched over stdio and consumed via `MCPClient` exactly like
-  the remote server in demo 04 — but this one is ours.
+  the remote server in demo 05 — but this one is ours.
 - **Honest refusal** — for an out-of-corpus question the agent says it doesn't
   know rather than hallucinating.
 

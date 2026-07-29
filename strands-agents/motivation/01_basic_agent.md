@@ -1,4 +1,4 @@
-# 01 — Basic Agent
+# Basic Agent
 
 **Python file:** [`../01_basic_agent.py`](../01_basic_agent.py)
 

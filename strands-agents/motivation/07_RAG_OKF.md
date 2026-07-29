@@ -1,6 +1,6 @@
-# 08 — Unstructured RAG over a Google OKF knowledge base
+# Unstructured RAG over a Google OKF knowledge base
 
-**Python file:** [`../06_RAG_OKF.py`](../06_RAG_OKF.py)
+**Python file:** [`../07_RAG_OKF.py`](../07_RAG_OKF.py)
 
 ## Learning objective
 Build a retrieval-augmented agent that answers questions from a corpus of
@@ -41,7 +41,7 @@ See our [Troubleshooting Playbook](../playbooks/troubleshooting.md) for data mis
 ```
 
 ## Why it matters
-Where `06_RAG_1.py` does *structured* RAG (schema retrieval → SQL), this is the
+Where `07_RAG_1.py` does *structured* RAG (schema retrieval → SQL), this is the
 *unstructured* counterpart that most people mean by "RAG": search a document
 corpus, feed the best passages to the model, and answer only from what was
 retrieved. It also shows how to consume an open, vendor-neutral knowledge format

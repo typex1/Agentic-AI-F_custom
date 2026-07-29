@@ -1,6 +1,6 @@
-# 07 — MCP Tools
+# MCP Tools
 
-**Python file:** [`../04_mcp_tools.py`](../04_mcp_tools.py)
+**Python file:** [`../05_mcp_tools.py`](../05_mcp_tools.py)
 
 ## Learning objective
 Give an agent access to tools hosted by an external Model Context Protocol (MCP)

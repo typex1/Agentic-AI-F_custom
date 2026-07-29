@@ -8,7 +8,7 @@ not in the knowledge base.
 
 Uses:
   - Amazon Nova Lite (amazon.nova-lite-v1:0) via Amazon Bedrock
-  - MCPClient with stdio transport (as in demo 07)
+  - MCPClient with stdio transport (as in demo 05)
   - BM25 lexical retrieval (no embedding model available)
 
 NOTE: Retrieval is lexical (keyword/BM25), not vector-based, because this
