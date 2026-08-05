@@ -11,10 +11,11 @@ The corpus is a **Google OKF (Open Knowledge Format) knowledge bundle**:
 
 OKF is a deliberately minimal, vendor-neutral format: a directory of UTF-8
 markdown files, each beginning with a YAML frontmatter block delimited by
-`---`, followed by a free-form markdown body (see okf/SPEC.md v0.1). The only
-*required* frontmatter field is `type`; `title`, `description`, `resource`,
-`tags` and `timestamp` are recommended. A concept's ID is its file path within
-the bundle with the `.md` suffix removed.
+`---`, followed by a free-form markdown body (see okf/SPEC.md v0.2). The only
+*required* frontmatter field is `type`; `title`, `description`, `resource` and
+`tags` are recommended (v0.1's recommended `timestamp` field is superseded by
+`generated.at` in v0.2 — this bundle uses neither). A concept's ID is its file
+path within the bundle with the `.md` suffix removed.
 
 THE KNOWLEDGE BASE (demonstration corpus)
 -----------------------------------------
@@ -239,17 +240,17 @@ def load_bundle() -> Tuple[Concept, ...]:
 
 
 # --------------------------------------------------------------------------- #
-# OKF index.md generation (SPEC §6 progressive disclosure)
+# OKF index.md generation (SPEC §8 progressive disclosure)
 # --------------------------------------------------------------------------- #
-OKF_VERSION = "0.1"
+OKF_VERSION = "0.2"
 
 
 def render_index_md() -> str:
     """Render a spec-conformant bundle-root ``index.md`` for the OKF bundle.
 
-    Per SPEC §6, an index enumerates the directory's contents as a bulleted
+    Per SPEC §8, an index enumerates the directory's contents as a bulleted
     list of ``[Title](relative-url) - description`` entries grouped under
-    headings. Index files normally carry no frontmatter, but §11 permits a
+    headings. Index files normally carry no frontmatter, but §12 permits a
     single ``okf_version`` declaration in the *bundle-root* index — which is
     exactly what this is — so we include it.
     """
@@ -418,7 +419,7 @@ def build_index() -> RetrievalIndex:
 def list_knowledge_base() -> str:
     """List every concept in the OKF knowledge base (progressive disclosure).
 
-    This synthesizes an OKF-style index (SPEC §6) on the fly: one line per
+    This synthesizes an OKF-style index (SPEC §8) on the fly: one line per
     concept with its title, concept id, source video id, tags and a one-line
     description. Call this first to see what topics are available before
     searching or opening a full transcript.
