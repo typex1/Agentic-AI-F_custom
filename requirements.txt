@@ -6,6 +6,13 @@
 # --- Core Strands Agents SDK (strands-agents/*, Task.py) ---
 strands-agents==1.45.0
 strands-agents-tools==0.8.2        # current_time, calculator, shell, file_read tools (demos 02, 03, 06)
+                                   # + http_request, editor, python_repl, load_tool (strands-official-examples/)
+
+# --- Model Context Protocol SDK ---
+# Already a transitive dependency of strands-agents, but pinned explicitly because
+# strands-official-examples/python_lab2_adjusted/mcp_calculator.py imports it directly
+# (mcp.server.FastMCP, mcp.client.streamable_http).
+mcp==1.29.0
 
 # --- Web search tool (strands-agents/02_custom_tools.py, Task.py) ---
 ddgs==9.14.4
