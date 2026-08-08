@@ -52,11 +52,19 @@ this environment:
 | Package | Version | Used by |
 |---------|---------|---------|
 | `strands-agents` | 1.45.0 | all `strands-agents` demos, `Task.py` |
-| `strands-agents-tools` | 0.8.2 | current_time / calculator / shell / file_read tools (demos 02, 03, 06) |
+| `strands-agents-tools` | 0.8.2 | current_time / calculator / shell / file_read tools (demos 02, 03, 06); http_request / editor / python_repl / load_tool (`strands-official-examples/`) |
+| `mcp` | 1.29.0 | `strands-official-examples/python_lab2_adjusted/mcp_calculator.py` (also a transitive dep of `strands-agents`) |
 | `ddgs` | 9.14.4 | web search (demo 02, `Task.py`) |
 | `pydantic` | 2.13.4 | structured output (demo 04) |
 | `boto3` | 1.43.39 | `Model_permissions.py` |
 | `pydantic-ai-slim[bedrock]` | 2.3.0 | `pydantic-ai/01_basic_agent.py` |
+| `strands-agents-evals` | 1.0.1 | course sample `13-evals` (import name `strands_evals`) |
+| `fastapi` | 0.141.1 | course sample `04-callbacks-streaming/fastapi_streaming.py` |
+| `uvicorn` | 0.52.1 | serves the FastAPI / Lambda-handler samples locally |
+| `bedrock-agentcore` | 1.21.0 | course sample `14-deploy/main.py` (local run only) |
+| `mangum` | 0.21.0 | course sample `14-deploy/lambda-deployment/lambda_handler.py` |
+
+("course sample" = `strands-agents/sample-building-with-strands-course/samples_adjusted/`)
 
 **Not pip-installable** (installed separately):
 

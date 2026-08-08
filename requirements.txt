@@ -27,6 +27,17 @@ boto3==1.43.39
 # The [bedrock] extra adds Amazon Bedrock (Converse) support.
 pydantic-ai-slim[bedrock]==2.3.0
 
+# --- Building-with-Strands course samples (strands-agents/sample-building-with-strands-course/samples_adjusted/) ---
+# 13-evals: agent evaluation framework (import name: strands_evals)
+strands-agents-evals==1.0.1
+# 04-callbacks-streaming: fastapi_streaming.py (+ uvicorn to serve it, see demo-commands.txt)
+fastapi==0.141.1
+uvicorn==0.52.1
+# 14-deploy: main.py (AgentCore runtime wrapper; local run only — no deploy permissions here)
+bedrock-agentcore==1.21.0
+# 14-deploy: lambda-deployment/lambda_handler.py (ASGI adapter for Lambda; local run via uvicorn)
+mangum==0.21.0
+
 # --- NOT pip-installable ---
 # Installed separately, not via pip:
 #   * uv / uvx  -> see 0-install.sh  (curl -LsSf https://astral.sh/uv/install.sh | sh)
