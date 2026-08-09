@@ -6,9 +6,11 @@ curl -fsSL https://cli.kiro.dev/install | bash
 kiro-cli login --use-device-flow
 ```
 
-Install "tree" command (optional):
-```
-sudo yum install tree -y
+## Setup
+
+```bash
+# Python dependencies and non-pip tools (uv/uvx, used by the MCP server config)
+./0-install.sh          # installs uv / uvx
 ```
 
 ## Workspace Overview
@@ -35,12 +37,6 @@ a **Pydantic AI** comparison — running on **Amazon Bedrock** with the
 | `0-install.sh` | Installs `Python dependencies and non-pip tools |
 | `requirements.txt` | Pinned Python dependencies |
 
-## Setup
-
-```bash
-# Python dependencies and non-pip tools (uv/uvx, used by the MCP server config)
-./0-install.sh          # installs uv / uvx
-```
 
 All example scripts are runnable from any working directory.
 
