@@ -37,7 +37,7 @@ Follow premium resolution path based on orchestration findings: [VIP status, val
 
 Dynamic decision-making occurs.
 
-## Step 4: Execute resoluton
+## Step 4: Execute resolution
 Agent workflow pattern: Chaining
 
 Routing activates a new chain optimized for VIP customers.
@@ -46,4 +46,4 @@ Routing activates a new chain optimized for VIP customers.
 3. Offer express reorder
 4. Provide tracking link
 
-Sequential execution ensures currect order
+Sequential execution ensures correct order

@@ -33,6 +33,12 @@ The **Strands Agents SDK** (`strands-agents`) is the core Python SDK for buildin
 | `11_swarm.py` | Multi-agent swarm — self-organizing team with handoffs |
 | `12_conversation_management.py` | Sliding-window, null, and summarizing history managers |
 
+## Exercises
+
+| Path | Concept |
+|------|---------|
+| `solutions/Customer-Support-Tickets/` | Exercise + peekable reference solution: all four workflow patterns (chaining, parallelization, orchestration, routing) in one support workflow — see its `TASK.md` |
+
 ## Prerequisites
 
 ```bash

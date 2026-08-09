@@ -1,0 +1,11 @@
+{
+  "policy": {
+    "max_days_since_order": 30,
+    "refundable_statuses": [
+      "lost",
+      "in_transit"
+    ],
+    "stuck_in_transit_days": 10
+  },
+  "refund_requests": []
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "customer_id": "C001",
+    "name": "Anna Schmidt",
+    "tier": "vip",
+    "email": "anna.schmidt@example.com",
+    "customer_since": "2019-03-12"
+  },
+  {
+    "customer_id": "C002",
+    "name": "Ben Weber",
+    "tier": "standard",
+    "email": "ben.weber@example.com",
+    "customer_since": "2023-07-01"
+  },
+  {
+    "customer_id": "C003",
+    "name": "Clara Fischer",
+    "tier": "standard",
+    "email": "clara.fischer@example.com",
+    "customer_since": "2024-01-20"
+  },
+  {
+    "customer_id": "C004",
+    "name": "David Meyer",
+    "tier": "vip",
+    "email": "david.meyer@example.com",
+    "customer_since": "2018-11-05"
+  },
+  {
+    "customer_id": "C005",
+    "name": "Emma Wagner",
+    "tier": "standard",
+    "email": "emma.wagner@example.com",
+    "customer_since": "2022-05-14"
+  },
+  {
+    "customer_id": "C006",
+    "name": "Felix Becker",
+    "tier": "standard",
+    "email": "felix.becker@example.com",
+    "customer_since": "2021-09-30"
+  },
+  {
+    "customer_id": "C007",
+    "name": "Greta Hoffmann",
+    "tier": "standard",
+    "email": "greta.hoffmann@example.com",
+    "customer_since": "2020-02-17"
+  },
+  {
+    "customer_id": "C008",
+    "name": "Henry Koch",
+    "tier": "standard",
+    "email": "henry.koch@example.com",
+    "customer_since": "2024-06-08"
+  }
+]

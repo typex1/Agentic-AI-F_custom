@@ -1,0 +1,50 @@
+[
+  {
+    "sku": "SKU-1001",
+    "product_name": "Wireless Headphones",
+    "units_in_stock": 42,
+    "restock_eta": null
+  },
+  {
+    "sku": "SKU-1002",
+    "product_name": "Mechanical Keyboard",
+    "units_in_stock": 15,
+    "restock_eta": null
+  },
+  {
+    "sku": "SKU-1003",
+    "product_name": "4K Webcam",
+    "units_in_stock": 0,
+    "restock_eta": "2026-08-30"
+  },
+  {
+    "sku": "SKU-1004",
+    "product_name": "USB-C Docking Station",
+    "units_in_stock": 27,
+    "restock_eta": null
+  },
+  {
+    "sku": "SKU-1005",
+    "product_name": "Ergonomic Mouse",
+    "units_in_stock": 63,
+    "restock_eta": null
+  },
+  {
+    "sku": "SKU-1006",
+    "product_name": "27-inch Monitor",
+    "units_in_stock": 8,
+    "restock_eta": null
+  },
+  {
+    "sku": "SKU-1007",
+    "product_name": "Laptop Stand",
+    "units_in_stock": 0,
+    "restock_eta": "2026-08-23"
+  },
+  {
+    "sku": "SKU-1008",
+    "product_name": "Noise-Cancelling Earbuds",
+    "units_in_stock": 31,
+    "restock_eta": null
+  }
+]

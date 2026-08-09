@@ -1,0 +1,276 @@
+[
+  {
+    "order_id": "O1001",
+    "customer_id": "C001",
+    "order_date": "2026-07-28",
+    "status": "lost",
+    "items": [
+      {
+        "sku": "SKU-1001",
+        "quantity": 1,
+        "unit_price": 89.99
+      }
+    ],
+    "tracking_events": [
+      {
+        "timestamp": "2026-07-28T10:00:00",
+        "event": "Order placed"
+      },
+      {
+        "timestamp": "2026-07-29T10:00:00",
+        "event": "Shipped from warehouse"
+      },
+      {
+        "timestamp": "2026-07-31T10:00:00",
+        "event": "Arrived at sorting facility"
+      },
+      {
+        "timestamp": "2026-08-03T10:00:00",
+        "event": "Carrier reported parcel missing"
+      }
+    ]
+  },
+  {
+    "order_id": "O1002",
+    "customer_id": "C002",
+    "order_date": "2026-07-30",
+    "status": "lost",
+    "items": [
+      {
+        "sku": "SKU-1002",
+        "quantity": 1,
+        "unit_price": 129.0
+      }
+    ],
+    "tracking_events": [
+      {
+        "timestamp": "2026-07-30T10:00:00",
+        "event": "Order placed"
+      },
+      {
+        "timestamp": "2026-07-31T10:00:00",
+        "event": "Shipped from warehouse"
+      },
+      {
+        "timestamp": "2026-08-04T10:00:00",
+        "event": "Carrier reported parcel missing"
+      }
+    ]
+  },
+  {
+    "order_id": "O1003",
+    "customer_id": "C003",
+    "order_date": "2026-08-01",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "SKU-1005",
+        "quantity": 2,
+        "unit_price": 45.5
+      }
+    ],
+    "tracking_events": [
+      {
+        "timestamp": "2026-08-01T10:00:00",
+        "event": "Order placed"
+      },
+      {
+        "timestamp": "2026-08-02T10:00:00",
+        "event": "Shipped from warehouse"
+      },
+      {
+        "timestamp": "2026-08-04T10:00:00",
+        "event": "Delivered \u2014 signature confirmed by carrier"
+      }
+    ]
+  },
+  {
+    "order_id": "O1004",
+    "customer_id": "C004",
+    "order_date": "2026-07-25",
+    "status": "lost",
+    "items": [
+      {
+        "sku": "SKU-1003",
+        "quantity": 2,
+        "unit_price": 199.0
+      }
+    ],
+    "tracking_events": [
+      {
+        "timestamp": "2026-07-25T10:00:00",
+        "event": "Order placed"
+      },
+      {
+        "timestamp": "2026-07-26T10:00:00",
+        "event": "Shipped from warehouse"
+      },
+      {
+        "timestamp": "2026-07-30T10:00:00",
+        "event": "Carrier reported parcel missing"
+      }
+    ]
+  },
+  {
+    "order_id": "O1005",
+    "customer_id": "C005",
+    "order_date": "2026-07-20",
+    "status": "in_transit",
+    "items": [
+      {
+        "sku": "SKU-1006",
+        "quantity": 1,
+        "unit_price": 279.99
+      }
+    ],
+    "tracking_events": [
+      {
+        "timestamp": "2026-07-20T10:00:00",
+        "event": "Order placed"
+      },
+      {
+        "timestamp": "2026-07-21T10:00:00",
+        "event": "Shipped from warehouse"
+      },
+      {
+        "timestamp": "2026-07-26T10:00:00",
+        "event": "Arrived at sorting facility"
+      }
+    ]
+  },
+  {
+    "order_id": "O1006",
+    "customer_id": "C006",
+    "order_date": "2026-07-15",
+    "status": "refunded",
+    "items": [
+      {
+        "sku": "SKU-1008",
+        "quantity": 1,
+        "unit_price": 149.0
+      }
+    ],
+    "tracking_events": [
+      {
+        "timestamp": "2026-07-15T10:00:00",
+        "event": "Order placed"
+      },
+      {
+        "timestamp": "2026-07-16T10:00:00",
+        "event": "Shipped from warehouse"
+      },
+      {
+        "timestamp": "2026-07-20T10:00:00",
+        "event": "Carrier reported parcel missing"
+      },
+      {
+        "timestamp": "2026-07-22T10:00:00",
+        "event": "Refund processed"
+      }
+    ]
+  },
+  {
+    "order_id": "O1007",
+    "customer_id": "C007",
+    "order_date": "2026-08-04",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "SKU-1004",
+        "quantity": 1,
+        "unit_price": 159.0
+      }
+    ],
+    "tracking_events": [
+      {
+        "timestamp": "2026-08-04T10:00:00",
+        "event": "Order placed"
+      },
+      {
+        "timestamp": "2026-08-05T10:00:00",
+        "event": "Shipped from warehouse"
+      },
+      {
+        "timestamp": "2026-08-07T10:00:00",
+        "event": "Delivered"
+      }
+    ]
+  },
+  {
+    "order_id": "O1008",
+    "customer_id": "C008",
+    "order_date": "2026-06-25",
+    "status": "lost",
+    "items": [
+      {
+        "sku": "SKU-1007",
+        "quantity": 1,
+        "unit_price": 39.99
+      }
+    ],
+    "tracking_events": [
+      {
+        "timestamp": "2026-06-25T10:00:00",
+        "event": "Order placed"
+      },
+      {
+        "timestamp": "2026-06-26T10:00:00",
+        "event": "Shipped from warehouse"
+      },
+      {
+        "timestamp": "2026-06-30T10:00:00",
+        "event": "Carrier reported parcel missing"
+      }
+    ]
+  },
+  {
+    "order_id": "O1009",
+    "customer_id": "C001",
+    "order_date": "2026-08-07",
+    "status": "in_transit",
+    "items": [
+      {
+        "sku": "SKU-1005",
+        "quantity": 1,
+        "unit_price": 45.5
+      }
+    ],
+    "tracking_events": [
+      {
+        "timestamp": "2026-08-07T10:00:00",
+        "event": "Order placed"
+      },
+      {
+        "timestamp": "2026-08-08T10:00:00",
+        "event": "Shipped from warehouse"
+      }
+    ]
+  },
+  {
+    "order_id": "O1010",
+    "customer_id": "C002",
+    "order_date": "2026-07-10",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "SKU-1001",
+        "quantity": 2,
+        "unit_price": 89.99
+      }
+    ],
+    "tracking_events": [
+      {
+        "timestamp": "2026-07-10T10:00:00",
+        "event": "Order placed"
+      },
+      {
+        "timestamp": "2026-07-11T10:00:00",
+        "event": "Shipped from warehouse"
+      },
+      {
+        "timestamp": "2026-07-13T10:00:00",
+        "event": "Delivered"
+      }
+    ]
+  }
+]
