@@ -424,48 +424,58 @@ def compose_reply(request: str, customer: dict, actions: list[str]) -> str:
 
 async def run_workflow(request: str) -> None:
     print(f'\nCustomer request: "{request}"')
+    print(
+        "\nLegend:  >> LLM AGENT << = agent call (Nova Lite + prompt + structured output)"
+        "\n         [rule-based]    = plain Python, no LLM involved"
+        "\nOnly 3 of the 6 stages below need an agent."
+    )
 
-    banner("STEP 0 - INTAKE  [structured output]")
+    banner("STEP 0 - INTAKE  >> LLM AGENT #1 <<  (prompt + structured output)")
     ticket = intake(request)
-    print(f"customer_id: {ticket.customer_id}")
-    print(f"order_id:    {ticket.order_id}")
-    print(f"goals:       {ticket.goals}")
+    print("The agent turned free text into typed fields:")
+    print(f"  customer_id: {ticket.customer_id}")
+    print(f"  order_id:    {ticket.order_id}")
+    print(f"  goals:       {ticket.goals}")
 
-    banner("STEP 1 - ASSESS SITUATION  [PATTERNS: Chaining + Parallelization]")
-    print("Querying 4 systems simultaneously (asyncio.gather)...")
+    banner("STEP 1 - ASSESS SITUATION  [rule-based]  (Chaining + Parallelization)")
+    print("No LLM here — 4 plain Python lookups run concurrently (asyncio.gather):")
     assessment = await assess_situation(ticket.customer_id, ticket.order_id)
     cust = assessment["customer_status"]
     trk = assessment["order_tracking"]
     inv = assessment["inventory"]
     ref = assessment["refund_eligibility"]
-    print(f"  customer status:    {cust.get('name', '?')} — tier: {cust.get('tier', '?')}")
-    print(f"  order tracking:     status '{trk.get('status', '?')}', "
+    print(f"  [rule-based] customer status:    {cust.get('name', '?')} — tier: {cust.get('tier', '?')}")
+    print(f"  [rule-based] order tracking:     status '{trk.get('status', '?')}', "
           f"{trk.get('days_since_order', '?')} days since order")
-    print(f"  inventory:          all items in stock: {inv.get('all_items_in_stock')}")
-    print(f"  refund eligibility: {ref.get('assessment')} — {ref.get('reason')}")
+    print(f"  [rule-based] inventory:          all items in stock: {inv.get('all_items_in_stock')}")
+    print(f"  [rule-based] refund eligibility: {ref.get('assessment')} — {ref.get('reason')}")
 
     if not (cust.get("found") and trk.get("found")):
         print("\nCustomer or order not found — cannot proceed. Check the IDs.")
         return
 
-    banner("STEP 2 - ANALYZE RESULTS  [PATTERN: Orchestration]")
+    banner("STEP 2 - ANALYZE RESULTS  >> LLM AGENT #2 <<  (Orchestration)")
+    print("The agent combines the 4 results + goals and decides the path:")
     analysis = analyze_results(ticket.goals, assessment)
-    print(f"vip_status:       {analysis.vip_status}")
-    print(f"claim_valid:      {analysis.claim_valid}")
-    print(f"stock_available:  {analysis.stock_available}")
-    print(f"priority:         {analysis.priority}")
-    print(f"recommended_path: {analysis.recommended_path}")
-    print(f"reasoning:        {analysis.reasoning}")
+    print(f"  vip_status:       {analysis.vip_status}")
+    print(f"  claim_valid:      {analysis.claim_valid}")
+    print(f"  stock_available:  {analysis.stock_available}")
+    print(f"  priority:         {analysis.priority}")
+    print(f"  recommended_path: {analysis.recommended_path}")
+    print(f"  reasoning:        {analysis.reasoning}")
 
-    banner("STEP 3 - SELECT PATH  [PATTERN: Routing]")
+    banner("STEP 3 - SELECT PATH  [rule-based]  (Routing)")
     chain = RESOLUTION_CHAINS[analysis.recommended_path]  # dispatch on typed enum
-    print(f"Routing to the '{analysis.recommended_path}' resolution chain.")
+    print("No LLM here — the decision was already made in Step 2; this is just a")
+    print(f"dict lookup on the validated enum -> '{analysis.recommended_path}' resolution chain.")
 
-    banner(f"STEP 4 - EXECUTE RESOLUTION ({analysis.recommended_path})  [PATTERN: Chaining]")
+    banner(f"STEP 4 - EXECUTE RESOLUTION ({analysis.recommended_path})  [rule-based]  (Chaining)")
+    print("No LLM here — deterministic actions run in a fixed order, updating data/:")
     order = next(o for o in _load("orders.json") if o["order_id"] == ticket.order_id)
     actions = chain(order, assessment)
 
-    banner("CUSTOMER REPLY  (one smooth interaction)")
+    banner("CUSTOMER REPLY  >> LLM AGENT #3 <<  (one smooth interaction)")
+    print("The agent writes the final message from the list of actions taken:\n")
     print(compose_reply(request, cust, actions))
 
     print("\nNote: data/ was mutated by Step 4 — run generate_data.py to reset.")

@@ -4,6 +4,12 @@ Real transcripts from running `code/solution_code.py` against pristine data
 (`python generate_data.py` before each run). Use these to check the *behavior*
 of your own solution before peeking at the solution code.
 
+Every stage in the output is labeled: `>> LLM AGENT <<` means an actual agent
+call (model + prompt + structured output); `[rule-based]` means plain Python
+with no LLM involved. **Only 3 of the 6 stages need an agent** — the parallel
+system checks, the routing dispatch, and the resolution chains are
+deterministic code.
+
 The exact LLM wording (reasoning, customer reply) varies between runs — what
 must match is the routing decision and the sequence of chain actions.
 
@@ -18,51 +24,61 @@ $ python code/solution_code.py
 ```text
 Customer request: "Customer C001 here about order O1001: My order never arrived, I need a refund, but I also want to reorder if you have stock."
 
-======================================================================
-STEP 0 - INTAKE  [structured output]
-======================================================================
-customer_id: C001
-order_id:    O1001
-goals:       ['refund', 'reorder']
+Legend:  >> LLM AGENT << = agent call (Nova Lite + prompt + structured output)
+         [rule-based]    = plain Python, no LLM involved
+Only 3 of the 6 stages below need an agent.
 
 ======================================================================
-STEP 1 - ASSESS SITUATION  [PATTERNS: Chaining + Parallelization]
+STEP 0 - INTAKE  >> LLM AGENT #1 <<  (prompt + structured output)
 ======================================================================
-Querying 4 systems simultaneously (asyncio.gather)...
-  customer status:    Anna Schmidt — tier: vip
-  order tracking:     status 'lost', 12 days since order
-  inventory:          all items in stock: True
-  refund eligibility: valid — Carrier reported the parcel as lost.
+The agent turned free text into typed fields:
+  customer_id: C001
+  order_id:    O1001
+  goals:       ['refund', 'reorder']
 
 ======================================================================
-STEP 2 - ANALYZE RESULTS  [PATTERN: Orchestration]
+STEP 1 - ASSESS SITUATION  [rule-based]  (Chaining + Parallelization)
 ======================================================================
-vip_status:       True
-claim_valid:      True
-stock_available:  True
-priority:         high
-recommended_path: premium
-reasoning:        The customer is a VIP and the refund claim is valid as the parcel was reported lost by the carrier. All items are available for reorder and the claim falls within the refund window. Therefore, this case should be handled with high priority and routed to the 'premium' path.
+No LLM here — 4 plain Python lookups run concurrently (asyncio.gather):
+  [rule-based] customer status:    Anna Schmidt — tier: vip
+  [rule-based] order tracking:     status 'lost', 12 days since order
+  [rule-based] inventory:          all items in stock: True
+  [rule-based] refund eligibility: valid — Carrier reported the parcel as lost.
 
 ======================================================================
-STEP 3 - SELECT PATH  [PATTERN: Routing]
+STEP 2 - ANALYZE RESULTS  >> LLM AGENT #2 <<  (Orchestration)
 ======================================================================
-Routing to the 'premium' resolution chain.
+The agent combines the 4 results + goals and decides the path:
+  vip_status:       True
+  claim_valid:      True
+  stock_available:  True
+  priority:         high
+  recommended_path: premium
+  reasoning:        The customer is a VIP and the refund claim is valid, so this case should be routed to the 'premium' path.
 
 ======================================================================
-STEP 4 - EXECUTE RESOLUTION (premium)  [PATTERN: Chaining]
+STEP 3 - SELECT PATH  [rule-based]  (Routing)
 ======================================================================
+No LLM here — the decision was already made in Step 2; this is just a
+dict lookup on the validated enum -> 'premium' resolution chain.
+
+======================================================================
+STEP 4 - EXECUTE RESOLUTION (premium)  [rule-based]  (Chaining)
+======================================================================
+No LLM here — deterministic actions run in a fixed order, updating data/:
   1. Approve refund      -> EUR 89.99 approved
   2. Process payment     -> paid, reference PAY-O1001
   3. Offer express reorder -> replacement REO-O1001 created (express, free)
   4. Provide tracking link -> https://tracking.example.com/REO-O1001
 
 ======================================================================
-CUSTOMER REPLY  (one smooth interaction)
+CUSTOMER REPLY  >> LLM AGENT #3 <<  (one smooth interaction)
 ======================================================================
-Hi Anna,
+The agent writes the final message from the list of actions taken:
 
-Thank you for reaching out. We've processed a refund of EUR 89.99 for order O1001 and immediately completed the payment (reference PAY-O1001). Additionally, we've created a free express replacement order REO-O1001 for you. You can track it using this link: https://tracking.example.com/REO-O1001.
+Dear Anna,
+
+Thank you for reaching out. We've processed a refund of EUR 89.99 for your order O1001, which has been credited to your account instantly (reference PAY-O1001). Additionally, we've created an express replacement order REO-O1001 for you free of charge. You can track your new order here: https://tracking.example.com/REO-O1001.
 
 Best regards,
 Customer Support Team
@@ -87,50 +103,60 @@ $ python code/solution_code.py "Customer C002 here about order O1002: my package
 ```text
 Customer request: "Customer C002 here about order O1002: my package is lost, I want a refund and a replacement."
 
-======================================================================
-STEP 0 - INTAKE  [structured output]
-======================================================================
-customer_id: C002
-order_id:    O1002
-goals:       ['refund', 'replacement']
+Legend:  >> LLM AGENT << = agent call (Nova Lite + prompt + structured output)
+         [rule-based]    = plain Python, no LLM involved
+Only 3 of the 6 stages below need an agent.
 
 ======================================================================
-STEP 1 - ASSESS SITUATION  [PATTERNS: Chaining + Parallelization]
+STEP 0 - INTAKE  >> LLM AGENT #1 <<  (prompt + structured output)
 ======================================================================
-Querying 4 systems simultaneously (asyncio.gather)...
-  customer status:    Ben Weber — tier: standard
-  order tracking:     status 'lost', 10 days since order
-  inventory:          all items in stock: True
-  refund eligibility: valid — Carrier reported the parcel as lost.
+The agent turned free text into typed fields:
+  customer_id: C002
+  order_id:    O1002
+  goals:       ['refund', 'replacement']
 
 ======================================================================
-STEP 2 - ANALYZE RESULTS  [PATTERN: Orchestration]
+STEP 1 - ASSESS SITUATION  [rule-based]  (Chaining + Parallelization)
 ======================================================================
-vip_status:       False
-claim_valid:      True
-stock_available:  True
-priority:         normal
-recommended_path: standard
-reasoning:        The customer is a standard tier customer, the refund claim is valid, and the item is available for replacement. Therefore, this case should follow the standard resolution path.
+No LLM here — 4 plain Python lookups run concurrently (asyncio.gather):
+  [rule-based] customer status:    Ben Weber — tier: standard
+  [rule-based] order tracking:     status 'lost', 10 days since order
+  [rule-based] inventory:          all items in stock: True
+  [rule-based] refund eligibility: valid — Carrier reported the parcel as lost.
 
 ======================================================================
-STEP 3 - SELECT PATH  [PATTERN: Routing]
+STEP 2 - ANALYZE RESULTS  >> LLM AGENT #2 <<  (Orchestration)
 ======================================================================
-Routing to the 'standard' resolution chain.
+The agent combines the 4 results + goals and decides the path:
+  vip_status:       False
+  claim_valid:      True
+  stock_available:  True
+  priority:         normal
+  recommended_path: standard
+  reasoning:        The customer is a standard tier, the parcel was lost, the item is in stock, and the refund claim is valid. The customer is within the refund window.
 
 ======================================================================
-STEP 4 - EXECUTE RESOLUTION (standard)  [PATTERN: Chaining]
+STEP 3 - SELECT PATH  [rule-based]  (Routing)
 ======================================================================
+No LLM here — the decision was already made in Step 2; this is just a
+dict lookup on the validated enum -> 'standard' resolution chain.
+
+======================================================================
+STEP 4 - EXECUTE RESOLUTION (standard)  [rule-based]  (Chaining)
+======================================================================
+No LLM here — deterministic actions run in a fixed order, updating data/:
   1. Queue refund        -> EUR 129.00 queued (3-5 business days)
   2. Offer reorder       -> items in stock, standard shipping offered
   3. Send confirmation   -> email sent
 
 ======================================================================
-CUSTOMER REPLY  (one smooth interaction)
+CUSTOMER REPLY  >> LLM AGENT #3 <<  (one smooth interaction)
 ======================================================================
-Hi Ben Weber,
+The agent writes the final message from the list of actions taken:
 
-Thank you for reaching out. We've processed a refund of EUR 129.00 for your order O1002, which will be credited within 3-5 business days. We've also offered a replacement, and your items are in stock. A confirmation email with the refund reference and next steps has been sent to you.
+Dear Ben Weber,
+
+Thank you for reaching out. We have processed a refund of EUR 129.00 for your order O1002, which will be completed in 3-5 business days. Additionally, we have offered a replacement order for your lost items, which are currently in stock and will be shipped at standard rates. A confirmation email with the refund reference and next steps has been sent to you.
 
 Best regards,
 Customer Support Team
@@ -149,49 +175,59 @@ $ python code/solution_code.py "Customer C003, order O1003: my order never arriv
 ```text
 Customer request: "Customer C003, order O1003: my order never arrived, refund me."
 
-======================================================================
-STEP 0 - INTAKE  [structured output]
-======================================================================
-customer_id: C003
-order_id:    O1003
-goals:       ['refund']
+Legend:  >> LLM AGENT << = agent call (Nova Lite + prompt + structured output)
+         [rule-based]    = plain Python, no LLM involved
+Only 3 of the 6 stages below need an agent.
 
 ======================================================================
-STEP 1 - ASSESS SITUATION  [PATTERNS: Chaining + Parallelization]
+STEP 0 - INTAKE  >> LLM AGENT #1 <<  (prompt + structured output)
 ======================================================================
-Querying 4 systems simultaneously (asyncio.gather)...
-  customer status:    Clara Fischer — tier: standard
-  order tracking:     status 'delivered', 8 days since order
-  inventory:          all items in stock: True
-  refund eligibility: suspicious — Carrier confirmed delivery; claim contradicts tracking.
+The agent turned free text into typed fields:
+  customer_id: C003
+  order_id:    O1003
+  goals:       ['order not received', 'refund']
 
 ======================================================================
-STEP 2 - ANALYZE RESULTS  [PATTERN: Orchestration]
+STEP 1 - ASSESS SITUATION  [rule-based]  (Chaining + Parallelization)
 ======================================================================
-vip_status:       False
-claim_valid:      False
-stock_available:  True
-priority:         normal
-recommended_path: escalation
-reasoning:        The refund claim is invalid and suspicious because the carrier confirmed delivery, which contradicts the refund claim. Additionally, the customer is not a VIP, so they do not qualify for the premium resolution path.
+No LLM here — 4 plain Python lookups run concurrently (asyncio.gather):
+  [rule-based] customer status:    Clara Fischer — tier: standard
+  [rule-based] order tracking:     status 'delivered', 8 days since order
+  [rule-based] inventory:          all items in stock: True
+  [rule-based] refund eligibility: suspicious — Carrier confirmed delivery; claim contradicts tracking.
 
 ======================================================================
-STEP 3 - SELECT PATH  [PATTERN: Routing]
+STEP 2 - ANALYZE RESULTS  >> LLM AGENT #2 <<  (Orchestration)
 ======================================================================
-Routing to the 'escalation' resolution chain.
+The agent combines the 4 results + goals and decides the path:
+  vip_status:       False
+  claim_valid:      False
+  stock_available:  True
+  priority:         normal
+  recommended_path: escalation
+  reasoning:        The customer's claim that the order was not received is contradicted by the carrier's confirmation of delivery. The refund claim is marked as invalid and suspicious, so this case should be escalated for a human review.
 
 ======================================================================
-STEP 4 - EXECUTE RESOLUTION (escalation)  [PATTERN: Chaining]
+STEP 3 - SELECT PATH  [rule-based]  (Routing)
 ======================================================================
+No LLM here — the decision was already made in Step 2; this is just a
+dict lookup on the validated enum -> 'escalation' resolution chain.
+
+======================================================================
+STEP 4 - EXECUTE RESOLUTION (escalation)  [rule-based]  (Chaining)
+======================================================================
+No LLM here — deterministic actions run in a fixed order, updating data/:
   1. Create review ticket -> escalated: Carrier confirmed delivery; claim contradicts tracking.
   2. Notify customer      -> manual review notice sent
 
 ======================================================================
-CUSTOMER REPLY  (one smooth interaction)
+CUSTOMER REPLY  >> LLM AGENT #3 <<  (one smooth interaction)
 ======================================================================
-Dear Clara Fischer,
+The agent writes the final message from the list of actions taken:
 
-Thank you for reaching out. Our team escalated your case for a human review, as the carrier confirmed that delivery has been made, which contradicts your report. We are now conducting a manual review to resolve this. Please rest assured we are working on it and will keep you updated.
+Hi Clara,
+
+Thank you for reaching out. We escalated your case (order O1003) to a human review. The carrier confirmed that your order was delivered, which contradicts your claim of non-delivery. We've notified you that the case requires manual review, and an automatic refund isn't possible at this stage.
 
 Best regards,
 Customer Support Team
