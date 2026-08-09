@@ -13,6 +13,9 @@ export PATH="$HOME/.local/bin:$PATH"
 uv --version
 uvx --version
 
+# Install tree command
+sudo yum install tree -y
+
 # Install Python dependencies.
 # Use `python3 -m pip` so packages land in the same interpreter that will run
 # the demos (a bare `pip` can belong to a different Python).
