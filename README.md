@@ -1,75 +1,104 @@
-# Agentic-AI-F_custom
+# Agentic AI — Custom Agents with the Strands Agents SDK
 
-Kiro CLI installation:
+A structured, hands-on learning path for building custom AI agents using the **[Strands Agents SDK](https://strandsagents.com/)** on **Amazon Bedrock**.
+
+From "Hello World" to multi-agent swarms, RAG pipelines, and production deployment — all runnable with a single model permission (`bedrock-runtime:Converse`).
+
+## 🗺️ Learning Path
+
 ```
-curl -fsSL https://cli.kiro.dev/install | bash
-kiro-cli login --use-device-flow
+┌─────────────────────────────────────────────────────────────────────────┐
+│  01-fundamentals   →   02-tools-and-mcp   →   03-advanced-patterns     │
+│  (basics, tools,       (MCP servers,           (RAG, multi-agent,       │
+│   logging, output)      agent skills)           graphs, swarms)         │
+│                                                                         │
+│                    →   04-production       →   05-evaluation            │
+│                        (sessions, context       (testing, quality)       │
+│                         management)                                      │
+└─────────────────────────────────────────────────────────────────────────┘
+         exercises/  — hands-on practice with guided tasks
+         reference/  — full 14-module video course + official samples
 ```
 
-## Setup
+## 📚 Modules
+
+| Module | Topic | Scripts |
+|--------|-------|---------|
+| [01-fundamentals](01-fundamentals/) | Agent basics, custom tools, logging, structured output | 5 files |
+| [02-tools-and-mcp](02-tools-and-mcp/) | MCP integration, agent skills | 2 files |
+| [03-advanced-patterns](03-advanced-patterns/) | RAG, multi-agent, graphs, swarms | 5 files |
+| [04-production](04-production/) | Session persistence, conversation management | 2 files |
+| [05-evaluation](05-evaluation/) | Agent evaluation techniques and reports | reports |
+
+## 🏋️ Exercises
+
+| Exercise | Description |
+|----------|-------------|
+| [Customer Support Tickets](exercises/Customer-Support-Tickets/) | All four workflow patterns in one project |
+| [Task Sheets](exercises/tasks/) | Incremental guided tasks (01–05) |
+| [Lab 2](exercises/Lab-2/) | Jupyter notebook exploration |
+
+## 📖 Reference
+
+| Resource | Description |
+|----------|-------------|
+| [Building with Strands Course](reference/building-with-strands-course/) | 14-module video course (Morgan Willis, AWS) |
+| [Official Strands Examples](reference/strands-official-examples/) | Samples from the strands-agents repo |
+
+## 🆚 Framework Comparison
+
+| Framework | Emphasis | Docs |
+|-----------|----------|------|
+| **Strands Agents** (primary) | AWS-native, Bedrock, AgentCore | [strands-vs-pydantic](docs/strands-vs-pydantic.md) |
+| **Pydantic AI** (comparison) | Type-safety, DI, FastAPI-style | [pydantic-ai/](pydantic-ai/) |
+
+## 🚀 Quick Start
 
 ```bash
-# Python dependencies and non-pip tools (uv/uvx, used by the MCP server config)
-./0-install.sh          # installs uv / uvx
+git clone https://github.com/typex1/Agentic-AI-F_custom.git
+cd Agentic-AI-F_custom
+
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+# Run your first agent:
+python 01-fundamentals/01_basic_agent.py
 ```
 
-## Workspace Overview
+→ Full setup details: [docs/setup.md](docs/setup.md)
 
-Exploration of AI agent frameworks — primarily the **Strands Agents SDK**, with
-a **Pydantic AI** comparison — running on **Amazon Bedrock** with the
-**Amazon Nova Lite** model (`amazon.nova-lite-v1:0`) in `us-east-1`.
+## 🔧 Environment
 
-> **Permissions note:** This environment only permits `bedrock-runtime:Converse`
-> (and the other `bedrock-runtime` actions) on Nova Lite. It has **no** Bedrock
-> control-plane or other AWS service access. See
-> [`.kiro/steering/Permissions.md`](.kiro/steering/Permissions.md) and
-> [`Model_permissions.md`](Model_permissions.md) for the verified details.
+| Component | Value |
+|-----------|-------|
+| Model | Amazon Nova Lite (`amazon.nova-lite-v1:0`) |
+| Region | `us-east-1` |
+| Permission | `bedrock-runtime:Converse` (+ related actions) |
+| SDK | `strands-agents` 1.45.0 |
+| Tools | `strands-agents-tools` 0.8.2 |
 
-## Contents
+> **Note:** All scripts work with the minimal Bedrock runtime permission.
+> See [docs/model-permissions.md](docs/model-permissions.md) for the full verified matrix.
 
-| Path | Description |
-|------|-------------|
-| `Task.py` | Python extracted from `Task.ipynb` (first-agent tutorial), task-labeled |
-| `Model_permissions.py` / `.md` | Probes + summary of which Bedrock actions are permitted |
-| `strands-agents/` | Strands Agents SDK demos (see its own `README.md`) |
-| `pydantic-ai/` | Pydantic AI equivalents for comparison |
-| `StrandsAgents_vs_PydanticAI.md` | Framework comparison writeup |
-| `0-install.sh` | Installs `Python dependencies and non-pip tools |
-| `requirements.txt` | Pinned Python dependencies |
+## 📦 Dependencies
 
+See [`requirements.txt`](requirements.txt) for pinned versions. Key packages:
 
-All example scripts are runnable from any working directory.
+| Package | Used in |
+|---------|---------|
+| `strands-agents` | All modules |
+| `strands-agents-tools` | Modules 01–04 |
+| `pydantic` | Structured output (Module 01) |
+| `mcp` | MCP tools (Module 02) |
+| `strands-agents-evals` | Evaluation (Module 05, reference) |
+| `pydantic-ai-slim[bedrock]` | Pydantic AI comparison |
 
-## Dependencies
+## 🔗 Links
 
-Pinned in [`requirements.txt`](requirements.txt) to the versions verified in
-this environment:
-
-| Package | Version | Used by |
-|---------|---------|---------|
-| `strands-agents` | 1.45.0 | all `strands-agents` demos, `Task.py` |
-| `strands-agents-tools` | 0.8.2 | current_time / calculator / shell / file_read tools (demos 02, 03, 06); http_request / editor / python_repl / load_tool (`strands-official-examples/`) |
-| `mcp` | 1.29.0 | `strands-official-examples/python_lab2_adjusted/mcp_calculator.py` (also a transitive dep of `strands-agents`) |
-| `ddgs` | 9.14.4 | web search (demo 02, `Task.py`) |
-| `pydantic` | 2.13.4 | structured output (demo 04) |
-| `boto3` | 1.43.39 | `Model_permissions.py` |
-| `pydantic-ai-slim[bedrock]` | 2.3.0 | `pydantic-ai/01_basic_agent.py` |
-| `strands-agents-evals` | 1.0.1 | course sample `13-evals` (import name `strands_evals`) |
-| `fastapi` | 0.141.1 | course sample `04-callbacks-streaming/fastapi_streaming.py` |
-| `uvicorn` | 0.52.1 | serves the FastAPI / Lambda-handler samples locally |
-| `bedrock-agentcore` | 1.21.0 | course sample `14-deploy/main.py` (local run only) |
-| `mangum` | 0.21.0 | course sample `14-deploy/lambda-deployment/lambda_handler.py` |
-
-("course sample" = `strands-agents/sample-building-with-strands-course/samples_adjusted/`)
-
-**Not pip-installable** (installed separately):
-
-| Tool | How | Used by |
-|------|-----|---------|
-| `uv` / `uvx` | `0-install.sh` (`curl -LsSf https://astral.sh/uv/install.sh \| sh`) | MCP server (`uvx strands-agents-mcp-server`) |
-
-## MCP servers configured
-
-`.kiro/settings/mcp.json` registers the **Strands Agents MCP server**
-(`uvx strands-agents-mcp-server`), giving AI coding assistants direct access to
-the Strands documentation.
+- [Strands Agents Homepage](https://strandsagents.com)
+- [Strands Agents Documentation](https://strandsagents.com/docs/user-guide/quickstart/python/)
+- [Strands Agents GitHub](https://github.com/strands-agents/sdk-python)
+- [AWS Bedrock Console](https://console.aws.amazon.com/bedrock/)
+- [Building with Strands Course (YouTube)](https://www.youtube.com/playlist?list=PLDzwjhH-4yhU)
+- [Hands-on Workshop (AWS)](https://catalog.us-east-1.prod.workshops.aws/workshops/083b80d7-5a90-402b-9bb4-19fb53092808/en-US)
