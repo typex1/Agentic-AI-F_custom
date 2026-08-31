@@ -1,0 +1,149 @@
+2026-08-19 14:21:45,174 | INFO | crewai_core.settings | Using config path: /home/ec2-user/.config/crewai/settings.json
+2026-08-19 14:21:46,082 | INFO | tool_use_demo | Each 'TOOL CALL' line below shows the tool the model selected and the arguments it passed; 'TOOL RESULT' shows how it went.
+2026-08-19 14:21:46,143 | INFO | root | Bedrock: Successfully validated tool 'current_time'
+2026-08-19 14:21:46,143 | DEBUG | prompt_context | TOOL CATALOG injected into every request (2 tools):
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "current_time",
+      "description": "Get the current date and time.\n\n    Args:\n        tz: Timezone name; only 'UTC' is supported in this demo.\n\n    Returns:\n        The current date and time as an ISO-8601 string.\n    ",
+      "parameters": {
+        "properties": {
+          "tz": "{'default': 'UTC', 'title': 'Tz', 'type': 'string'}"
+        },
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "'tz'"
+        ]
+      },
+      "strict": true
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "unit_converter",
+      "description": "Convert between common units of measurement.\n\n    Args:\n        value: The numeric value to convert.\n        from_unit: Source unit (e.g., 'km', 'miles', 'kg', 'lbs', 'celsius', 'fahrenheit').\n        to_unit: Target unit.\n\n    Returns:\n        A string with the conversion result.\n    ",
+      "parameters": {
+        "properties": {
+          "value": "{'title': 'Value', 'type': 'number'}",
+          "from_unit": "{'title': 'From Unit', 'type': 'string'}",
+          "to_unit": "{'title': 'To Unit', 'type': 'string'}"
+        },
+        "required": [
+          "'value'",
+          "'from_unit'",
+          "'to_unit'"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "strict": true
+    }
+  }
+]
+2026-08-19 14:21:46,144 | DEBUG | prompt_context | PROMPT SENT TO MODEL — 2 message(s):
+[
+  {
+    "role": "system",
+    "content": "You are Helpful Assistant. You are a helpful assistant.\nYour personal goal is: Answer questions, using tools when they help.",
+    "cache_breakpoint": true
+  },
+  {
+    "role": "user",
+    "content": "\nCurrent Task: Convert 100 kilometers to miles.\n\nThis is the expected criteria for your final answer: A concise answer based on the tool results.\nyou MUST return the actual complete content as the final answer, not a summary.",
+    "cache_breakpoint": true
+  }
+]
+2026-08-19 14:21:46,143 | INFO | root | Bedrock: Successfully validated tool 'unit_converter'
+2026-08-19 14:21:47,023 | INFO | tool_use_demo | TOOL CALL | tool=unit_converter | input={"from_unit": "km", "to_unit": "miles", "value": 100}
+2026-08-19 14:21:47,023 | INFO | tool_use_demo | TOOL RESULT | tool=unit_converter | from_cache=False | output=100.0 km = 62.14 miles
+2026-08-19 14:21:47,030 | INFO | root | Bedrock: Successfully validated tool 'current_time'
+2026-08-19 14:21:47,031 | INFO | root | Bedrock: Successfully validated tool 'unit_converter'
+2026-08-19 14:21:47,033 | DEBUG | prompt_context | PROMPT SENT TO MODEL — 4 message(s):
+[
+  {
+    "role": "system",
+    "content": "You are Helpful Assistant. You are a helpful assistant.\nYour personal goal is: Answer questions, using tools when they help.",
+    "cache_breakpoint": true
+  },
+  {
+    "role": "user",
+    "content": "\nCurrent Task: Convert 100 kilometers to miles.\n\nThis is the expected criteria for your final answer: A concise answer based on the tool results.\nyou MUST return the actual complete content as the final answer, not a summary.",
+    "cache_breakpoint": true
+  },
+  {
+    "role": "assistant",
+    "content": null,
+    "tool_calls": [
+      {
+        "id": "tooluse_KvdPEXIwDOu2D4vC59ip11",
+        "type": "function",
+        "function": {
+          "name": "'unit_converter'",
+          "arguments": "'{\"from_unit\": \"km\", \"to_unit\": \"miles\", \"value\": 100}'"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "tool_call_id": "tooluse_KvdPEXIwDOu2D4vC59ip11",
+    "name": "unit_converter",
+    "content": "100.0 km = 62.14 miles"
+  }
+]
+2026-08-19 14:21:47,399 | INFO | root | Bedrock: Successfully validated tool 'current_time'
+2026-08-19 14:21:47,399 | DEBUG | prompt_context | PROMPT SENT TO MODEL — 2 message(s):
+[
+  {
+    "role": "system",
+    "content": "You are Helpful Assistant. You are a helpful assistant.\nYour personal goal is: Answer questions, using tools when they help.",
+    "cache_breakpoint": true
+  },
+  {
+    "role": "user",
+    "content": "\nCurrent Task: What is the current time in UTC?\n\nThis is the expected criteria for your final answer: A concise answer based on the tool results.\nyou MUST return the actual complete content as the final answer, not a summary.",
+    "cache_breakpoint": true
+  }
+]
+2026-08-19 14:21:47,399 | INFO | root | Bedrock: Successfully validated tool 'unit_converter'
+2026-08-19 14:21:48,019 | INFO | tool_use_demo | TOOL CALL | tool=current_time | input={"tz": "UTC"}
+2026-08-19 14:21:48,019 | INFO | tool_use_demo | TOOL RESULT | tool=current_time | from_cache=False | output=2026-08-19T14:21:48.018899+00:00
+2026-08-19 14:21:48,026 | INFO | root | Bedrock: Successfully validated tool 'current_time'
+2026-08-19 14:21:48,026 | DEBUG | prompt_context | PROMPT SENT TO MODEL — 4 message(s):
+[
+  {
+    "role": "system",
+    "content": "You are Helpful Assistant. You are a helpful assistant.\nYour personal goal is: Answer questions, using tools when they help.",
+    "cache_breakpoint": true
+  },
+  {
+    "role": "user",
+    "content": "\nCurrent Task: What is the current time in UTC?\n\nThis is the expected criteria for your final answer: A concise answer based on the tool results.\nyou MUST return the actual complete content as the final answer, not a summary.",
+    "cache_breakpoint": true
+  },
+  {
+    "role": "assistant",
+    "content": null,
+    "tool_calls": [
+      {
+        "id": "tooluse_onuLjZawmxZF8c7BayChwo",
+        "type": "function",
+        "function": {
+          "name": "'current_time'",
+          "arguments": "'{\"tz\": \"UTC\"}'"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "tool_call_id": "tooluse_onuLjZawmxZF8c7BayChwo",
+    "name": "current_time",
+    "content": "2026-08-19T14:21:48.018899+00:00"
+  }
+]
+2026-08-19 14:21:48,026 | INFO | root | Bedrock: Successfully validated tool 'unit_converter'
