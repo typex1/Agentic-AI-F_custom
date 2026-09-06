@@ -8,13 +8,13 @@ From "Hello World" to multi-agent swarms, RAG pipelines, and production deployme
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│  01-fundamentals   →   02-tools-and-mcp   →   03-advanced-patterns     │
+│  01-fundamentals   →   02-tools-and-mcp   →   03-advanced-patterns      │
 │  (basics, tools,       (MCP servers,           (RAG, multi-agent,       │
 │   logging, output)      agent skills)           graphs, swarms)         │
 │                                                                         │
 │                    →   04-production       →   05-evaluation            │
-│                        (sessions, context       (testing, quality)       │
-│                         management)                                      │
+│                        (sessions, context       (testing, quality)      │
+│                         management)                                     │
 └─────────────────────────────────────────────────────────────────────────┘
          exercises/  — hands-on practice with guided tasks
          reference/  — full 14-module video course + official samples
@@ -57,6 +57,9 @@ From "Hello World" to multi-agent swarms, RAG pipelines, and production deployme
 ```bash
 git clone https://github.com/typex1/Agentic-AI-F_custom.git
 cd Agentic-AI-F_custom
+
+# Install uv (needed to run MCP servers via uvx in Module 02):
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
 python3 -m venv .venv
 source .venv/bin/activate
