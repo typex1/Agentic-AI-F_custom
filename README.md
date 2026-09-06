@@ -34,7 +34,7 @@ From "Hello World" to multi-agent swarms, RAG pipelines, and production deployme
 
 | Exercise | Description |
 |----------|-------------|
-| [06 Customer Support Tickets](exercises/06_customer_support_tickets/) | Capstone: all four workflow patterns in one project |
+| [06 Customer Support Tickets](exercises/tasks/06_customer_support_tickets/) | Capstone: all four workflow patterns in one project |
 | [Task Sheets](exercises/tasks/) | Incremental guided tasks (01–05) |
 
 ## 📖 Reference
