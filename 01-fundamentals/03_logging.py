@@ -22,7 +22,7 @@ Goal of this demo:
     tool-call request, the SDK executing your Python function, and feeding the
     result back into the conversation
 
-The logging setup below mirrors the approach introduced in Lab-2/Task.py
+The logging setup below mirrors the approach introduced in Lab-2_original/Task.py
 (Task 2.4 "Configure logging"), but writes to a file
 (strands-agents/logs/03_logging.log) instead of the console. The file is
 truncated on every run so it only ever holds the most recent execution. By
@@ -42,7 +42,7 @@ import warnings
 warnings.filterwarnings(action="ignore", message=r"datetime.datetime.utcnow")
 
 # --- Logging: this is what makes tool use observable --------------------------
-# Modeled on Lab-2/Task.py (Task 2.4). basicConfig installs a console handler
+# Modeled on Lab-2_original/Task.py (Task 2.4). basicConfig installs a console handler
 # and a readable format.
 #
 # The teaching goal here is to SEE tool use. If you simply set the whole

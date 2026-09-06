@@ -16,12 +16,6 @@ Build a complete customer support agent using all four workflow patterns:
 
 See `Customer-Support-Tickets/TASK.md` for the full exercise description and `Customer-Support-Tickets/code/` for the reference solution.
 
-### Lab 2: Official Strands Examples
-
-**Path:** `Lab-2/`
-
-Jupyter notebook-based exploration of the Strands Agents SDK basics.
-
 ### Task Sheets
 
 **Path:** `tasks/`
