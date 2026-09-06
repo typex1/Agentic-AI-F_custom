@@ -6,7 +6,7 @@ customer request below by combining all four agent workflow patterns:
 
 This is the capstone exercise — it assumes you have completed task sheets
 01–05. Working materials (data generator + mock backend data) live in
-[`06_customer_support_tickets_data/`](06_customer_support_tickets_data/).
+[`10_customer_support_tickets_data/`](10_customer_support_tickets_data/).
 
 ## Why this exercise: genuine pattern integration
 
@@ -51,7 +51,7 @@ real). Your solution must handle at least these three routes:
 ## Setup
 
 ```bash
-cd 06_customer_support_tickets_data
+cd 10_customer_support_tickets_data
 python generate_data.py     # creates data/ — run it again anytime to RESET
 ```
 
@@ -111,15 +111,15 @@ Model: `amazon.nova-lite-v1:0` (the only one permitted in this environment).
 ## Stuck? Use the peek ladder — in this order
 
 The reference solution lives in
-[`../solutions/06_customer_support_tickets/`](../solutions/06_customer_support_tickets/).
+[`../solutions/10_customer_support_tickets/`](../solutions/10_customer_support_tickets/).
 
 1. **Compare behavior**:
-   [`sample_output.md`](../solutions/06_customer_support_tickets/sample_output.md)
+   [`sample_output.md`](../solutions/10_customer_support_tickets/sample_output.md)
    shows verified transcripts for all three routes and the data mutations to
    expect — check your output against them without reading any code.
 2. **Re-read the hints** above; each names the exact SDK feature to reach for.
 3. **Peek at the code**:
-   [`solution_code.py`](../solutions/06_customer_support_tickets/solution_code.py)
+   [`solution_code.py`](../solutions/10_customer_support_tickets/solution_code.py)
    — one file, sections labeled Step 0–4 with the pattern named at each point.
 
 Remember: `python generate_data.py` resets the data between experiments.
