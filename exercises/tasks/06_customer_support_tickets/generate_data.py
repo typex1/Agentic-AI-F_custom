@@ -1,5 +1,5 @@
 """
-generate_data.py — Synthetic data for the Customer-Support-Tickets exercise
+generate_data.py — Synthetic data for the customer support tickets exercise
 
 Creates (or RESETS) the data/ folder with four JSON files, one per mock
 backend system:
