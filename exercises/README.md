@@ -4,10 +4,10 @@ Hands-on practice with the Strands Agents SDK.
 
 ## Available Exercises
 
-### 06: Customer Support Tickets (capstone)
+### 10: Customer Support Tickets (capstone)
 
-**Task sheet:** `tasks/06_customer_support_tickets.md`
-**Working data:** `tasks/06_customer_support_tickets_data/`
+**Task sheet:** `tasks/10_customer_support_tickets.md`
+**Working data:** `tasks/10_customer_support_tickets_data/`
 
 Build a complete customer support agent using all four workflow patterns:
 - **Chaining** — sequential task processing
@@ -15,9 +15,9 @@ Build a complete customer support agent using all four workflow patterns:
 - **Orchestration** — a coordinator dispatching to specialists
 - **Routing** — classifying and directing requests
 
-See `tasks/06_customer_support_tickets.md` for the full exercise description and `solutions/06_customer_support_tickets/` for the reference solution.
+See `tasks/10_customer_support_tickets.md` for the full exercise description and `solutions/10_customer_support_tickets/` for the reference solution.
 
-Numbered 06 because it builds on task sheets 01–05 (see Task Sheets below) — do it last.
+Numbered 10 because it builds on all task sheets before it — do it last.
 
 ### Task Sheets
 
@@ -32,7 +32,7 @@ Step-by-step task descriptions for building agents incrementally:
 | `02a_chat_agent_internet_search.md` | Web search integration |
 | `03_chat_agent_logging.md` | Add logging and observability |
 | `05_chat_agent_mcp.md` | Connect to MCP servers |
-| `06_customer_support_tickets.md` | Capstone project (see above) |
+| `10_customer_support_tickets.md` | Capstone project (see above) |
 
 ### Solutions
 
