@@ -12,9 +12,10 @@ A copy of 02a_chat_agent_internet_search.py extended with logging:
     Follow it in a second terminal with:
         tail -f /tmp/03_chat_agent_logging.log
 
-NOTE: `shell` and `file_write` perform real system actions, so they ask for
-human confirmation before executing. Set BYPASS_TOOL_CONSENT=true in the
-environment to skip those prompts (e.g., for unattended runs).
+NOTE: `bash` replaces the deprecated `shell` tool (removed in
+strands-agents-tools v0.9.0) and executes WITHOUT a confirmation prompt.
+`file_write` still asks for confirmation; set BYPASS_TOOL_CONSENT=true
+to skip that (e.g., for unattended runs).
 
 Run:
   python 03_chat_agent_logging.py
@@ -34,7 +35,8 @@ from ddgs import DDGS
 from strands import Agent, tool
 from strands.hooks import HookProvider, HookRegistry
 from strands.hooks.events import AfterToolCallEvent, BeforeToolCallEvent
-from strands_tools import file_read, file_write, shell
+from strands.vended_tools import bash
+from strands_tools import file_read, file_write
 
 # --- Logging setup: file under /tmp, fresh on every run -----------------------
 LOG_FILE = Path("/tmp/03_chat_agent_logging.log")
@@ -133,18 +135,18 @@ agent = Agent(
     system_prompt=(
         "You are a friendly, helpful chatbot. "
         "Answer the user's questions clearly and concisely. "
-        "You have tools to run shell commands, read and write files, and "
+        "You have tools to run bash commands, read and write files, and "
         "search the internet; use them whenever a request requires "
         "interacting with the system or up-to-date information from the web."
     ),
-    tools=[shell, file_read, file_write, web_search],
+    tools=[bash, file_read, file_write, web_search],
     hooks=[ToolUseLogger(logger)],  # log every tool call + result
     callback_handler=None,  # suppress streaming; we print the final result
 )
 
 
 def main() -> None:
-    print("Chat agent with tools: shell, file_read, file_write, web_search (Nova Lite).")
+    print("Chat agent with tools: bash, file_read, file_write, web_search (Nova Lite).")
     print(f"Logging to: {LOG_FILE}")
     print("Type 'exit' or Ctrl-D to quit.\n")
     logger.info("SESSION START | model=amazon.nova-lite-v1:0 | tools=%s",
