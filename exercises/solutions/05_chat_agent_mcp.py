@@ -16,9 +16,10 @@ A copy of 03_chat_agent_logging.py extended with the AWS Knowledge MCP server:
     Follow it in a second terminal with:
         tail -f /tmp/05_chat_agent_mcp.log
 
-NOTE: `shell` and `file_write` perform real system actions, so they ask for
-human confirmation before executing. Set BYPASS_TOOL_CONSENT=true in the
-environment to skip those prompts (e.g., for unattended runs).
+NOTE: `bash` replaces the deprecated `shell` tool (removed in
+strands-agents-tools v0.9.0) and executes WITHOUT a confirmation prompt.
+`file_write` still asks for confirmation; set BYPASS_TOOL_CONSENT=true
+to skip that (e.g., for unattended runs).
 
 Run:
   python 05_chat_agent_mcp.py
@@ -40,7 +41,8 @@ from strands import Agent, tool
 from strands.hooks import HookProvider, HookRegistry
 from strands.hooks.events import AfterToolCallEvent, BeforeToolCallEvent
 from strands.tools.mcp import MCPClient
-from strands_tools import file_read, file_write, shell
+from strands.vended_tools import bash
+from strands_tools import file_read, file_write
 
 # --- Logging setup: file under /tmp, fresh on every run -----------------------
 LOG_FILE = Path("/tmp/05_chat_agent_mcp.log")
@@ -170,19 +172,19 @@ def main() -> None:
             system_prompt=(
                 "You are a friendly, helpful chatbot. "
                 "Answer the user's questions clearly and concisely. "
-                "You have tools to run shell commands, read and write files, "
+                "You have tools to run bash commands, read and write files, "
                 "and search the internet; use them whenever a request requires "
                 "interacting with the system or up-to-date information from "
                 "the web. For questions about AWS services or documentation, "
                 "prefer the AWS Knowledge tools, which search and read the "
                 "official AWS docs."
             ),
-            tools=[shell, file_read, file_write, web_search, *mcp_tools],
+            tools=[bash, file_read, file_write, web_search, *mcp_tools],
             hooks=[ToolUseLogger(logger)],  # log every tool call + result
             callback_handler=None,  # suppress streaming; we print final result
         )
 
-        print("Chat agent with local tools (shell, file_read, file_write, "
+        print("Chat agent with local tools (bash, file_read, file_write, "
               "web_search)\nplus the AWS Knowledge MCP tools above (Nova Lite).")
         print(f"Logging to: {LOG_FILE}")
         print("Type 'exit' or Ctrl-D to quit.\n")

@@ -5,14 +5,16 @@
 A copy of 02_chat_agent_tools.py extended with internet search
 (task: tasks/02a_chat_agent_internet_search.md):
   - Custom `web_search` tool using DDGS (DuckDuckGo Search).
-  - Built-in tools from `strands_tools`: shell, file_read, file_write.
+  - `bash` (vended by strands-agents) plus `file_read`, `file_write`
+    from `strands_tools`.
   - The agent decides on its own when a user request needs a tool
     (e.g., "search the web for X", "read README.md", "list the files here").
   - User prompts are read from the terminal; conversation history is kept.
 
-NOTE: `shell` and `file_write` perform real system actions, so they ask for
-human confirmation before executing. Set BYPASS_TOOL_CONSENT=true in the
-environment to skip those prompts (e.g., for unattended runs).
+NOTE: `bash` replaces the deprecated `shell` tool (removed in
+strands-agents-tools v0.9.0) and executes WITHOUT a confirmation prompt.
+`file_write` still asks for confirmation; set BYPASS_TOOL_CONSENT=true
+to skip that (e.g., for unattended runs).
 
 Run:
   python 02a_chat_agent_internet_search.py
@@ -27,7 +29,8 @@ from datetime import date
 
 from ddgs import DDGS
 from strands import Agent, tool
-from strands_tools import file_read, file_write, shell
+from strands.vended_tools import bash
+from strands_tools import file_read, file_write
 
 
 # --- Custom tool: internet search via DuckDuckGo (ddgs) ---
@@ -77,17 +80,17 @@ agent = Agent(
     system_prompt=(
         "You are a friendly, helpful chatbot. "
         "Answer the user's questions clearly and concisely. "
-        "You have tools to run shell commands, read and write files, and "
+        "You have tools to run bash commands, read and write files, and "
         "search the internet; use them whenever a request requires "
         "interacting with the system or up-to-date information from the web."
     ),
-    tools=[shell, file_read, file_write, web_search],
+    tools=[bash, file_read, file_write, web_search],
     callback_handler=None,  # suppress streaming; we print the final result
 )
 
 
 def main() -> None:
-    print("Chat agent with tools: shell, file_read, file_write, web_search (Nova Lite).")
+    print("Chat agent with tools: bash, file_read, file_write, web_search (Nova Lite).")
     print("Type 'exit' or Ctrl-D to quit.\n")
     while True:
         try:

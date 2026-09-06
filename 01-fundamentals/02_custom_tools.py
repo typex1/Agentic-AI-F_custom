@@ -4,27 +4,23 @@
 Demonstrates:
   - Creating tools from plain Python functions
   - The agent autonomously choosing which tool(s) to use
-  - Combining built-in tools (calculator, shell) with custom tools
+  - Combining built-in tools (calculator, bash) with custom tools
   - Direct tool invocation bypassing the agent
 
 The @tool decorator inspects your function's signature, docstring, and type
 hints to generate the tool schema the model needs — zero boilerplate.
 
-NOTE: The `shell` tool executes real system commands. It normally prompts
-for confirmation; this demo sets BYPASS_TOOL_CONSENT=true to run unattended.
+NOTE: The `bash` tool (vended by strands-agents; replaces the deprecated
+`shell` tool removed in strands-agents-tools v0.9.0) executes real system
+commands and runs WITHOUT a confirmation prompt.
 """
 
 import warnings
 warnings.filterwarnings(action="ignore", message=r"datetime.datetime.utcnow")
 
-import os
-# The strands_tools `shell` tool asks for confirmation before running commands.
-# For this non-interactive demo we bypass that prompt. Remove this line in
-# production or when you want a human to approve each command.
-os.environ["BYPASS_TOOL_CONSENT"] = "true"
-
 from strands import Agent, tool
-from strands_tools import calculator, shell
+from strands.vended_tools import bash
+from strands_tools import calculator
 from ddgs import DDGS
 
 
@@ -105,10 +101,10 @@ def web_search(query: str, max_results: int = 3) -> str:
 # --- Create agent with multiple tools ---
 agent = Agent(
     model="amazon.nova-lite-v1:0",
-    tools=[calculator, unit_converter, word_stats, web_search, shell],
+    tools=[calculator, unit_converter, word_stats, web_search, bash],
     system_prompt=(
         "You are a helpful assistant with access to a calculator, unit converter, "
-        "word statistics tool, web search, and a shell tool for running system commands."
+        "word statistics tool, web search, and a bash tool for running system commands."
     ),
     callback_handler=None,
 )
@@ -125,7 +121,7 @@ print(f"Q: Word stats\nA: {response}\n")
 response = agent("Search the web for 'Strands Agents SDK' and summarize what it is.")
 print(f"Q: Web search for Strands Agents SDK\nA: {response}\n")
 
-response = agent("Use the shell tool to show the current date and the current working directory.")
+response = agent("Use the bash tool to show the current date and the current working directory.")
 print(f"Q: Shell - date and working directory\nA: {response}\n")
 
 # --- Direct tool invocation (bypasses agent reasoning) ---
