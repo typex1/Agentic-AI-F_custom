@@ -37,8 +37,9 @@ from pydantic import BaseModel, Field
 from strands import Agent
 from strands.models import BedrockModel
 
-# Data lives one level up so students can build their own solution against it.
-DATA_DIR = Path(__file__).parent.parent / "data"
+# Data lives in the task's data folder (exercises/tasks/06_customer_support_tickets_data/)
+# so students build their own solution against the same files.
+DATA_DIR = Path(__file__).parent.parent.parent / "tasks" / "06_customer_support_tickets_data" / "data"
 
 MODEL_ID = "amazon.nova-lite-v1:0"  # the only model permitted in this environment
 AWS_REGION = "us-east-1"
