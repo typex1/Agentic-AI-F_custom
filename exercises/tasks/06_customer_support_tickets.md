@@ -1,9 +1,32 @@
-# Task: Customer support ticket resolution — all four patterns in one workflow
+# Task: Customer support ticket resolution — all four patterns in one workflow (capstone)
 
 Build an agentic workflow with the **Strands Agents SDK** that resolves the
-customer request below by combining all four agent workflow patterns —
-**Chaining, Parallelization, Orchestration, Routing** — as described in
-[`README.md`](README.md).
+customer request below by combining all four agent workflow patterns:
+**Chaining, Parallelization, Orchestration, Routing**.
+
+This is the capstone exercise — it assumes you have completed task sheets
+01–05. Working materials (data generator + mock backend data) live in
+[`06_customer_support_tickets_data/`](06_customer_support_tickets_data/).
+
+## Why this exercise: genuine pattern integration
+
+The four patterns don't run side by side — they operate *within* one workflow:
+
+- **Orchestration** doesn't just coordinate — it creates a plan to handle
+  multiple customer goals simultaneously.
+- **Routing** determines the workflow path based on case complexity,
+  directly affecting which chain executes.
+- **Chaining** provides overall structure, while **parallelization** happens
+  *inside* the assess-situation step — four backend systems are queried
+  simultaneously without breaking the sequential flow.
+- When orchestration analyzes the parallel results and discovers VIP status,
+  it triggers routing to the premium path, which activates a completely
+  different chain.
+
+The customer should experience one smooth interaction; behind the scenes all
+four patterns coordinate to resolve multiple issues efficiently. That
+integration is what makes agentic systems intelligent rather than just
+automated.
 
 ## The canonical request
 
@@ -28,6 +51,7 @@ real). Your solution must handle at least these three routes:
 ## Setup
 
 ```bash
+cd 06_customer_support_tickets_data
 python generate_data.py     # creates data/ — run it again anytime to RESET
 ```
 
@@ -42,17 +66,20 @@ This gives you four JSON files, one per mock backend system:
 
 Model: `amazon.nova-lite-v1:0` (the only one permitted in this environment).
 
-## Requirements (mapped to the README steps)
+## Requirements — the four steps
 
 1. **Step 1 — Assess situation** *(Chaining + Parallelization)*:
-   query all four systems for the customer/order **concurrently**.
+   query all four systems for the customer/order **concurrently**:
+   customer status, order tracking, inventory, refund eligibility.
 2. **Step 2 — Analyze results** *(Orchestration)*: one agent combines the
    four results with the customer's goals and decides how to handle the case.
 3. **Step 3 — Select path** *(Routing)*: the case is dispatched to one of the
    three resolution paths based on that decision.
 4. **Step 4 — Execute resolution** *(Chaining)*: the selected chain runs its
    actions **in order** and actually updates the JSON files (e.g. append the
-   refund request, decrement stock, add the replacement order).
+   refund request, decrement stock, add the replacement order). For the VIP
+   premium path: approve refund → process payment immediately → create
+   express replacement order → provide tracking link.
 5. Finish with **one** customer-facing reply — the customer should experience
    a single smooth interaction, not four patterns.
 
@@ -83,11 +110,21 @@ Model: `amazon.nova-lite-v1:0` (the only one permitted in this environment).
 
 ## Stuck? Use the peek ladder — in this order
 
-1. **Compare behavior**: [`code/sample_output.md`](code/sample_output.md)
+The reference solution lives in
+[`../solutions/06_customer_support_tickets/`](../solutions/06_customer_support_tickets/).
+
+1. **Compare behavior**:
+   [`sample_output.md`](../solutions/06_customer_support_tickets/sample_output.md)
    shows verified transcripts for all three routes and the data mutations to
    expect — check your output against them without reading any code.
 2. **Re-read the hints** above; each names the exact SDK feature to reach for.
-3. **Peek at the code**: [`code/solution_code.py`](code/solution_code.py) — one
-   file, sections labeled Step 0–4 with the pattern named at each point.
+3. **Peek at the code**:
+   [`solution_code.py`](../solutions/06_customer_support_tickets/solution_code.py)
+   — one file, sections labeled Step 0–4 with the pattern named at each point.
 
 Remember: `python generate_data.py` resets the data between experiments.
+
+## 📖 Official documentation
+
+- [Multi-agent: Workflow](https://strandsagents.com/docs/user-guide/concepts/multi-agent/workflow/) — the workflow patterns (chaining, parallelization, orchestration, routing) this capstone combines
+- [Python Tools](https://strandsagents.com/docs/user-guide/concepts/tools/python-tools/) — custom tools for the ticket/refund data operations
