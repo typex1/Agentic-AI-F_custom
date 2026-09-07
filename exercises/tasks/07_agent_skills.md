@@ -25,3 +25,8 @@ open-source frontend-design skill).
 ## 📖 Official documentation
 
 - [Agent Skills plugin](https://strandsagents.com/docs/user-guide/concepts/plugins/skills/) — `AgentSkills`, SKILL.md format, progressive disclosure
+
+## Skill examples, for inspiration
+
+- Matt Pocock's collection on GitHub: https://github.com/mattpocock/skills/tree/main/skills
+- For inspiration, you could check how Hermes Agent is even able to create agent skills dynamically: https://www.youtube.com/watch?v=wLB0EwEPWFo
