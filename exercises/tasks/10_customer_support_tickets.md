@@ -4,8 +4,8 @@ Build an agentic workflow with the **Strands Agents SDK** that resolves the
 customer request below by combining all four agent workflow patterns:
 **Chaining, Parallelization, Orchestration, Routing**.
 
-This is the capstone exercise — it assumes you have completed task sheets
-01–05. Working materials (data generator + mock backend data) live in
+This is the capstone exercise — it assumes you have completed tasks
+01–09. Working materials (data generator + mock backend data) live in
 [`10_customer_support_tickets_data/`](10_customer_support_tickets_data/).
 
 ## Why this exercise: genuine pattern integration
