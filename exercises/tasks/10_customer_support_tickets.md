@@ -28,6 +28,81 @@ four patterns coordinate to resolve multiple issues efficiently. That
 integration is what makes agentic systems intelligent rather than just
 automated.
 
+## The intended flow
+
+```mermaid
+flowchart TD
+    REQ(["Customer request<br/>free text"])
+
+    subgraph S0["Step 0 — INTAKE · LLM + structured output"]
+        INTAKE["Intake agent<br/>→ customer_id, order_id, goals[]"]
+    end
+
+    subgraph S1["Step 1 — ASSESS SITUATION · CHAINING + PARALLELIZATION (plain Python)"]
+        FAN{{"asyncio.gather — fan-out"}}
+        CRM["check_customer_status<br/>CRM · customers.json"]
+        TRK["check_order_tracking<br/>Orders · orders.json"]
+        INV["check_inventory<br/>Warehouse · inventory.json"]
+        REF["check_refund_eligibility<br/>Billing · refunds.json"]
+        JOIN{{"fan-in — 4 results"}}
+        FAN --> CRM & TRK & INV & REF --> JOIN
+    end
+
+    subgraph S2["Step 2 — ANALYZE RESULTS · ORCHESTRATION (LLM)"]
+        ORCH["Orchestrator agent<br/>4 results + customer goals<br/>→ SituationAnalysis<br/>recommended_path: premium | standard | escalation"]
+    end
+
+    subgraph S3["Step 3 — SELECT PATH · ROUTING (plain Python)"]
+        ROUTE{recommended_path?}
+    end
+
+    subgraph S4["Step 4 — EXECUTE RESOLUTION · CHAINING (plain Python)"]
+        PREM["premium chain"]
+        STD["standard chain"]
+        ESC["escalation chain"]
+    end
+
+    REPLY["Reply agent · LLM<br/>ONE customer-facing message"]
+    OUT(["Customer reply"])
+
+    REQ --> INTAKE --> FAN
+    JOIN --> ORCH --> ROUTE
+    ROUTE -- "VIP + valid claim" --> PREM
+    ROUTE -- "valid claim, not VIP" --> STD
+    ROUTE -- "invalid / suspicious" --> ESC
+    PREM & STD & ESC --> REPLY --> OUT
+```
+
+Read the subgraph labels: only three boxes are LLM calls (intake,
+orchestration, final reply). Everything else — the parallel lookups, the
+route decision, the resolution chains — is deterministic Python operating on
+the JSON files. That split is what makes the workflow reliable.
+
+## The three resolution chains (Step 4)
+
+Each chain is an **ordered** sequence — order matters (no payment before the
+refund is approved):
+
+```mermaid
+flowchart LR
+    subgraph P["premium — VIP + valid claim"]
+        direction TB
+        P1["approve refund"] --> P2["process payment<br/>immediately"] --> P3["create EXPRESS<br/>replacement order"] --> P4["provide tracking link"]
+    end
+    subgraph S["standard — valid claim, not VIP"]
+        direction TB
+        S1["queue refund<br/>(3-5 business days)"] --> S2["offer reorder<br/>if in stock, standard shipping"]
+    end
+    subgraph E["escalation — invalid / suspicious"]
+        direction TB
+        E1["create human-review ticket<br/>(with reason)"] --> E2["notify customer<br/>(no automatic refund)"]
+    end
+```
+
+Every action reads, modifies, and writes the JSON files under `data/`
+(append the refund request, decrement stock, add the replacement order…),
+so you can verify the outcome on disk.
+
 ## The canonical request
 
 > "Customer C001 here about order O1001: My order never arrived, I need a
