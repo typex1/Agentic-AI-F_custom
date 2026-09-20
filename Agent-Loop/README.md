@@ -63,6 +63,22 @@ Iterations 1–4 end with stop reason **tool use** (the loop continues);
 iteration 5 ends with **end turn** (the loop exits). The model chose each
 step autonomously based on what it had learned so far.
 
+### Where does each decision come from?
+
+The yellow notes look like the model "just knowing" things — it doesn't.
+Every decision blends two sources:
+
+| Source | What it contributes | Example from the notes |
+|---|---|---|
+| **Tool results** (context, from the loop) | Facts about *this* codebase — never available from training | the directory listing; the application code showing DB queries; the 12 call sites |
+| **Model training** (knowledge) | General expertise and judgment | what an entry point looks like; that string-concatenated SQL is the classic injection pattern; that 12 call sites is enough evidence to stop |
+
+"Notices DB queries → suspects SQL injection" is the moment the two meet: the
+model *sees* the queries only because a tool just returned the code, and it
+*recognizes the risk* only because of its training. Neither source alone
+solves the task. That division of labor — **tools bring the facts, the model
+brings the expertise and decides the next step** — is the agent loop.
+
 ## What the model sees each iteration
 
 The conversation history grows with every turn — that is the model's working
