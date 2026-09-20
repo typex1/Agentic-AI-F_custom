@@ -12,12 +12,10 @@ From "Hello World" to multi-agent swarms, RAG pipelines, and production deployme
 │  (basics, tools,       (MCP servers,           (RAG, multi-agent,       │
 │   logging, output)      agent skills)           graphs, swarms)         │
 │                                                                         │
-│                    →   04-production       →   05-evaluation            │
-│                        (sessions, context       (testing, quality)      │
-│                         management)                                     │
-│                                                                         │
-│                    →   06-cv-match  (showcase: structured output +      │
-│                        pydantic deep-dive + a realistic workflow)       │
+│                    →   04-production       →   06-cv-match             │
+│                        (sessions, context       (showcase: structured   │
+│                         management)              output + pydantic +    │
+│                                                  a realistic workflow)  │
 └─────────────────────────────────────────────────────────────────────────┘
          exercises/  — hands-on practice with guided tasks
          reference/  — full 14-module video course + official samples
@@ -31,8 +29,7 @@ From "Hello World" to multi-agent swarms, RAG pipelines, and production deployme
 | [02-tools-and-mcp](02-tools-and-mcp/) | MCP integration, agent skills | 2 files |
 | [03-advanced-patterns](03-advanced-patterns/) | RAG, multi-agent, graphs, swarms | 5 files |
 | [04-production](04-production/) | Session persistence, conversation management | 2 files |
-| [05-evaluation](05-evaluation/) | Agent evaluation techniques and reports | reports |
-| [06-cv-match](06-cv-match/) | Showcase: CV ↔ job-description matching — two structured-output agents + deterministic scoring; includes a pydantic deep-dive | project |
+| [06-cv-match](06-cv-match/) | Showcase: CV ↔ job-description matching — two structured-output agents + deterministic scoring; includes a pure-pydantic intro and a deep-dive | project |
 
 ## 🏋️ Exercises
 

@@ -5,16 +5,13 @@ This folder contains two small scripts that separate the two halves of
 
 | File | Calls an LLM? | What it shows |
 |---|---|---|
-| `structured_output.py` | **Yes** (Amazon Bedrock) | `agent(prompt, structured_output_model=PersonInfo)` returns a validated `PersonInfo` |
-| `pydantic_only.py` | **No** | What pydantic itself does: coercion, `ValidationError`, `model_json_schema()` |
+| [`../../01-fundamentals/04_structured_output.py`](../../01-fundamentals/04_structured_output.py) | **Yes** (Amazon Bedrock) | `agent(prompt, structured_output_model=...)` returns a validated pydantic object — the Strands side |
+| `pydantic_only.py` | **No** | What pydantic itself does: coercion, `ValidationError`, `model_json_schema()` — the pydantic side |
 
-Prefer a guided walk-through? Both scripts also exist as **Jupyter notebooks** with
-the code split into small chunks, each preceded by an explanation:
-[`pydantic_only.ipynb`](pydantic_only.ipynb) and
-[`structured_output.ipynb`](structured_output.ipynb) (the latter adds a final cell
-that inspects the agent's message history to show the `toolUse` for `PersonInfo`).
-The committed notebooks include real outputs, so you can read them on GitHub
-without running anything.
+**New to pydantic (or any validation library)?** Start with `pydantic_only.py`, or
+better its notebook version [`pydantic_only.ipynb`](pydantic_only.ipynb): the same
+code split into small chunks, each preceded by an explanation, committed with real
+outputs so you can read it on GitHub without running anything.
 
 The rest of this document answers the question the official docs skip over:
 
@@ -219,7 +216,7 @@ flowchart TD
 ## 5. What pydantic does vs. what Strands does
 
 Green steps are pure pydantic (everything `pydantic_only.py` demonstrates).
-Blue steps are Strands plumbing (what `structured_output.py` adds on top).
+Blue steps are Strands plumbing (what `04_structured_output.py` adds on top of pure pydantic).
 
 ```mermaid
 flowchart TB
@@ -245,7 +242,7 @@ flowchart TB
 
 Mental model for students: **`structured_output_model` = schema-to-tool
 converter + `Model(**tool_args)`.** If you understand `pydantic_only.py`, you
-already understand the pydantic half of `structured_output.py`. The other half
+already understand the pydantic half of structured output. The other half
 is plain tool calling.
 
 ---
@@ -253,7 +250,7 @@ is plain tool calling.
 ## 6. Caveat: provider-specific overrides
 
 The path above is the generic one and is what Amazon Bedrock uses (the Nova
-model in `structured_output.py` goes through it). Some model providers override
+model passed as `structured_output_model` goes through it). Some model providers override
 `Model.structured_output()` to use a native JSON-schema mode instead of a
 forced tool call – for example `models/llamacpp.py` and `models/ollama.py`.
 The pydantic side is identical in every case: `model_json_schema()` in,
@@ -265,11 +262,11 @@ constructor and `ValidationError` out.
 
 ```bash
 # From 06-cv-match/
-../.venv/bin/python pydantic/pydantic_only.py       # free, instant, no credentials
-../.venv/bin/python pydantic/structured_output.py   # needs AWS credentials, calls Bedrock
+../.venv/bin/python pydantic/pydantic_only.py                     # free, instant, no credentials
+../.venv/bin/python ../01-fundamentals/04_structured_output.py     # needs AWS credentials, calls Bedrock
 ```
 
-To watch the tool call happen, run `structured_output.py` and look for
+To watch the tool call happen, run `04_structured_output.py` and look for
 `Tool #1: PersonInfo` in the output. To see the retry loop, change
 `age: int` to something stricter such as `age: int = Field(ge=0, le=120)` and
 feed the agent a prompt with an impossible age. The model will get a tool error

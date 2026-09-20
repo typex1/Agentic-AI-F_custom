@@ -35,6 +35,16 @@ The full 14-module video course by Morgan Willis (AWS). Contains both the origin
 
 Examples from the [strands-agents/samples](https://github.com/strands-agents/samples) repo, including a `python_lab2_adjusted/` variant with local modifications.
 
+### Agent Evaluation
+
+Evaluating an agent goes beyond "did it answer correctly?" — trajectory (right tools, right order), output quality, robustness, and cost/latency all matter. The course module 13 has complete runnable examples (LLM-as-a-judge, trajectory validation, experiment generators):
+
+→ [`building-with-strands-course/samples/13-evals/`](building-with-strands-course/samples/13-evals/) — requires `strands-agents-evals` (already in `requirements.txt`)
+
+### Research Reports
+
+**Path:** `reports/` — background writeups comparing agent frameworks and their capabilities.
+
 ### Original Strands-Agents README
 
 **Path:** `strands-agents-original-README.md` — the demo README before restructuring.
