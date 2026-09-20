@@ -43,6 +43,7 @@ From "Hello World" to multi-agent swarms, RAG pipelines, and production deployme
 |----------|-------------|
 | [Building with Strands Course](reference/building-with-strands-course/) | 14-module video course (Morgan Willis, AWS) |
 | [Official Strands Examples](reference/strands-official-examples/) | Samples from the strands-agents repo |
+| [Agent Loop visualized](Agent-Loop/) | Mermaid diagrams of the Strands agent loop and its concrete example |
 
 ## 🆚 Framework Comparison
 
