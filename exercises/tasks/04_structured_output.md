@@ -19,6 +19,8 @@ This technique is the glue of every larger workflow: task 10 (the capstone)
 uses it to turn a customer request into routable, typed data.
 
 Demo to study first: `01-fundamentals/04_structured_output.py`.
+Want to know *how* Strands applies your model to the LLM output (spoiler: it
+is a tool call, not JSON parsing)? Read `06-cv-match/pydantic/README.md`.
 
 ## 📖 Official documentation
 

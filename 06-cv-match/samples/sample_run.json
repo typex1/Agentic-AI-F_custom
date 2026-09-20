@@ -1,0 +1,500 @@
+{
+  "inputs": {
+    "cv": "samples/CV_AI_engineer.txt",
+    "job_description": "samples/Job_Description_AI_engineer.txt",
+    "notes": ""
+  },
+  "requirements": {
+    "role_title": "Senior AI Engineer - Generative AI Platform",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "Master's degree in Computer Science, Mathematics, Physics or a comparable field, or a Bachelor's degree with equivalent practical experience",
+        "category": "education",
+        "priority": "must",
+        "weight": 3,
+        "source": "Master's degree in Computer Science, Mathematics, Physics or a comparable field, or a Bachelor's degree with equivalent practical experience."
+      },
+      {
+        "id": "R2",
+        "text": "At least 5 years of professional software engineering experience",
+        "category": "experience",
+        "priority": "must",
+        "weight": 5,
+        "source": "At least 5 years of professional software engineering experience, of which at least 2 years building production applications on top of large language models."
+      },
+      {
+        "id": "R3",
+        "text": "At least 2 years of experience building production applications on top of large language models (LLMs)",
+        "category": "experience",
+        "priority": "must",
+        "weight": 5,
+        "source": "At least 5 years of professional software engineering experience, of which at least 2 years building production applications on top of large language models."
+      },
+      {
+        "id": "R4",
+        "text": "Expert-level Python, including typing, async, packaging, and testing with pytest",
+        "category": "hard_skill",
+        "priority": "must",
+        "weight": 5,
+        "source": "Expert-level Python (typing, async, packaging, testing with pytest)."
+      },
+      {
+        "id": "R5",
+        "text": "Hands-on experience with Amazon Bedrock or Azure OpenAI, including deploying and monitoring LLM workloads in production",
+        "category": "hard_skill",
+        "priority": "must",
+        "weight": 5,
+        "source": "Hands-on experience with Amazon Bedrock or Azure OpenAI, including deploying and monitoring LLM workloads in production."
+      },
+      {
+        "id": "R6",
+        "text": "Solid experience with vector databases (e.g. OpenSearch, pgvector, Pinecone) and embedding models",
+        "category": "hard_skill",
+        "priority": "must",
+        "weight": 4,
+        "source": "Solid experience with vector databases (e.g. OpenSearch, pgvector, Pinecone) and embedding models."
+      },
+      {
+        "id": "R7",
+        "text": "Proven experience designing and running LLM evaluations (e.g. RAGAS, custom judges, human labelling)",
+        "category": "hard_skill",
+        "priority": "must",
+        "weight": 4,
+        "source": "Proven experience designing and running LLM evaluations (RAGAS, custom judges, human labelling)."
+      },
+      {
+        "id": "R8",
+        "text": "Infrastructure as code with Terraform or AWS CDK",
+        "category": "hard_skill",
+        "priority": "must",
+        "weight": 3,
+        "source": "Infrastructure as code with Terraform or AWS CDK and CI/CD with GitHub Actions or GitLab CI."
+      },
+      {
+        "id": "R9",
+        "text": "CI/CD pipeline experience with GitHub Actions or GitLab CI",
+        "category": "hard_skill",
+        "priority": "must",
+        "weight": 3,
+        "source": "Infrastructure as code with Terraform or AWS CDK and CI/CD with GitHub Actions or GitLab CI."
+      },
+      {
+        "id": "R10",
+        "text": "Fluent German (C1 or higher)",
+        "category": "language",
+        "priority": "must",
+        "weight": 4,
+        "source": "Fluent German (C1 or higher) and fluent English (C1 or higher); most stakeholder communication is in German."
+      },
+      {
+        "id": "R11",
+        "text": "Fluent English (C1 or higher)",
+        "category": "language",
+        "priority": "must",
+        "weight": 4,
+        "source": "Fluent German (C1 or higher) and fluent English (C1 or higher); most stakeholder communication is in German."
+      },
+      {
+        "id": "R12",
+        "text": "Willingness to work on-site in Munich two days per week",
+        "category": "other",
+        "priority": "must",
+        "weight": 3,
+        "source": "Willingness to be on-site in Munich two days per week."
+      },
+      {
+        "id": "R13",
+        "text": "Experience with agent frameworks such as LangGraph, Strands Agents or Semantic Kernel",
+        "category": "hard_skill",
+        "priority": "nice",
+        "weight": 3,
+        "source": "Experience with agent frameworks such as LangGraph, Strands Agents or Semantic Kernel."
+      },
+      {
+        "id": "R14",
+        "text": "Experience with Kubernetes (EKS) and container orchestration",
+        "category": "hard_skill",
+        "priority": "nice",
+        "weight": 2,
+        "source": "Experience with Kubernetes (EKS) and container orchestration."
+      },
+      {
+        "id": "R15",
+        "text": "Knowledge of the Model Context Protocol (MCP) and building MCP servers",
+        "category": "hard_skill",
+        "priority": "nice",
+        "weight": 2,
+        "source": "Knowledge of the Model Context Protocol (MCP) and building MCP servers."
+      },
+      {
+        "id": "R16",
+        "text": "Experience fine-tuning open-weight models (LoRA, QLoRA) with PyTorch or Hugging Face",
+        "category": "hard_skill",
+        "priority": "nice",
+        "weight": 2,
+        "source": "Experience fine-tuning open-weight models (LoRA, QLoRA) with PyTorch or Hugging Face."
+      },
+      {
+        "id": "R17",
+        "text": "Prior experience in a regulated industry (automotive, finance, healthcare)",
+        "category": "experience",
+        "priority": "nice",
+        "weight": 2,
+        "source": "Prior experience in a regulated industry (automotive, finance, healthcare)."
+      },
+      {
+        "id": "R18",
+        "text": "AWS certification (Solutions Architect Associate or Machine Learning Specialty)",
+        "category": "certification",
+        "priority": "nice",
+        "weight": 2,
+        "source": "AWS certification (Solutions Architect Associate or Machine Learning Specialty)."
+      },
+      {
+        "id": "R19",
+        "text": "Familiarity with TypeScript for internal tooling",
+        "category": "hard_skill",
+        "priority": "nice",
+        "weight": 1,
+        "source": "Familiarity with TypeScript for internal tooling."
+      }
+    ]
+  },
+  "assessment": {
+    "candidate_name": "Jonas Bergmann",
+    "assessments": [
+      {
+        "requirement_id": "R1",
+        "fulfilment": 3,
+        "evidence": "M.Sc. Computer Science, Technical University of Munich | 2016 - 2018. Thesis: \"Neural Information Retrieval for Technical Documentation\" (grade 1.3)",
+        "comment": "Holds a Master's degree in Computer Science from a well-regarded university, fully satisfying this requirement."
+      },
+      {
+        "requirement_id": "R2",
+        "fulfilment": 3,
+        "evidence": "Software engineer with 7 years of professional experience [...] Junior Developer Brightpath Digital 09/2018 - 07/2019 / Software Engineer Quantell Systems 08/2019 - 03/2023 / Senior Software Engineer Helios Mobility 04/2023 - today",
+        "comment": "Seven years of continuous professional software engineering experience across three roles is clearly evidenced."
+      },
+      {
+        "requirement_id": "R3",
+        "fulfilment": 3,
+        "evidence": "the last 3 years focused on building and operating LLM-based products [...] Senior Software Engineer, AI Products, Helios Mobility SE [...] 04/2023 - today",
+        "comment": "Over two years (April 2023 to present) of hands-on production LLM work is explicitly stated and corroborated by detailed project descriptions."
+      },
+      {
+        "requirement_id": "R4",
+        "fulfilment": 3,
+        "evidence": "Python (expert; typing, asyncio, Poetry, pytest) [...] Introduced typed Python (mypy strict mode) and packaging standards (Poetry) across the team [...] Developed a FastAPI-based internal API layer with full pytest coverage (about 90 %) and async endpoints.",
+        "comment": "Expert-level Python with explicit coverage of typing, async, packaging (Poetry), and pytest is thoroughly evidenced across the CV."
+      },
+      {
+        "requirement_id": "R5",
+        "fulfilment": 3,
+        "evidence": "Built tool-using agents with Strands Agents and Amazon Bedrock (Claude models) [...] Implemented Amazon Bedrock Guardrails [...] observability with CloudWatch and Langfuse [...] AWS (Bedrock, ECS Fargate, Lambda, OpenSearch Serverless, RDS, CloudWatch)",
+        "comment": "Extensive, named production use of Amazon Bedrock including deployment, guardrails, and monitoring is explicitly described."
+      },
+      {
+        "requirement_id": "R6",
+        "fulfilment": 3,
+        "evidence": "Designed the retrieval stack: OpenSearch Serverless with hybrid (BM25 + kNN) search, Amazon Titan and Cohere embeddings [...] RDS PostgreSQL with pgvector for similarity search on sensor signatures.",
+        "comment": "Direct production experience with both OpenSearch and pgvector, plus multiple embedding models, fully satisfies this requirement."
+      },
+      {
+        "requirement_id": "R7",
+        "fulfilment": 3,
+        "evidence": "Set up the LLM evaluation pipeline: curated 1,800-item golden dataset, RAGAS metrics (faithfulness, context precision), LLM-as-a-judge scoring, and nightly regression runs in GitHub Actions that block prompt or model changes on metric drops.",
+        "comment": "Comprehensive, production-grade LLM evaluation experience covering RAGAS, custom LLM judges, and automated regression gating is explicitly described."
+      },
+      {
+        "requirement_id": "R8",
+        "fulfilment": 3,
+        "evidence": "Infrastructure as code with AWS CDK (TypeScript) for all services [...] managed deployments with Terraform.",
+        "comment": "Both AWS CDK and Terraform are explicitly mentioned as tools used in production across two different roles."
+      },
+      {
+        "requirement_id": "R9",
+        "fulfilment": 3,
+        "evidence": "CI/CD with GitHub Actions [...] nightly regression runs in GitHub Actions that block prompt or model changes on metric drops.",
+        "comment": "GitHub Actions is used for both standard CI/CD and automated LLM evaluation gating, providing strong evidence."
+      },
+      {
+        "requirement_id": "R10",
+        "fulfilment": 1,
+        "evidence": "German: B2 (Goethe-Zertifikat B2, 2022; currently attending a C1 course)",
+        "comment": "German is only at B2 level (certified); the candidate is working towards C1 but has not yet achieved it, falling short of the C1 requirement."
+      },
+      {
+        "requirement_id": "R11",
+        "fulfilment": 3,
+        "evidence": "English: C2 (native-level, grew up bilingual)",
+        "comment": "English is stated as C2/native-level, well above the C1 threshold required."
+      },
+      {
+        "requirement_id": "R12",
+        "fulfilment": 2,
+        "evidence": "Munich area, Germany [...] Open to hybrid work in Munich.",
+        "comment": "The candidate is based in the Munich area and explicitly open to hybrid work in Munich, making two days on-site very plausible, though the exact two-day commitment is not explicitly confirmed."
+      },
+      {
+        "requirement_id": "R13",
+        "fulfilment": 3,
+        "evidence": "Built tool-using agents with Strands Agents and Amazon Bedrock (Claude models) for warranty-claim triage [...] LLM and ML: Amazon Bedrock, Claude and Titan models, Strands Agents, LangChain",
+        "comment": "Strands Agents is explicitly used in a production agent system, and LangChain is also listed, fully meeting this requirement."
+      },
+      {
+        "requirement_id": "R14",
+        "fulfilment": 1,
+        "evidence": "AWS (Bedrock, ECS Fargate, Lambda, OpenSearch Serverless, RDS, CloudWatch) [...] Containerised services with Docker",
+        "comment": "Experience is with ECS Fargate (container orchestration) and Docker, but no mention of Kubernetes or EKS specifically."
+      },
+      {
+        "requirement_id": "R15",
+        "fulfilment": 0,
+        "evidence": "",
+        "comment": "Model Context Protocol (MCP) and building MCP servers are not mentioned anywhere in the CV."
+      },
+      {
+        "requirement_id": "R16",
+        "fulfilment": 1,
+        "evidence": "Hugging Face Transformers (inference)",
+        "comment": "Hugging Face is listed but only for inference; no mention of fine-tuning, LoRA, QLoRA, or PyTorch training workflows."
+      },
+      {
+        "requirement_id": "R17",
+        "fulfilment": 3,
+        "evidence": "Helios Mobility SE (automotive supplier), Stuttgart [...] Implemented Amazon Bedrock Guardrails (PII masking, denied topics) and structured audit logging to satisfy the group's GDPR requirements.",
+        "comment": "The candidate has direct experience in the automotive industry with explicit compliance and regulatory considerations (GDPR, audit logging)."
+      },
+      {
+        "requirement_id": "R18",
+        "fulfilment": 2,
+        "evidence": "AWS Certified Solutions Architect - Associate (2022) / AWS Certified Developer - Associate (2021)",
+        "comment": "Holds the AWS Solutions Architect Associate certification (one of the two named certifications), but not the Machine Learning Specialty."
+      },
+      {
+        "requirement_id": "R19",
+        "fulfilment": 3,
+        "evidence": "TypeScript (good) [...] Infrastructure as code with AWS CDK (TypeScript) for all services [...] Junior Developer Brightpath Digital [...] TypeScript (React) for e-commerce clients.",
+        "comment": "TypeScript is used for AWS CDK infrastructure code and was also used in a prior full-stack role, providing solid practical familiarity."
+      }
+    ],
+    "additional_strengths": [
+      "Published speaker at PyCon DE 2025 on enterprise RAG evaluation, demonstrating thought leadership and community engagement.",
+      "Production experience with Langfuse for LLM observability and tracing, a valuable operational skill not mentioned in the job description.",
+      "GDPR compliance implementation (PII masking via Bedrock Guardrails, structured audit logging) in a large enterprise context.",
+      "Experience with large-scale data engineering (Apache Airflow, Apache Spark on EMR) feeding 30+ manufacturing plants, broadening platform skills.",
+      "Technical mentoring experience (working student mentorship, weekly code review sessions), indicating seniority and team-building capability."
+    ]
+  },
+  "score": {
+    "overall_score": 85,
+    "must_have_coverage": 92,
+    "must_have_missing": [
+      "Fluent German (C1 or higher)"
+    ],
+    "verdict": "review",
+    "category_scores": {
+      "certification": 67,
+      "education": 100,
+      "experience": 100,
+      "hard_skill": 86,
+      "language": 67,
+      "other": 67
+    },
+    "matrix": [
+      {
+        "id": "R1",
+        "requirement": "Master's degree in Computer Science, Mathematics, Physics or a comparable field, or a Bachelor's degree with equivalent practical experience",
+        "category": "education",
+        "priority": "must",
+        "weight": 3,
+        "fulfilment": 3,
+        "evidence": "M.Sc. Computer Science, Technical University of Munich | 2016 - 2018. Thesis: \"Neural Information Retrieval for Technical Documentation\" (grade 1.3)",
+        "comment": "Holds a Master's degree in Computer Science from a well-regarded university, fully satisfying this requirement."
+      },
+      {
+        "id": "R2",
+        "requirement": "At least 5 years of professional software engineering experience",
+        "category": "experience",
+        "priority": "must",
+        "weight": 5,
+        "fulfilment": 3,
+        "evidence": "Software engineer with 7 years of professional experience [...] Junior Developer Brightpath Digital 09/2018 - 07/2019 / Software Engineer Quantell Systems 08/2019 - 03/2023 / Senior Software Engineer Helios Mobility 04/2023 - today",
+        "comment": "Seven years of continuous professional software engineering experience across three roles is clearly evidenced."
+      },
+      {
+        "id": "R3",
+        "requirement": "At least 2 years of experience building production applications on top of large language models (LLMs)",
+        "category": "experience",
+        "priority": "must",
+        "weight": 5,
+        "fulfilment": 3,
+        "evidence": "the last 3 years focused on building and operating LLM-based products [...] Senior Software Engineer, AI Products, Helios Mobility SE [...] 04/2023 - today",
+        "comment": "Over two years (April 2023 to present) of hands-on production LLM work is explicitly stated and corroborated by detailed project descriptions."
+      },
+      {
+        "id": "R4",
+        "requirement": "Expert-level Python, including typing, async, packaging, and testing with pytest",
+        "category": "hard_skill",
+        "priority": "must",
+        "weight": 5,
+        "fulfilment": 3,
+        "evidence": "Python (expert; typing, asyncio, Poetry, pytest) [...] Introduced typed Python (mypy strict mode) and packaging standards (Poetry) across the team [...] Developed a FastAPI-based internal API layer with full pytest coverage (about 90 %) and async endpoints.",
+        "comment": "Expert-level Python with explicit coverage of typing, async, packaging (Poetry), and pytest is thoroughly evidenced across the CV."
+      },
+      {
+        "id": "R5",
+        "requirement": "Hands-on experience with Amazon Bedrock or Azure OpenAI, including deploying and monitoring LLM workloads in production",
+        "category": "hard_skill",
+        "priority": "must",
+        "weight": 5,
+        "fulfilment": 3,
+        "evidence": "Built tool-using agents with Strands Agents and Amazon Bedrock (Claude models) [...] Implemented Amazon Bedrock Guardrails [...] observability with CloudWatch and Langfuse [...] AWS (Bedrock, ECS Fargate, Lambda, OpenSearch Serverless, RDS, CloudWatch)",
+        "comment": "Extensive, named production use of Amazon Bedrock including deployment, guardrails, and monitoring is explicitly described."
+      },
+      {
+        "id": "R6",
+        "requirement": "Solid experience with vector databases (e.g. OpenSearch, pgvector, Pinecone) and embedding models",
+        "category": "hard_skill",
+        "priority": "must",
+        "weight": 4,
+        "fulfilment": 3,
+        "evidence": "Designed the retrieval stack: OpenSearch Serverless with hybrid (BM25 + kNN) search, Amazon Titan and Cohere embeddings [...] RDS PostgreSQL with pgvector for similarity search on sensor signatures.",
+        "comment": "Direct production experience with both OpenSearch and pgvector, plus multiple embedding models, fully satisfies this requirement."
+      },
+      {
+        "id": "R7",
+        "requirement": "Proven experience designing and running LLM evaluations (e.g. RAGAS, custom judges, human labelling)",
+        "category": "hard_skill",
+        "priority": "must",
+        "weight": 4,
+        "fulfilment": 3,
+        "evidence": "Set up the LLM evaluation pipeline: curated 1,800-item golden dataset, RAGAS metrics (faithfulness, context precision), LLM-as-a-judge scoring, and nightly regression runs in GitHub Actions that block prompt or model changes on metric drops.",
+        "comment": "Comprehensive, production-grade LLM evaluation experience covering RAGAS, custom LLM judges, and automated regression gating is explicitly described."
+      },
+      {
+        "id": "R8",
+        "requirement": "Infrastructure as code with Terraform or AWS CDK",
+        "category": "hard_skill",
+        "priority": "must",
+        "weight": 3,
+        "fulfilment": 3,
+        "evidence": "Infrastructure as code with AWS CDK (TypeScript) for all services [...] managed deployments with Terraform.",
+        "comment": "Both AWS CDK and Terraform are explicitly mentioned as tools used in production across two different roles."
+      },
+      {
+        "id": "R9",
+        "requirement": "CI/CD pipeline experience with GitHub Actions or GitLab CI",
+        "category": "hard_skill",
+        "priority": "must",
+        "weight": 3,
+        "fulfilment": 3,
+        "evidence": "CI/CD with GitHub Actions [...] nightly regression runs in GitHub Actions that block prompt or model changes on metric drops.",
+        "comment": "GitHub Actions is used for both standard CI/CD and automated LLM evaluation gating, providing strong evidence."
+      },
+      {
+        "id": "R10",
+        "requirement": "Fluent German (C1 or higher)",
+        "category": "language",
+        "priority": "must",
+        "weight": 4,
+        "fulfilment": 1,
+        "evidence": "German: B2 (Goethe-Zertifikat B2, 2022; currently attending a C1 course)",
+        "comment": "German is only at B2 level (certified); the candidate is working towards C1 but has not yet achieved it, falling short of the C1 requirement."
+      },
+      {
+        "id": "R11",
+        "requirement": "Fluent English (C1 or higher)",
+        "category": "language",
+        "priority": "must",
+        "weight": 4,
+        "fulfilment": 3,
+        "evidence": "English: C2 (native-level, grew up bilingual)",
+        "comment": "English is stated as C2/native-level, well above the C1 threshold required."
+      },
+      {
+        "id": "R12",
+        "requirement": "Willingness to work on-site in Munich two days per week",
+        "category": "other",
+        "priority": "must",
+        "weight": 3,
+        "fulfilment": 2,
+        "evidence": "Munich area, Germany [...] Open to hybrid work in Munich.",
+        "comment": "The candidate is based in the Munich area and explicitly open to hybrid work in Munich, making two days on-site very plausible, though the exact two-day commitment is not explicitly confirmed."
+      },
+      {
+        "id": "R13",
+        "requirement": "Experience with agent frameworks such as LangGraph, Strands Agents or Semantic Kernel",
+        "category": "hard_skill",
+        "priority": "nice",
+        "weight": 3,
+        "fulfilment": 3,
+        "evidence": "Built tool-using agents with Strands Agents and Amazon Bedrock (Claude models) for warranty-claim triage [...] LLM and ML: Amazon Bedrock, Claude and Titan models, Strands Agents, LangChain",
+        "comment": "Strands Agents is explicitly used in a production agent system, and LangChain is also listed, fully meeting this requirement."
+      },
+      {
+        "id": "R14",
+        "requirement": "Experience with Kubernetes (EKS) and container orchestration",
+        "category": "hard_skill",
+        "priority": "nice",
+        "weight": 2,
+        "fulfilment": 1,
+        "evidence": "AWS (Bedrock, ECS Fargate, Lambda, OpenSearch Serverless, RDS, CloudWatch) [...] Containerised services with Docker",
+        "comment": "Experience is with ECS Fargate (container orchestration) and Docker, but no mention of Kubernetes or EKS specifically."
+      },
+      {
+        "id": "R15",
+        "requirement": "Knowledge of the Model Context Protocol (MCP) and building MCP servers",
+        "category": "hard_skill",
+        "priority": "nice",
+        "weight": 2,
+        "fulfilment": 0,
+        "evidence": "",
+        "comment": "Model Context Protocol (MCP) and building MCP servers are not mentioned anywhere in the CV."
+      },
+      {
+        "id": "R16",
+        "requirement": "Experience fine-tuning open-weight models (LoRA, QLoRA) with PyTorch or Hugging Face",
+        "category": "hard_skill",
+        "priority": "nice",
+        "weight": 2,
+        "fulfilment": 1,
+        "evidence": "Hugging Face Transformers (inference)",
+        "comment": "Hugging Face is listed but only for inference; no mention of fine-tuning, LoRA, QLoRA, or PyTorch training workflows."
+      },
+      {
+        "id": "R17",
+        "requirement": "Prior experience in a regulated industry (automotive, finance, healthcare)",
+        "category": "experience",
+        "priority": "nice",
+        "weight": 2,
+        "fulfilment": 3,
+        "evidence": "Helios Mobility SE (automotive supplier), Stuttgart [...] Implemented Amazon Bedrock Guardrails (PII masking, denied topics) and structured audit logging to satisfy the group's GDPR requirements.",
+        "comment": "The candidate has direct experience in the automotive industry with explicit compliance and regulatory considerations (GDPR, audit logging)."
+      },
+      {
+        "id": "R18",
+        "requirement": "AWS certification (Solutions Architect Associate or Machine Learning Specialty)",
+        "category": "certification",
+        "priority": "nice",
+        "weight": 2,
+        "fulfilment": 2,
+        "evidence": "AWS Certified Solutions Architect - Associate (2022) / AWS Certified Developer - Associate (2021)",
+        "comment": "Holds the AWS Solutions Architect Associate certification (one of the two named certifications), but not the Machine Learning Specialty."
+      },
+      {
+        "id": "R19",
+        "requirement": "Familiarity with TypeScript for internal tooling",
+        "category": "hard_skill",
+        "priority": "nice",
+        "weight": 1,
+        "fulfilment": 3,
+        "evidence": "TypeScript (good) [...] Infrastructure as code with AWS CDK (TypeScript) for all services [...] Junior Developer Brightpath Digital [...] TypeScript (React) for e-commerce clients.",
+        "comment": "TypeScript is used for AWS CDK infrastructure code and was also used in a prior full-stack role, providing solid practical familiarity."
+      }
+    ],
+    "unassessed_ids": []
+  },
+  "report_md": "## CV Match: Jonas Bergmann → Senior AI Engineer - Generative AI Platform\n\n**Overall match: 85 %**  ·  Must-haves covered: 92 %  ·  Verdict: review\n\n### Missing must-haves\n- Fluent German (C1 or higher)\n\n### Scores by category\n- certification: 67 %\n- education: 100 %\n- experience: 100 %\n- hard_skill: 86 %\n- language: 67 %\n- other: 67 %\n\n### Requirement matrix\n| ID | Requirement | Category | Priority | Weight | Score | Evidence |\n|---|---|---|---|---|---|---|\n| R1 | Master's degree in Computer Science, Mathematics, Physics or a comparable field, or a Bachelor's degree with equivalent practical experience | education | must | 3 | 3/3 | M.Sc. Computer Science, Technical University of Munich / 2016 - 2018. Thesis: \"Neural Information Retrieval for Technical Documentation\" (grade 1.3) |\n| R2 | At least 5 years of professional software engineering experience | experience | must | 5 | 3/3 | Software engineer with 7 years of professional experience [...] Junior Developer Brightpath Digital 09/2018 - 07/2019 / Software Engineer Quantell Systems 08/2019 - 03/2023 / Senior Software Engineer Helios Mobility 04/2023 - today |\n| R3 | At least 2 years of experience building production applications on top of large language models (LLMs) | experience | must | 5 | 3/3 | the last 3 years focused on building and operating LLM-based products [...] Senior Software Engineer, AI Products, Helios Mobility SE [...] 04/2023 - today |\n| R4 | Expert-level Python, including typing, async, packaging, and testing with pytest | hard_skill | must | 5 | 3/3 | Python (expert; typing, asyncio, Poetry, pytest) [...] Introduced typed Python (mypy strict mode) and packaging standards (Poetry) across the team [...] Developed a FastAPI-based internal API layer with full pytest coverage (about 90 %) and async endpoints. |\n| R5 | Hands-on experience with Amazon Bedrock or Azure OpenAI, including deploying and monitoring LLM workloads in production | hard_skill | must | 5 | 3/3 | Built tool-using agents with Strands Agents and Amazon Bedrock (Claude models) [...] Implemented Amazon Bedrock Guardrails [...] observability with CloudWatch and Langfuse [...] AWS (Bedrock, ECS Fargate, Lambda, OpenSearch Serverless, RDS, CloudWatch) |\n| R6 | Solid experience with vector databases (e.g. OpenSearch, pgvector, Pinecone) and embedding models | hard_skill | must | 4 | 3/3 | Designed the retrieval stack: OpenSearch Serverless with hybrid (BM25 + kNN) search, Amazon Titan and Cohere embeddings [...] RDS PostgreSQL with pgvector for similarity search on sensor signatures. |\n| R7 | Proven experience designing and running LLM evaluations (e.g. RAGAS, custom judges, human labelling) | hard_skill | must | 4 | 3/3 | Set up the LLM evaluation pipeline: curated 1,800-item golden dataset, RAGAS metrics (faithfulness, context precision), LLM-as-a-judge scoring, and nightly regression runs in GitHub Actions that block prompt or model changes on metric drops. |\n| R8 | Infrastructure as code with Terraform or AWS CDK | hard_skill | must | 3 | 3/3 | Infrastructure as code with AWS CDK (TypeScript) for all services [...] managed deployments with Terraform. |\n| R9 | CI/CD pipeline experience with GitHub Actions or GitLab CI | hard_skill | must | 3 | 3/3 | CI/CD with GitHub Actions [...] nightly regression runs in GitHub Actions that block prompt or model changes on metric drops. |\n| R10 | Fluent German (C1 or higher) | language | must | 4 | 1/3 | German: B2 (Goethe-Zertifikat B2, 2022; currently attending a C1 course) |\n| R11 | Fluent English (C1 or higher) | language | must | 4 | 3/3 | English: C2 (native-level, grew up bilingual) |\n| R12 | Willingness to work on-site in Munich two days per week | other | must | 3 | 2/3 | Munich area, Germany [...] Open to hybrid work in Munich. |\n| R13 | Experience with agent frameworks such as LangGraph, Strands Agents or Semantic Kernel | hard_skill | nice | 3 | 3/3 | Built tool-using agents with Strands Agents and Amazon Bedrock (Claude models) for warranty-claim triage [...] LLM and ML: Amazon Bedrock, Claude and Titan models, Strands Agents, LangChain |\n| R14 | Experience with Kubernetes (EKS) and container orchestration | hard_skill | nice | 2 | 1/3 | AWS (Bedrock, ECS Fargate, Lambda, OpenSearch Serverless, RDS, CloudWatch) [...] Containerised services with Docker |\n| R15 | Knowledge of the Model Context Protocol (MCP) and building MCP servers | hard_skill | nice | 2 | 0/3 |  |\n| R16 | Experience fine-tuning open-weight models (LoRA, QLoRA) with PyTorch or Hugging Face | hard_skill | nice | 2 | 1/3 | Hugging Face Transformers (inference) |\n| R17 | Prior experience in a regulated industry (automotive, finance, healthcare) | experience | nice | 2 | 3/3 | Helios Mobility SE (automotive supplier), Stuttgart [...] Implemented Amazon Bedrock Guardrails (PII masking, denied topics) and structured audit logging to satisfy the group's GDPR requirements. |\n| R18 | AWS certification (Solutions Architect Associate or Machine Learning Specialty) | certification | nice | 2 | 2/3 | AWS Certified Solutions Architect - Associate (2022) / AWS Certified Developer - Associate (2021) |\n| R19 | Familiarity with TypeScript for internal tooling | hard_skill | nice | 1 | 3/3 | TypeScript (good) [...] Infrastructure as code with AWS CDK (TypeScript) for all services [...] Junior Developer Brightpath Digital [...] TypeScript (React) for e-commerce clients. |\n\n### Additional strengths not asked for\n- Published speaker at PyCon DE 2025 on enterprise RAG evaluation, demonstrating thought leadership and community engagement.\n- Production experience with Langfuse for LLM observability and tracing, a valuable operational skill not mentioned in the job description.\n- GDPR compliance implementation (PII masking via Bedrock Guardrails, structured audit logging) in a large enterprise context.\n- Experience with large-scale data engineering (Apache Airflow, Apache Spark on EMR) feeding 30+ manufacturing plants, broadening platform skills.\n- Technical mentoring experience (working student mentorship, weekly code review sessions), indicating seniority and team-building capability.\n"
+}

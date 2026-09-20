@@ -8,6 +8,15 @@ Demonstrates:
 
 Instead of parsing free-text responses, the Strands SDK lets you define
 a Pydantic model and the agent returns data matching that schema.
+
+WANT MORE DEPTH? This demo shows the "what". For the "how" and a realistic
+end-to-end use, see module 06-cv-match/:
+  - 06-cv-match/pydantic/README.md  — how Strands turns your BaseModel into a
+    tool call (with SDK source references), and what pydantic itself does
+  - 06-cv-match/explain_structured_output.py — validation errors going back to
+    the model and the model retrying, shown on real message history
+  - 06-cv-match/workflow.py — two structured-output agents chained into a
+    CV-vs-job-description matching workflow with a deterministic score
 """
 
 import warnings

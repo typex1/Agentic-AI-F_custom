@@ -1,0 +1,61 @@
+JONAS BERGMANN
+AI Engineer | LLM Applications | Cloud
+
+Munich area, Germany
+jonas.bergmann@example.com | +49 170 0000000 | linkedin.com/in/jonas-bergmann-example | github.com/jbergmann-example
+
+PROFILE
+Software engineer with 7 years of professional experience, the last 3 years focused on building and operating LLM-based products. Strong Python background, hands-on with AWS and Amazon Bedrock, and a track record of shipping RAG and agent systems used by thousands of internal users. Enjoys turning fuzzy business ideas into measurable, testable AI features.
+
+PROFESSIONAL EXPERIENCE
+
+Senior Software Engineer, AI Products
+Helios Mobility SE (automotive supplier), Stuttgart - remote | 04/2023 - today
+- Lead engineer for "AskHelios", an internal RAG assistant over 1.2 million engineering and quality documents, used by about 4,000 employees.
+- Designed the retrieval stack: OpenSearch Serverless with hybrid (BM25 + kNN) search, Amazon Titan and Cohere embeddings, semantic chunking, re-ranking.
+- Built tool-using agents with Strands Agents and Amazon Bedrock (Claude models) for warranty-claim triage; reduced manual triage effort by roughly 40 %.
+- Set up the LLM evaluation pipeline: curated 1,800-item golden dataset, RAGAS metrics (faithfulness, context precision), LLM-as-a-judge scoring, and nightly regression runs in GitHub Actions that block prompt or model changes on metric drops.
+- Implemented Amazon Bedrock Guardrails (PII masking, denied topics) and structured audit logging to satisfy the group's GDPR requirements.
+- Infrastructure as code with AWS CDK (TypeScript) for all services; CI/CD with GitHub Actions; observability with CloudWatch and Langfuse.
+- Mentor one working student and run the team's weekly code review session.
+
+Software Engineer, Data Platform
+Quantell Systems GmbH, Munich | 08/2019 - 03/2023
+- Built data pipelines in Python (Airflow, Spark on EMR) feeding analytics for 30+ manufacturing plants.
+- Developed a FastAPI-based internal API layer with full pytest coverage (about 90 %) and async endpoints.
+- Migrated on-premise workloads to AWS (ECS Fargate, RDS PostgreSQL with pgvector for similarity search on sensor signatures).
+- Containerised services with Docker; managed deployments with Terraform.
+- Introduced typed Python (mypy strict mode) and packaging standards (Poetry) across the team.
+
+Junior Developer
+Brightpath Digital, Munich | 09/2018 - 07/2019
+- Full-stack web development with Python (Django) and TypeScript (React) for e-commerce clients.
+
+EDUCATION
+M.Sc. Computer Science, Technical University of Munich | 2016 - 2018
+Thesis: "Neural Information Retrieval for Technical Documentation" (grade 1.3)
+
+B.Sc. Computer Science, University of Augsburg | 2013 - 2016
+
+SKILLS
+Languages and frameworks: Python (expert; typing, asyncio, Poetry, pytest), TypeScript (good), SQL, Bash
+LLM and ML: Amazon Bedrock, Claude and Titan models, Strands Agents, LangChain, RAG architectures, prompt engineering, LLM evaluation (RAGAS, LLM-as-a-judge), Hugging Face Transformers (inference), scikit-learn
+Data and retrieval: OpenSearch, pgvector, PostgreSQL, Spark, Airflow
+Cloud and DevOps: AWS (Bedrock, ECS Fargate, Lambda, OpenSearch Serverless, RDS, CloudWatch), AWS CDK, Terraform, Docker, GitHub Actions, Langfuse
+Practices: Test-driven development, code review, technical mentoring, agile (Scrum)
+
+CERTIFICATIONS
+AWS Certified Solutions Architect - Associate (2022)
+AWS Certified Developer - Associate (2021)
+
+LANGUAGES
+German: B2 (Goethe-Zertifikat B2, 2022; currently attending a C1 course)
+English: C2 (native-level, grew up bilingual)
+Spanish: A2
+
+SELECTED TALKS AND PUBLICATIONS
+- "Evaluating RAG in the Enterprise: What Actually Moved the Needle", PyCon DE 2025 (talk)
+- "Hybrid Retrieval for Technical Documents", internal Helios Tech Day 2024
+
+OTHER
+Open to hybrid work in Munich. Available with three months' notice.

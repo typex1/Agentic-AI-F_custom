@@ -1,0 +1,44 @@
+Senior AI Engineer (m/f/d) - Generative AI Platform
+Location: Munich, Germany (hybrid, 2 days on-site per week)
+Employment: Full-time, permanent
+Department: AI Platform Engineering
+
+About the role
+Nordlicht Analytics GmbH builds an internal generative AI platform used by more than 3,000 employees of a German industrial group. You will join a team of eight engineers and take ownership of the LLM application layer: retrieval-augmented generation (RAG), agentic workflows, evaluation, and the safe rollout of new models into production.
+
+Your responsibilities
+- Design, build and operate LLM-based applications (RAG pipelines, tool-using agents, structured extraction) on AWS.
+- Own the evaluation strategy: define offline metrics, build evaluation datasets, run A/B tests and regression suites before each model or prompt change.
+- Implement guardrails, PII handling and audit logging in line with GDPR and the EU AI Act.
+- Work with product owners and domain experts to turn vague business questions into measurable AI use cases.
+- Mentor two junior engineers and review their code.
+- Contribute to our internal Python SDK and to architecture decisions.
+
+Required qualifications
+- Master's degree in Computer Science, Mathematics, Physics or a comparable field, or a Bachelor's degree with equivalent practical experience.
+- At least 5 years of professional software engineering experience, of which at least 2 years building production applications on top of large language models.
+- Expert-level Python (typing, async, packaging, testing with pytest).
+- Hands-on experience with Amazon Bedrock or Azure OpenAI, including deploying and monitoring LLM workloads in production.
+- Solid experience with vector databases (e.g. OpenSearch, pgvector, Pinecone) and embedding models.
+- Proven experience designing and running LLM evaluations (RAGAS, custom judges, human labelling).
+- Infrastructure as code with Terraform or AWS CDK and CI/CD with GitHub Actions or GitLab CI.
+- Fluent German (C1 or higher) and fluent English (C1 or higher); most stakeholder communication is in German.
+- Willingness to be on-site in Munich two days per week.
+
+Nice to have
+- Experience with agent frameworks such as LangGraph, Strands Agents or Semantic Kernel.
+- Experience with Kubernetes (EKS) and container orchestration.
+- Knowledge of the Model Context Protocol (MCP) and building MCP servers.
+- Experience fine-tuning open-weight models (LoRA, QLoRA) with PyTorch or Hugging Face.
+- Prior experience in a regulated industry (automotive, finance, healthcare).
+- AWS certification (Solutions Architect Associate or Machine Learning Specialty).
+- Familiarity with TypeScript for internal tooling.
+
+What we offer
+- 30 days of vacation, flexible working hours, company pension scheme.
+- Personal training budget of EUR 3,000 per year and conference attendance.
+- Modern hardware of your choice and a dedicated GPU budget for experiments.
+- Salary range EUR 85,000 to 105,000 depending on experience.
+
+How to apply
+Send your CV and a short cover letter to careers@nordlicht-analytics.example. We review applications weekly.
