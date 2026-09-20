@@ -8,6 +8,14 @@ This folder contains two small scripts that separate the two halves of
 | `structured_output.py` | **Yes** (Amazon Bedrock) | `agent(prompt, structured_output_model=PersonInfo)` returns a validated `PersonInfo` |
 | `pydantic_only.py` | **No** | What pydantic itself does: coercion, `ValidationError`, `model_json_schema()` |
 
+Prefer a guided walk-through? Both scripts also exist as **Jupyter notebooks** with
+the code split into small chunks, each preceded by an explanation:
+[`pydantic_only.ipynb`](pydantic_only.ipynb) and
+[`structured_output.ipynb`](structured_output.ipynb) (the latter adds a final cell
+that inspects the agent's message history to show the `toolUse` for `PersonInfo`).
+The committed notebooks include real outputs, so you can read them on GitHub
+without running anything.
+
 The rest of this document answers the question the official docs skip over:
 
 > The `Agent` accepts a `structured_output_model` of type `BaseModel`.
