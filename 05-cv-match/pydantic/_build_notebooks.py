@@ -1,4 +1,4 @@
-"""Build the pydantic_only.ipynb teaching notebook for 06-cv-match/pydantic/ with nbformat."""
+"""Build the pydantic_only.ipynb teaching notebook for 05-cv-match/pydantic/ with nbformat."""
 import nbformat as nbf
 from pathlib import Path
 

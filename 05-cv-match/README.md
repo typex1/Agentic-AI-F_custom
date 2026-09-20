@@ -49,7 +49,7 @@ gives more precise ratings. `samples/sample_report.md` was produced with Claude 
 > of the answer, never its *correctness*.
 
 ```bash
-cd 06-cv-match
+cd 05-cv-match
 source ../.venv/bin/activate
 
 # the full workflow on the sample pair

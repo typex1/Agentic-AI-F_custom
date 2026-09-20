@@ -10,7 +10,7 @@ Learn the core concepts of the Strands Agents SDK — from calling Bedrock direc
 | 1 | `01_basic_agent.py` | Simplest agent | 3 lines of code → working AI agent |
 | 2 | `02_custom_tools.py` | Custom tools | The `@tool` decorator — turn any function into an agent-callable tool |
 | 3 | `03_logging.py` | Observability | See the tool catalog, prompts, and context in logs |
-| 4 | `04_structured_output.py` | Typed output | Get validated Pydantic models back from agents — for the full story see [06-cv-match](../06-cv-match/) |
+| 4 | `04_structured_output.py` | Typed output | Get validated Pydantic models back from agents — for the full story see [05-cv-match](../05-cv-match/) |
 
 ## Prerequisites
 

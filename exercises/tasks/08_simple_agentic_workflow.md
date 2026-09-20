@@ -89,7 +89,7 @@ instances — they are cheap to create.
 Design rule worth internalizing: use an LLM where judgment is needed
 (classify, draft), use plain Python where determinism is needed (routing).
 
-A realistic, larger example of exactly this rule: `06-cv-match/` — two
+A realistic, larger example of exactly this rule: `05-cv-match/` — two
 structured-output agents (extract requirements, assess CV) chained with plain
 Python steps (read files, compute score, render report).
 

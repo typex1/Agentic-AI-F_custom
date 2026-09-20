@@ -20,7 +20,7 @@ uses it to turn a customer request into routable, typed data.
 
 Demo to study first: `01-fundamentals/04_structured_output.py`.
 Want to know *how* Strands applies your model to the LLM output (spoiler: it
-is a tool call, not JSON parsing)? Read `06-cv-match/pydantic/README.md`.
+is a tool call, not JSON parsing)? Read `05-cv-match/pydantic/README.md`.
 
 ## 📖 Official documentation
 

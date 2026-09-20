@@ -12,7 +12,7 @@ From "Hello World" to multi-agent swarms, RAG pipelines, and production deployme
 │  (basics, tools,       (MCP servers,           (RAG, multi-agent,       │
 │   logging, output)      agent skills)           graphs, swarms)         │
 │                                                                         │
-│                    →   04-production       →   06-cv-match             │
+│                    →   04-production       →   05-cv-match             │
 │                        (sessions, context       (showcase: structured   │
 │                         management)              output + pydantic +    │
 │                                                  a realistic workflow)  │
@@ -29,7 +29,7 @@ From "Hello World" to multi-agent swarms, RAG pipelines, and production deployme
 | [02-tools-and-mcp](02-tools-and-mcp/) | MCP integration, agent skills | 2 files |
 | [03-advanced-patterns](03-advanced-patterns/) | RAG, multi-agent, graphs, swarms | 5 files |
 | [04-production](04-production/) | Session persistence, conversation management | 2 files |
-| [06-cv-match](06-cv-match/) | Showcase: CV ↔ job-description matching — two structured-output agents + deterministic scoring; includes a pure-pydantic intro and a deep-dive | project |
+| [05-cv-match](05-cv-match/) | Showcase: CV ↔ job-description matching — two structured-output agents + deterministic scoring; includes a pure-pydantic intro and a deep-dive | project |
 
 ## 🏋️ Exercises
 

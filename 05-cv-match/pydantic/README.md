@@ -261,7 +261,7 @@ constructor and `ValidationError` out.
 ## 7. Try it yourself
 
 ```bash
-# From 06-cv-match/
+# From 05-cv-match/
 ../.venv/bin/python pydantic/pydantic_only.py                     # free, instant, no credentials
 ../.venv/bin/python ../01-fundamentals/04_structured_output.py     # needs AWS credentials, calls Bedrock
 ```
