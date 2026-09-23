@@ -127,6 +127,55 @@ flowchart TD
     SR -- "content_filtered /<br/>guardrail_intervention" --> BLK([blocked by safety policy])
 ```
 
+## In the source: the loop is real code
+
+Is the agent loop a real loop in the SDK, or just "call tools until none are needed"?
+It is real code — `strands/event_loop/event_loop.py` (~1,000 lines). And one detail is
+worth knowing: **the loop is written as recursion, not as `while True`.**
+
+```mermaid
+flowchart TD
+    C["event_loop_cycle()<br/><i>one iteration</i>"] --> M["_handle_model_execution()<br/>call the model"]
+    M --> SR{stop_reason}
+    SR -- "max_tokens" --> X([raise MaxTokensReachedException])
+    SR -- "end_turn" --> E([yield EventLoopStopEvent<br/><i>the exit</i>])
+    SR -- "tool_use" --> T["_handle_tool_execution()<br/>run every toolUse, append toolResults"]
+    T --> R["recurse_event_loop()"]
+    R -.->|"calls again"| C
+    style R fill:#fff3cd,stroke:#856404
+```
+
+Each model turn is one call of `event_loop_cycle()`. If the turn ends with `tool_use`, the
+tools run and `recurse_event_loop()` starts the next cycle. If it ends with `end_turn`, the
+cycle yields a stop event and the chain unwinds. That chain of calls *is* the loop.
+
+Why recursion? Every function here is an **async generator** that streams events (`yield`) to
+the caller — model text, tool starts, tool results. Recursion lets each cycle's events flow
+through one generator chain without buffering, and gives every cycle its own trace span
+(`Trace("Recursive call", parent_id=...)` — this is why nested cycles appear as a tree in
+OpenTelemetry).
+
+Three things the SDK does *inside* the loop that a naive "call until no tools" would not:
+
+| Mechanism | Where | What it does |
+|---|---|---|
+| **Limits** | `_check_limits()` | Turn/token caps produce a `limit_*` stop reason instead of running forever |
+| **Checkpoints / interrupts** | `_build_checkpoint_stop_event()` | The loop can `return` mid-cycle ("after_model" / "after_tools") and be resumed later — this is what human-in-the-loop approval uses |
+| **Structured output** | `if structured_output_context.is_enabled and stop_reason == "end_turn"` | If the model said `end_turn` *without* calling the Pydantic tool, the loop injects a prompt, **forces** the tool and recurses once more — that is how `structured_output_model=` guarantees a result |
+
+So, for students: *the model decides whether to loop (by emitting a tool call or not); the SDK
+owns the loop itself — executes the tools, appends results, enforces limits, calls the model
+again.* Neither half works alone.
+
+**Open the file yourself** (line numbers change between versions, so search by name):
+
+```bash
+# from the repo root, with the .venv active
+python -c "import strands.event_loop.event_loop as m; print(m.__file__)"
+grep -n "async def event_loop_cycle\|async def recurse_event_loop\|async def _handle_tool_execution\|stop_reason == \"tool_use\"\|events = recurse_event_loop" \
+  "$(python -c 'import strands.event_loop.event_loop as m; print(m.__file__)')"
+```
+
 ## Try it in this repo
 
 - [`01-fundamentals/02_custom_tools.py`](../01-fundamentals/02_custom_tools.py) —
