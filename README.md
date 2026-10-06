@@ -2,42 +2,6 @@
 
 A structured, hands-on learning path for building custom AI agents using the **[Strands Agents SDK](https://strandsagents.com/)** on **Amazon Bedrock**.
 
-From "Hello World" to multi-agent swarms, RAG pipelines, and production deployment — all runnable with a single model permission (`bedrock-runtime:Converse`).
-
-## 🗺️ Learning Path
-
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│  01-fundamentals   →   02-tools-and-mcp   →   03-advanced-patterns      │
-│  (basics, tools,       (MCP servers,           (RAG, multi-agent,       │
-│   logging, output)      agent skills)           graphs, swarms)         │
-│                                                                         │
-│                    →   04-production       →   05-cv-match             │
-│                        (sessions, context       (showcase: structured   │
-│                         management)              output + pydantic +    │
-│                                                  a realistic workflow)  │
-└─────────────────────────────────────────────────────────────────────────┘
-         exercises/  — hands-on practice with guided tasks
-         reference/  — full 14-module video course + official samples
-```
-
-## 📚 Modules
-
-| Module | Topic | Scripts |
-|--------|-------|---------|
-| [01-fundamentals](01-fundamentals/) | Agent basics, custom tools, logging, structured output | 5 files |
-| [02-tools-and-mcp](02-tools-and-mcp/) | MCP integration, agent skills | 2 files |
-| [03-advanced-patterns](03-advanced-patterns/) | RAG, multi-agent, graphs, swarms | 5 files |
-| [04-production](04-production/) | Session persistence, conversation management | 2 files |
-| [05-cv-match](05-cv-match/) | Showcase: CV ↔ job-description matching — two structured-output agents + deterministic scoring; includes a pure-pydantic intro and a deep-dive | project |
-
-## 🏋️ Exercises
-
-| Exercise | Description |
-|----------|-------------|
-| [10 Customer Support Tickets](exercises/tasks/10_customer_support_tickets.md) | Capstone: all four workflow patterns in one project |
-| [Task Sheets](exercises/tasks/) | Incremental guided tasks (01–09) |
-
 ## 📖 Reference
 
 | Resource | Description |
@@ -66,8 +30,11 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
-# Run your first agent:
-python 01-fundamentals/01_basic_agent.py
+# Install Kiro
+curl -fsSL https://cli.kiro.dev/install | bash
+
+# Log into your Kiro account:
+kiro-cli login --use-device-flow
 ```
 
 → Full setup details: [docs/setup.md](docs/setup.md)
