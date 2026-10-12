@@ -23,7 +23,7 @@ Tools provided:
 import warnings
 warnings.filterwarnings(action="ignore", message=r"datetime.datetime.utcnow")
 
-from mcp.client.streamable_http import streamablehttp_client
+from mcp.client.streamable_http import streamable_http_client
 from strands import Agent
 from strands.tools.mcp import MCPClient
 
@@ -32,7 +32,7 @@ from strands.tools.mcp import MCPClient
 AWS_KNOWLEDGE_MCP_URL = "https://knowledge-mcp.global.api.aws"
 
 aws_knowledge_client = MCPClient(
-    lambda: streamablehttp_client(AWS_KNOWLEDGE_MCP_URL)
+    lambda: streamable_http_client(AWS_KNOWLEDGE_MCP_URL)
 )
 
 
