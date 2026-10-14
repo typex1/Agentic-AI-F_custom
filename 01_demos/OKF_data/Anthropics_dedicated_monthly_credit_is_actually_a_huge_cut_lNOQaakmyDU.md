@@ -1,8 +1,27 @@
 ---
 type: video_transcript
+title: Anthropic's "dedicated monthly credit" is actually a huge cut
+description: Matt breaks down Anthropic's announcement that, starting June 15, paid
+  Claude plans receive a separate "dedicated monthly credit" for programmatic/AFK
+  usage (the Claude Agent SDK, `claude -p`, GitHub Actions, and third-party apps)
+  split apart from human-in-the-loop usage (Claude Code, Claude.ai, Co-work).
+resource: https://youtu.be/lNOQaakmyDU
+tags:
+- anthropic
+- claude
+- pricing
+- ai-agents
+- afk
 video_id: lNOQaakmyDU
 publish_date: 2026-05-13
-tags: [anthropic, claude, pricing, ai-agents, afk]
+sources:
+- id: video
+  resource: https://youtu.be/lNOQaakmyDU
+  title: Anthropic's "dedicated monthly credit" is actually a huge cut
+  last_modified: '2026-05-13T00:00:00Z'
+generated:
+  by: transcript_pipeline/1.0
+  at: '2026-05-13T00:00:00Z'
 ---
 
 # Anthropic's "dedicated monthly credit" is actually a huge cut

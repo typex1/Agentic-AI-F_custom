@@ -1,8 +1,25 @@
 ---
 type: video_transcript
+title: Burn through the backlog from hell with /triage
+description: Matt presents the `triage` skill for turning messy team and open-source
+  backlogs (GitHub issues, Jira) into actionable work.
+resource: https://youtu.be/MzWIIlx0Gpc
+tags:
+- ai-agents
+- triage
+- github-issues
+- workflow
+- afk
 video_id: MzWIIlx0Gpc
 publish_date: 2026-05-07
-tags: [ai-agents, triage, github-issues, workflow, afk]
+sources:
+- id: video
+  resource: https://youtu.be/MzWIIlx0Gpc
+  title: Burn through the backlog from hell with /triage
+  last_modified: '2026-05-07T00:00:00Z'
+generated:
+  by: transcript_pipeline/1.0
+  at: '2026-05-07T00:00:00Z'
 ---
 
 # Burn through the backlog from hell with /triage

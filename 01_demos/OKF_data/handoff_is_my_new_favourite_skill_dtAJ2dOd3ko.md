@@ -1,8 +1,26 @@
 ---
 type: video_transcript
+title: /handoff is my new favourite skill
+description: A deep dive on the `handoff` skill, which compresses the current session's
+  context into a disposable markdown file (saved to the OS temp directory) so a fresh
+  agent can continue the work.
+resource: https://youtu.be/dtAJ2dOd3ko
+tags:
+- ai-agents
+- skills
+- context-management
+- handoff
+- claude-code
 video_id: dtAJ2dOd3ko
 publish_date: 2026-05-21
-tags: [ai-agents, skills, context-management, handoff, claude-code]
+sources:
+- id: video
+  resource: https://youtu.be/dtAJ2dOd3ko
+  title: /handoff is my new favourite skill
+  last_modified: '2026-05-21T00:00:00Z'
+generated:
+  by: transcript_pipeline/1.0
+  at: '2026-05-21T00:00:00Z'
 ---
 
 # /handoff is my new favourite skill

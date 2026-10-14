@@ -1,8 +1,25 @@
 ---
 type: video_transcript
+title: Can Cursor's HARDCORE Review Skill Stop The Slop?
+description: Matt tests the Cursor team's "thermonuclear code quality review" skill
+  on his own Sandcastle repo, reviewing the last five PRs merged to main.
+resource: https://youtu.be/mh5XZ-L5SFQ
+tags:
+- ai-agents
+- code-review
+- skills
+- cursor
+- code-quality
 video_id: mh5XZ-L5SFQ
 publish_date: 2026-05-28
-tags: [ai-agents, code-review, skills, cursor, code-quality]
+sources:
+- id: video
+  resource: https://youtu.be/mh5XZ-L5SFQ
+  title: Can Cursor's HARDCORE Review Skill Stop The Slop?
+  last_modified: '2026-05-28T00:00:00Z'
+generated:
+  by: transcript_pipeline/1.0
+  at: '2026-05-28T00:00:00Z'
 ---
 
 # Can Cursor's HARDCORE Review Skill Stop The Slop?

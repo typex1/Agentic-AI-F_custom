@@ -1,8 +1,25 @@
 ---
 type: video_transcript
+title: How To De-Slop A Codebase Ruined By AI (with one skill)
+description: Matt argues that AI accelerates software entropy and offers his "improve
+  codebase architecture" skill as the cure.
+resource: https://youtu.be/3MP8D-mdheA
+tags:
+- ai-agents
+- refactoring
+- software-architecture
+- code-quality
+- skills
 video_id: 3MP8D-mdheA
 publish_date: 2026-04-29
-tags: [ai-agents, refactoring, software-architecture, code-quality, skills]
+sources:
+- id: video
+  resource: https://youtu.be/3MP8D-mdheA
+  title: How To De-Slop A Codebase Ruined By AI (with one skill)
+  last_modified: '2026-04-29T00:00:00Z'
+generated:
+  by: transcript_pipeline/1.0
+  at: '2026-04-29T00:00:00Z'
 ---
 
 # How To De-Slop A Codebase Ruined By AI (with one skill)

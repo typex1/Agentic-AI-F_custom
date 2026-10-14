@@ -1,8 +1,25 @@
 ---
 type: video_transcript
+title: 'I stopped using /grill-me for coding. Here''s what I use instead:'
+description: Matt introduces Grill with Docs, which merges the Grill Me interview
+  skill with a "ubiquitous language" layer borrowed from domain-driven design.
+resource: https://youtu.be/6BB6exR8Zd8
+tags:
+- ai-agents
+- planning
+- domain-driven-design
+- skills
+- documentation
 video_id: 6BB6exR8Zd8
 publish_date: 2026-05-14
-tags: [ai-agents, planning, domain-driven-design, skills, documentation]
+sources:
+- id: video
+  resource: https://youtu.be/6BB6exR8Zd8
+  title: 'I stopped using /grill-me for coding. Here''s what I use instead:'
+  last_modified: '2026-05-14T00:00:00Z'
+generated:
+  by: transcript_pipeline/1.0
+  at: '2026-05-14T00:00:00Z'
 ---
 
 # I stopped using /grill-me for coding. Here's what I use instead:

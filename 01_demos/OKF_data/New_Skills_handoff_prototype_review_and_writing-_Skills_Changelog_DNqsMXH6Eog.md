@@ -1,8 +1,27 @@
 ---
 type: video_transcript
+title: New Skills! /handoff, /prototype, /review and /writing-* | Skills Changelog
+description: 'A changelog video (the skills repo just passed 70k stars) covering two
+  new skills: `handoff`, which compacts the current conversation into a temporary
+  handoff document for another agent, and `prototype`, which builds throwaway UI and
+  logic/state-machine prototypes as research spikes.'
+resource: https://youtu.be/DNqsMXH6Eog
+tags:
+- ai-agents
+- skills
+- changelog
+- prototyping
+- handoff
 video_id: DNqsMXH6Eog
 publish_date: 2026-05-12
-tags: [ai-agents, skills, changelog, prototyping, handoff]
+sources:
+- id: video
+  resource: https://youtu.be/DNqsMXH6Eog
+  title: New Skills! /handoff, /prototype, /review and /writing-* | Skills Changelog
+  last_modified: '2026-05-12T00:00:00Z'
+generated:
+  by: transcript_pipeline/1.0
+  at: '2026-05-12T00:00:00Z'
 ---
 
 # New Skills! /handoff, /prototype, /review and /writing-* | Skills Changelog

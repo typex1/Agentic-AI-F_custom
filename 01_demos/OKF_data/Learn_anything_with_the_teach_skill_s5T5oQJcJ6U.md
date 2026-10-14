@@ -1,8 +1,25 @@
 ---
 type: video_transcript
+title: Learn anything with the /teach skill
+description: Matt introduces a `teach` skill that turns a coding agent into a personal
+  tutor.
+resource: https://youtu.be/s5T5oQJcJ6U
+tags:
+- ai-agents
+- skills
+- teaching
+- learning
+- claude-code
 video_id: s5T5oQJcJ6U
 publish_date: 2026-06-08
-tags: [ai-agents, skills, teaching, learning, claude-code]
+sources:
+- id: video
+  resource: https://youtu.be/s5T5oQJcJ6U
+  title: Learn anything with the /teach skill
+  last_modified: '2026-06-08T00:00:00Z'
+generated:
+  by: transcript_pipeline/1.0
+  at: '2026-06-08T00:00:00Z'
 ---
 
 # Learn anything with the /teach skill

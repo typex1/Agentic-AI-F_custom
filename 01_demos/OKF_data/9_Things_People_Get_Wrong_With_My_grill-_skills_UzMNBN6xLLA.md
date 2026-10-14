@@ -1,8 +1,24 @@
 ---
 type: video_transcript
+title: 9 Things People Get Wrong With My /grill-* skills
+description: A guide to using the Grill Me and Grill with Docs planning skills well.
+resource: https://youtu.be/UzMNBN6xLLA
+tags:
+- ai-agents
+- planning
+- skills
+- context-management
+- prompting
 video_id: UzMNBN6xLLA
 publish_date: 2026-05-25
-tags: [ai-agents, planning, skills, context-management, prompting]
+sources:
+- id: video
+  resource: https://youtu.be/UzMNBN6xLLA
+  title: 9 Things People Get Wrong With My /grill-* skills
+  last_modified: '2026-05-25T00:00:00Z'
+generated:
+  by: transcript_pipeline/1.0
+  at: '2026-05-25T00:00:00Z'
 ---
 
 # 9 Things People Get Wrong With My /grill-* skills

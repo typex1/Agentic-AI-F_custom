@@ -1,8 +1,26 @@
 ---
 type: video_transcript
+title: I Open-Sourced My Own AFK Software Factory
+description: Matt launches Sandcastle, an open-source TypeScript library for orchestrating
+  AI coding agents in isolated sandboxes (such as Docker) so they can run away-from-keyboard
+  in parallel without dangerous unsandboxed "yolo" permissions.
+resource: https://youtu.be/E5-QK3CDVQM
+tags:
+- ai-agents
+- sandcastle
+- typescript
+- afk
+- orchestration
 video_id: E5-QK3CDVQM
 publish_date: 2026-04-30
-tags: [ai-agents, sandcastle, typescript, afk, orchestration]
+sources:
+- id: video
+  resource: https://youtu.be/E5-QK3CDVQM
+  title: I Open-Sourced My Own AFK Software Factory
+  last_modified: '2026-04-30T00:00:00Z'
+generated:
+  by: transcript_pipeline/1.0
+  at: '2026-04-30T00:00:00Z'
 ---
 
 # I Open-Sourced My Own AFK Software Factory
