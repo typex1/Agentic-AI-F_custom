@@ -1,34 +1,45 @@
 """
-07_RAG_OKF.py — Unstructured RAG Agent over a Google OKF knowledge base
+07_Retrieval_OKF.py — Unstructured RAG Agent over a Google OKF knowledge base
 
-A companion to `07_RAG_1.py`. Where that sample does *structured* RAG (it
+A companion to `07_Retrieval_SQL.py`. Where that sample does *structured* RAG (it
 retrieves a database schema and turns natural language into SQL), this file
 does *unstructured* RAG: it retrieves relevant passages from a corpus of
 markdown documents and grounds the model's answers in them.
 
 The corpus is a **Google OKF (Open Knowledge Format) knowledge bundle**:
-    https://github.com/GoogleCloudPlatform/knowledge-catalog/tree/main/okf
+    https://github.com/GoogleCloudPlatform/open-knowledge-format
+    (the canonical repo; the copy under knowledge-catalog/okf is a frozen snapshot)
 
 OKF is a deliberately minimal, vendor-neutral format: a directory of UTF-8
 markdown files, each beginning with a YAML frontmatter block delimited by
 `---`, followed by a free-form markdown body (see okf/SPEC.md v0.2). The only
 *required* frontmatter field is `type`; `title`, `description`, `resource` and
 `tags` are recommended (v0.1's recommended `timestamp` field is superseded by
-`generated.at` in v0.2 — this bundle uses neither). A concept's ID is its file
+`generated.at` in v0.2). This bundle sets all four recommended fields plus the
+§5 provenance families `sources` and `generated`. A concept's ID is its file
 path within the bundle with the `.md` suffix removed.
 
 THE KNOWLEDGE BASE (demonstration corpus)
 -----------------------------------------
-`strands-agents/OKF_data/` holds ten OKF concept documents — the transcripts of
+`01_demos/OKF_data/` holds ten OKF concept documents — the transcripts of
 the ten latest videos from the "Matt Pocock" YouTube channel
 (https://www.youtube.com/@mattpocockuk/videos). Each file's frontmatter looks
 like:
 
     ---
     type: video_transcript
+    title: /handoff is my new favourite skill
+    description: A deep dive on the `handoff` skill ...
+    resource: https://youtu.be/dtAJ2dOd3ko
+    tags: [ai-agents, skills, context-management, handoff, claude-code]
     video_id: dtAJ2dOd3ko
     publish_date: 2026-05-21
-    tags: [ai-agents, skills, context-management, handoff, claude-code]
+    sources:
+      - id: video
+        resource: https://youtu.be/dtAJ2dOd3ko
+        title: /handoff is my new favourite skill
+        last_modified: 2026-05-21T00:00:00Z
+    generated: { by: transcript_pipeline/1.0, at: 2026-05-21T00:00:00Z }
     ---
     # /handoff is my new favourite skill
     ## Quick Summary
@@ -43,7 +54,7 @@ the local bundle; it never contacts YouTube.
 
 ADAPTATIONS FOR THIS LIMITED-PERMISSION ENVIRONMENT
 ---------------------------------------------------
-As in `07_RAG_1.py`, we only have `bedrock-runtime:Converse` on
+As in `07_Retrieval_SQL.py`, we only have `bedrock-runtime:Converse` on
 `amazon.nova-lite-v1:0` (see .kiro/steering/Permissions.md). That constrains
 two design choices:
 
@@ -245,7 +256,7 @@ def load_bundle() -> Tuple[Concept, ...]:
 OKF_VERSION = "0.2"
 
 
-def render_index_md() -> str:
+def render_index_md(concepts: Optional[Tuple["Concept", ...]] = None) -> str:
     """Render a spec-conformant bundle-root ``index.md`` for the OKF bundle.
 
     Per SPEC §8, an index enumerates the directory's contents as a bulleted
@@ -254,7 +265,8 @@ def render_index_md() -> str:
     single ``okf_version`` declaration in the *bundle-root* index — which is
     exactly what this is — so we include it.
     """
-    concepts = load_bundle()
+    if concepts is None:
+        concepts = load_bundle()
     lines = [
         "---",
         f'okf_version: "{OKF_VERSION}"',
@@ -277,9 +289,10 @@ def render_index_md() -> str:
 
     for c in sorted(concepts, key=_sort_key, reverse=True):
         rel_url = c.path.relative_to(BUNDLE_DIR).as_posix()
-        publish = c.frontmatter.get("publish_date", "?")
         desc = c.description or "(no description)"
-        lines.append(f"* [{c.title}]({rel_url}) - {desc} (published {publish})")
+        # SPEC §8 entry format: "* [Title](relative-url) - description".
+        # The description is the concept's frontmatter `description` (§8 SHOULD).
+        lines.append(f"* [{c.title}]({rel_url}) - {desc}")
     lines.append("")
     return "\n".join(lines)
 
@@ -419,13 +432,33 @@ def build_index() -> RetrievalIndex:
 def list_knowledge_base() -> str:
     """List every concept in the OKF knowledge base (progressive disclosure).
 
-    This synthesizes an OKF-style index (SPEC §8) on the fly: one line per
-    concept with its title, concept id, source video id, tags and a one-line
-    description. Call this first to see what topics are available before
-    searching or opening a full transcript.
+    Returns the bundle's ``index.md`` — the OKF §8 index that enumerates each
+    concept as ``[Title](relative-url) - description``. This is true
+    progressive disclosure: the index is the curated entry point into the
+    bundle. If no ``index.md`` is present, one is synthesized on the fly from
+    the concept frontmatter instead. Call this first to see what topics are
+    available before searching or opening a full transcript.
 
     Returns:
-        A markdown listing of all concepts in the bundle.
+        The bundle's index.md content (SPEC §8), or a synthesized equivalent.
+    """
+    index_path = BUNDLE_DIR / "index.md"
+    if index_path.exists():
+        return index_path.read_text(encoding="utf-8")
+    return render_index_md()
+
+
+@tool
+def list_concepts_detailed() -> str:
+    """List every concept with richer per-concept metadata than the §8 index.
+
+    This is not the SPEC §8 index format: it adds the concept_id, source
+    video_id, publish date and tags for each concept, which is useful when you
+    need an identifier to pass to get_transcript. Use list_knowledge_base for
+    the plain §8 index; use this when you need those extra fields.
+
+    Returns:
+        A markdown listing of all concepts with concept_id, video_id and tags.
     """
     lines = ["# OKF Knowledge Base — video_transcript concepts\n"]
     for c in load_bundle():
@@ -524,7 +557,9 @@ The videos are from Matt Pocock's channel and focus on AI coding agents, skills,
 and workflows.
 
 Follow this retrieval-augmented generation (RAG) process:
-1. If you are unsure what topics exist, call list_knowledge_base first.
+1. If you are unsure what topics exist, call list_knowledge_base first (it
+   returns the OKF §8 index). Use list_concepts_detailed when you need a
+   concept_id or video_id to pass to get_transcript.
 2. Call search_transcripts with focused keywords from the user's question to
    retrieve the most relevant passages.
 3. If a passage is promising but you need fuller context, call get_transcript
@@ -546,7 +581,7 @@ def create_okf_rag_agent() -> Agent:
     model = BedrockModel(model_id=MODEL_ID, region_name=AWS_REGION, temperature=0.0)
     return Agent(
         model=model,
-        tools=[list_knowledge_base, search_transcripts, get_transcript],
+        tools=[list_knowledge_base, list_concepts_detailed, search_transcripts, get_transcript],
         system_prompt=SYSTEM_PROMPT,
         callback_handler=None,
     )
@@ -581,6 +616,10 @@ def main() -> None:
         "'exit', 'quit', or an empty line.",
     )
     args = parser.parse_args()
+
+    # Regenerate the bundle-root index.md from the current frontmatter so the
+    # SPEC §8 index the agent reads via list_knowledge_base is never stale.
+    write_index_md()
 
     agent = create_okf_rag_agent()
     _print_header()
