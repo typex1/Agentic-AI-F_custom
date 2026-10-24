@@ -4,42 +4,44 @@
 # Install with:  pip install -r requirements.txt
 
 # --- Core Strands Agents SDK (strands-agents/*, Task.py) ---
-strands-agents==1.45.0
-strands-agents-tools==0.8.2        # current_time, calculator, shell, file_read tools (demos 02, 03, 06)
+strands-agents==1.62.0
+strands-agents-tools==0.8.10       # current_time, calculator, shell, file_read tools (demos 02, 03, 06)
                                    # + http_request, editor, python_repl, load_tool (strands-official-examples/)
 
 # --- Model Context Protocol SDK ---
 # Already a transitive dependency of strands-agents, but pinned explicitly because
 # strands-official-examples/python_lab2_adjusted/mcp_calculator.py imports it directly
 # (mcp.server.FastMCP, mcp.client.streamable_http).
-mcp==1.29.0
+# NOTE: strands-agents 1.62.0 requires mcp<2.2, so 2.1.x is the newest usable line
+# (mcp 2.3.x exists but is excluded by that constraint).
+mcp==2.1.1
 
 # --- Web search tool (strands-agents/02_custom_tools.py, Task.py) ---
-ddgs==9.14.4
+ddgs==9.16.1
 
 # --- Structured output demo uses Pydantic directly (strands-agents/04) ---
-pydantic==2.13.4
+pydantic==2.14.1
 
 # --- AWS SDK, used directly by Model_permissions.py ---
-boto3==1.43.39
+boto3==1.43.118
 
 # --- Pydantic AI comparison example (pydantic-ai/01_basic_agent.py) ---
 # The [bedrock] extra adds Amazon Bedrock (Converse) support.
-pydantic-ai-slim[bedrock]==2.3.0
+pydantic-ai-slim[bedrock]==2.61.0
 
 # --- Building-with-Strands course samples (strands-agents/sample-building-with-strands-course/samples_adjusted/) ---
 # 13-evals: agent evaluation framework (import name: strands_evals)
-strands-agents-evals==1.0.1
+strands-agents-evals==1.7.0
 # 04-callbacks-streaming: fastapi_streaming.py (+ uvicorn to serve it, see demo-commands.txt)
-fastapi==0.141.1
-uvicorn==0.52.1
+fastapi==0.162.0
+uvicorn==0.54.0
 # 14-deploy: main.py (AgentCore runtime wrapper; local run only — no deploy permissions here)
-bedrock-agentcore==1.21.0
+bedrock-agentcore==1.25.0
 # 14-deploy: lambda-deployment/lambda_handler.py (ASGI adapter for Lambda; local run via uvicorn)
-mangum==0.21.0
+mangum==0.22.0
 
 # --- Jupyter notebooks (05-cv-match/pydantic/*.ipynb, Lab-2_original/) ---
-ipykernel==7.3.0
+ipykernel==7.4.0
 nbformat==5.11.1
 nbclient==0.11.0                   # only needed to re-execute notebooks headlessly (_build_notebooks.py)
 
